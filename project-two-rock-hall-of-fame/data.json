@@ -115,5 +115,16 @@
     "instrument": ["Bass Guitar"],
     "genre": ["Rock", "Blues", "Blues Rock", "Hard Rock", "Heavy Metal"],
     "occupation": ["Musician"]
+  },
+  {
+    "name": "Carlos Santana",
+    "profilePicture": "public/images/artists/Santana.jpg",
+    "origin": "Autlán, Jalisco, Mexico",
+    "birthday": "July 20, 1947",
+    "deathDate": "",
+    "bands": ["Santana"],
+    "instrument": ["Guitar"],
+    "genre": ["Rock", "Blues", "Blues Rock", "Latin Rock"],
+    "occupation": ["Musician"]
   }
 ]
