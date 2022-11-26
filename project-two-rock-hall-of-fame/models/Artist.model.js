@@ -17,7 +17,11 @@ const artistSchema = new Schema({
     type: String,
     required: true,
   },
-  bands: [{ type: Schema.Types.ObjectId, ref: 'Band' }],
+  deathDate: {
+    type: String,
+    required: false,
+  },
+  bands: [{ type: Schema.Types.ObjectId, ref: "Band" }],
 
   instrument: {
     type: [String],
