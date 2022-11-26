@@ -1,13 +1,55 @@
 [
   {
     "name": "Jim Morrison",
-    "profilePicture": "Amateur Chef",
-    "origin": "public/images/artists/Jim_Morrison_1969.JPG",
+    "profilePicture": "public/images/artists/Jim_Morrison_1969.JPG",
+    "origin": "Melbourne, Florida, United States",
     "birthday": "December 8, 1943",
     "deathDate": "July 3, 1971",
     "bands": ["The Doors", "Rick & the Ravens"],
-    "instrument": "Vocals",
-    "genre": "Rock",
-    "occupation": "Singer"
+    "instrument": ["Vocals"],
+    "genre": ["Rock", "Psychedelic Rock", "Blues Rock"],
+    "occupation": ["Musician", "Songwritter", "Poet"]
+  },
+
+  {
+    "name": "Ray Manzarek",
+    "profilePicture": "public/images/artists/RayManzarek.png",
+    "origin": "Chicago, Illinois, United States",
+    "birthday": "February 12, 1939",
+    "deathDate": "May 20, 2013",
+    "bands": ["The Doors", "Rick & the Ravens"],
+    "instrument": ["Keyboards", "Vocals"],
+    "genre": ["Rock", "Psychedelic Rock", "Blues Rock", "Jazz Fusion"],
+    "occupation": ["Musician"]
+  },
+
+  {
+    "name": "Bobby Krieger",
+    "profilePicture": "public/images/artists/BobbyKrieger.jpg",
+    "origin": "Los Angeles, California, United States",
+    "birthday": "January 8, 1946",
+    "deathDate": "",
+    "bands": [
+      "The Doors",
+      "Rick & the Ravens",
+      "Butts Band",
+      "Red Shift",
+      "Krieger & The Soul Savages"
+    ],
+    "instrument": ["Guitar"],
+    "genre": ["Rock", "Psychedelic Rock", "Blues Rock", "Jazz Fusion"],
+    "occupation": ["Musician", "Songwritter"]
+  },
+
+  {
+    "name": "John Densmore",
+    "profilePicture": "public/images/artists/John_Densmore_1971.png",
+    "origin": "Los Angeles, California, United States",
+    "birthday": "December 1, 1944",
+    "deathDate": "",
+    "bands": ["The Doors"],
+    "instrument": ["Drums"],
+    "genre": ["Rock", "Psychedelic Rock", "Blues Rock"],
+    "occupation": ["Musician"]
   }
 ]
