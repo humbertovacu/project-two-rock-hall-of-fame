@@ -51,5 +51,69 @@
     "instrument": ["Drums"],
     "genre": ["Rock", "Psychedelic Rock", "Blues Rock"],
     "occupation": ["Musician"]
+  },
+
+  {
+    "name": "Jimmy Page",
+    "profilePicture": "public/images/artists/JimmyPage.jpg",
+    "origin": "Heston, Middlesex, England",
+    "birthday": "January 9, 1944",
+    "deathDate": "",
+    "bands": ["The Yadbirds", "Led Zeppelin", "Page and Plant"],
+    "instrument": ["Guitar"],
+    "genre": [
+      "Rock",
+      "Blues",
+      "Blues Rock",
+      "Hard Rock",
+      "Heavy Metal",
+      "Folk"
+    ],
+    "occupation": ["Musician"]
+  },
+
+  {
+    "name": "Robert Plant",
+    "profilePicture": "public/images/artists/Robert-Plant.jpg",
+    "origin": "Halesowen, England",
+    "birthday": "August 20, 1948",
+    "deathDate": "",
+    "bands": [
+      "Led Zeppelin",
+      "Page and Plant",
+      "Robert Plant & The Sensational Space Shifters"
+    ],
+    "instrument": ["Vocals", "Harmonica"],
+    "genre": [
+      "Rock",
+      "Blues",
+      "Blues Rock",
+      "Hard Rock",
+      "Heavy Metal",
+      "Folk"
+    ],
+    "occupation": ["Musician"]
+  },
+  {
+    "name": "John Bonham",
+    "profilePicture": "public/images/artists/John_Bonham_1975.jpg",
+    "origin": "Redditch, Worcestershire, England",
+    "birthday": "May 31, 1948",
+    "deathDate": "September 25, 1980",
+    "bands": ["Led Zeppelin"],
+    "instrument": ["Drums", "Percussion"],
+    "genre": ["Rock", "Blues", "Blues Rock", "Hard Rock", "Heavy Metal"],
+    "occupation": ["Musician"]
+  },
+  {
+    "name": "John Paul Jones",
+    "profilePicture": "public/images/artists/JohnPaulJones.jpg",
+    "origin": "Sidcup, Kent, England",
+    "birthday": "January 3, 1946",
+    "deathDate": "",
+    "bands": ["Led Zeppelin"],
+    "instrument": ["Bass Guitar"],
+    "genre": ["Rock", "Blues", "Blues Rock", "Hard Rock", "Heavy Metal"],
+    "occupation": ["Musician"]
   }
 ]
