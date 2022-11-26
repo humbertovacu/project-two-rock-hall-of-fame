@@ -1,11 +1,12 @@
-{
-  "name": "The Doors",
-  "profilePicture": "Amateur Chef",
-  "origin": "",
-  "birthday": "main_course",
-  "bands": [""],
-  "image": "https://images.media-allrecipes.com/userphotos/720x405/815964.jpg",
-  "instrument": "",
-  "genre": "Chef LePapu",
-  "occupation": "Chef LePapu"
-}
+[
+  {
+    "name": "Jim Morrison",
+    "profilePicture": "Amateur Chef",
+    "origin": "public/images/artists/Jim_Morrison_1969.JPG",
+    "birthday": "July 3, 1971",
+    "bands": ["The Doors", "Rick & the Ravens"],
+    "instrument": "Vocals",
+    "genre": "Rock",
+    "occupation": "Singer"
+  }
+]
