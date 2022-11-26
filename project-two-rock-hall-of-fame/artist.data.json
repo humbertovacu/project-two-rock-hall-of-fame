@@ -1,7 +1,7 @@
 [
   {
     "name": "Jim Morrison",
-    "profilePicture": "public/images/artists/Jim_Morrison_1969.JPG",
+    "profilePicture": "public/images/artists/JimMorrison.JPG",
     "origin": "Melbourne, Florida, United States",
     "birthday": "December 8, 1943",
     "deathDate": "July 3, 1971",
@@ -40,7 +40,7 @@
   },
   {
     "name": "John Densmore",
-    "profilePicture": "public/images/artists/John_Densmore_1971.png",
+    "profilePicture": "public/images/artists/JohnDensmore.png",
     "origin": "Los Angeles, California, United States",
     "birthday": "December 1, 1944",
     "deathDate": "",
@@ -49,6 +49,7 @@
     "genre": ["Rock", "Psychedelic Rock", "Blues Rock"],
     "occupation": ["Musician"]
   },
+
   {
     "name": "Jimmy Page",
     "profilePicture": "public/images/artists/JimmyPage.jpg",
@@ -69,7 +70,7 @@
   },
   {
     "name": "Robert Plant",
-    "profilePicture": "public/images/artists/Robert-Plant.jpg",
+    "profilePicture": "public/images/artists/RobertPlant.jpg",
     "origin": "Halesowen, England",
     "birthday": "August 20, 1948",
     "deathDate": "",
@@ -91,7 +92,7 @@
   },
   {
     "name": "John Bonham",
-    "profilePicture": "public/images/artists/John_Bonham_1975.jpg",
+    "profilePicture": "public/images/artists/JohnBonham.jpg",
     "origin": "Redditch, Worcestershire, England",
     "birthday": "May 31, 1948",
     "deathDate": "September 25, 1980",
@@ -111,6 +112,7 @@
     "genre": ["Rock", "Blues", "Blues Rock", "Hard Rock", "Heavy Metal"],
     "occupation": ["Musician"]
   },
+
   {
     "name": "Carlos Santana",
     "profilePicture": "public/images/artists/Santana.jpg",
@@ -122,6 +124,7 @@
     "genre": ["Rock", "Blues", "Blues Rock", "Latin Rock", "Latin Jazz"],
     "occupation": ["Musician"]
   },
+
   {
     "name": "Chuck Berry",
     "profilePicture": "public/images/artists/ChuckBerry.jpg",
@@ -133,6 +136,7 @@
     "genre": ["Rock & Roll", "Rhythm & Blues"],
     "occupation": ["Musician"]
   },
+
   {
     "name": "Roger Waters",
     "profilePicture": "public/images/artists/RogerWaters.jpg",
@@ -218,5 +222,101 @@
       "Experimental Rock"
     ],
     "occupation": ["Musician", "Songwritter"]
+  },
+
+  {
+    "name": "Brian Jones",
+    "profilePicture": "public/images/artists/BrianJones.jpg",
+    "origin": "Cheltenham, Gloucestershire, England",
+    "birthday": "February 28, 1942",
+    "deathDate": "July 3, 1969",
+    "bands": ["The Rolling Stones"],
+    "instrument": [
+      "Guitar",
+      "Vocals",
+      "Harmonica",
+      "Sitar",
+      "Saxophone",
+      "Keyboards"
+    ],
+    "genre": ["Blues Rock", "Rock", "Blues", "Rhythm & Blues"],
+    "occupation": ["Musician", "Songwritter"]
+  },
+  {
+    "name": "Mick Jagger",
+    "profilePicture": "public/images/artists/MickJagger.jpg",
+    "origin": "Dartford, Kent, England",
+    "birthday": "July 26, 1943",
+    "deathDate": "",
+    "bands": ["The Rolling Stones"],
+    "instrument": ["Guitar", "Vocals", "Harmonica"],
+    "genre": ["Blues Rock", "Rock", "Blues", "Rhythm & Blues"],
+    "occupation": ["Musician", "Songwritter"]
+  },
+  {
+    "name": "Keith Richards",
+    "profilePicture": "public/images/artists/MickJagger.jpg",
+    "origin": "Dartford, Kent, England",
+    "birthday": "December 18, 1943",
+    "deathDate": "",
+    "bands": ["The Rolling Stones"],
+    "instrument": ["Guitar", "Vocals"],
+    "genre": ["Blues Rock", "Rock", "Blues", "Rhythm & Blues"],
+    "occupation": ["Musician", "Songwritter"]
+  },
+  {
+    "name": "Ronnie Wood",
+    "profilePicture": "public/images/artists/RonWood.jpg",
+    "origin": "Hillingdon, England",
+    "birthday": "June 1, 1947",
+    "deathDate": "",
+    "bands": [
+      "The Rolling Stones",
+      "The Birds",
+      "The Creation",
+      "The Jeff Beck Group",
+      "The New Barbarians"
+    ],
+    "instrument": ["Guitar"],
+    "genre": ["Blues Rock", "Rock", "Blues", "Rhythm & Blues"],
+    "occupation": ["Musician", "Producer"]
+  },
+  {
+    "name": "Mick Taylor",
+    "profilePicture": "public/images/artists/MickTaylor.jpg",
+    "origin": "Welwyn Garden City, England",
+    "birthday": "January 14, 1949",
+    "deathDate": "",
+    "bands": [
+      "The Rolling Stones",
+      "John Mayall's Bluesbreakers",
+      "The Jack Bruce Band",
+      "The Gods"
+    ],
+    "instrument": ["Guitar"],
+    "genre": ["Blues Rock", "Rock", "Blues", "Rhythm & Blues"],
+    "occupation": ["Musician", "Songwritter"]
+  },
+  {
+    "name": "Bill Wyman",
+    "profilePicture": "public/images/artists/BillWyman.jpg",
+    "origin": "London, England",
+    "birthday": "October 24, 1936",
+    "deathDate": "",
+    "bands": ["The Rolling Stones"],
+    "instrument": ["Bass Guitar", "Vocals"],
+    "genre": ["Blues Rock", "Rock", "Blues", "Rhythm & Blues"],
+    "occupation": ["Musician", "Songwritter", "Photographer"]
+  },
+  {
+    "name": "Charlie Watts",
+    "profilePicture": "public/images/artists/CharlieWatts.jpg",
+    "origin": "London, England",
+    "birthday": "June 2, 1941",
+    "deathDate": "August 24, 2021",
+    "bands": ["The Rolling Stones"],
+    "instrument": ["Drums"],
+    "genre": ["Blues Rock", "Rock", "Blues", "Rhythm & Blues"],
+    "occupation": ["Musician"]
   }
 ]
