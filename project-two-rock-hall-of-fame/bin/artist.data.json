@@ -18,12 +18,12 @@
     "deathDate": "May 20, 2013",
     "bands": ["The Doors", "Rick & the Ravens"],
     "instrument": ["Keyboards", "Vocals"],
-    "genre": ["Rock", "Psychedelic Rock", "Blues Rock", "Jazz Fusion"],
+    "genre": ["Rock", "Psychedelic Rock", "Blues Rock"],
     "occupation": ["Musician"]
   },
   {
-    "name": "Bobby Krieger",
-    "profilePicture": "public/images/artists/BobbyKrieger.jpg",
+    "name": "Robby Krieger",
+    "profilePicture": "public/images/artists/RobbyKrieger.jpg",
     "origin": "Los Angeles, California, United States",
     "birthday": "January 8, 1946",
     "deathDate": "",
@@ -35,7 +35,7 @@
       "Krieger & The Soul Savages"
     ],
     "instrument": ["Guitar"],
-    "genre": ["Rock", "Psychedelic Rock", "Blues Rock", "Jazz Fusion"],
+    "genre": ["Rock", "Psychedelic Rock", "Blues Rock"],
     "occupation": ["Musician", "Songwritter"]
   },
   {
