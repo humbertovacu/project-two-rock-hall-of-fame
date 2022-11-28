@@ -712,4 +712,120 @@
     ],
     "occupation": ["Musician", "Songwriter"]
   },
+  {
+    "name": "Jack White",
+    "profilePicture": "/images/artists/JackWhite.jpg",
+    "origin": "Detroit, Michigan, United States",
+    "birthday": "July 9, 1975",
+    "deathDate": "",
+    "bands": ["The White Stripes"],
+    "instrument": ["Vocals", "Guitar", "Keyboards"],
+    "genre": [
+      "Rock",
+      "Alternative Rock",
+      "Blues Rock",
+      "Folk",
+      "Country"
+    ],
+    "occupation": ["Musician", "Songwriter"]
+  },
+  {
+    "name": "Meg White",
+    "profilePicture": "/images/artists/MegWhite.jpg",
+    "origin": "Grosse Point Farms, Michigan, United States",
+    "birthday": "December 10, 1974",
+    "deathDate": "",
+    "bands": ["The White Stripes"],
+    "instrument": ["Drums"],
+    "genre": [
+      "Rock",
+      "Alternative Rock",
+      "Blues Rock",
+      "Folk",
+      "Country"
+    ],
+    "occupation": ["Musician", "Songwriter"]
+  },
+  {
+    "name": "Ian Curtis",
+    "profilePicture": "/images/artists/IanCurtis.jpg",
+    "origin": "Stretford, Lancashire, England",
+    "birthday": "July 15, 1956",
+    "deathDate": "May 18, 1980",
+    "bands": ["Joy Division"],
+    "instrument": ["Vocals"],
+    "genre": [
+      "Rock",
+      "Post Punk"
+    ],
+    "occupation": ["Musician", "Songwriter"]
+  },
+  {
+    "name": "Bernard Sumner",
+    "profilePicture": "/images/artists/BernardSumner.jpg",
+    "origin": "Broughton, Lancashire, England",
+    "birthday": "January 4, 1956",
+    "deathDate": "",
+    "bands": ["Joy Division", "New Order"],
+    "instrument": ["Vocals", "Guitar", "Keyboards"],
+    "genre": [
+      "Rock",
+      "Post Punk",
+      "New Wave",
+      "Synthpop",
+      "Electronica"
+    ],
+    "occupation": ["Musician", "Songwriter"]
+  },
+  {
+    "name": "Peter Hook",
+    "profilePicture": "/images/artists/PeterHook.jpg",
+    "origin": "Broughton, Salford, England",
+    "birthday": "February 13, 1956",
+    "deathDate": "",
+    "bands": ["Joy Division", "New Order"],
+    "instrument": ["Bass Guitar", "Vocals"],
+    "genre": [
+      "Rock",
+      "Post Punk",
+      "New Wave",
+      "Synthpop",
+      "Electronica"
+    ],
+    "occupation": ["Musician", "Songwriter"]
+  },
+  {
+    "name": "Stephen Morris",
+    "profilePicture": "/images/artists/StephenMorris.jpg",
+    "origin": "Macclesfield, Cheshire, England",
+    "birthday": "October 28, 1957",
+    "deathDate": "",
+    "bands": ["Joy Division", "New Order"],
+    "instrument": ["Drums"],
+    "genre": [
+      "Rock",
+      "Post Punk",
+      "New Wave",
+      "Synthpop",
+      "Electronica"
+    ],
+    "occupation": ["Musician"]
+  },
+  {
+    "name": "Gillian Gilbert",
+    "profilePicture": "/images/artists/GillianGilbert.jpg",
+    "origin": "Whalley Range, Manchester, England",
+    "birthday": "January 27, 1961",
+    "deathDate": "",
+    "bands": ["New Order"],
+    "instrument": ["Keyboards", "Guitar", "Vocals"],
+    "genre": [
+      "Rock",
+      "Post Punk",
+      "New Wave",
+      "Synthpop",
+      "Electronica"
+    ],
+    "occupation": ["Musician"]
+  }
 ]

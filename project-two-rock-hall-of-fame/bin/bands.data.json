@@ -131,5 +131,29 @@
     "year": "1985",
     "members": ["Thom Yorke", "Jonny Greenwood", "Colin Greenwood", "Ed O'Brien", "Philip Selway"],
     "genres": ["Rock", "Alternative Rock", "Experimental Rock", "Electronica"]
+  },
+  {
+    "name": "The White Stripes",
+    "bandPicture": "/images/bands/WhiteStripes.jpg",
+    "origin": "Detroit, Michigan, United States",
+    "year": "1997",
+    "members": ["Jack White", "Meg White"],
+    "genres": ["Rock", "Alternative Rock", "Blues Rock", "Folk", "Country"],
+  },
+  {
+    "name": "Joy Division",
+    "bandPicture": "/images/bands/JoyDivision.jpg",
+    "origin": "Salford, England",
+    "year": "1976",
+    "members": ["Ian Curtis", "Bernard Sumner", "Peter Hook", "Stephen Morris"],
+    "genres": ["Rock", "Post Punk"]
+  },
+  {
+    "name": "New Order",
+    "bandPicture": "/images/bands/NewOrder.jpg",
+    "origin": "Salford, England",
+    "year": "1980",
+    "members": ["Bernard Sumner", "Peter Hook", "Stephen Morris", "Gillian Gilbert"],
+    "genres": ["Rock", "Post Punk", "New Wave", "Synthpop", "Electronica"]
   }
 ]
