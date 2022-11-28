@@ -1,0 +1,23 @@
+[
+  {
+    "name": "The Doors",
+    "bandPicture": "public/images/bands/TheDoors.jpg",
+    "origin": "United States",
+    "year": "1965",
+    "members": [
+      "Jim Morrison",
+      "Ray Manzarek",
+      "Robby Krieger",
+      "John Densmore"
+    ],
+    "genres": ["Rock", "Psychedelic Rock", "Blues Rock"]
+  },
+  {
+    "name": "Led Zeppelin",
+    "bandPicture": "public/images/bands/LedZeppelin.jpg",
+    "origin": "England",
+    "year": "1968",
+    "members": ["Jimmy Page", "Robert Plant", "John Bonham", "John Paul Jones"],
+    "genres": ["Rock", "Blues", "Blues Rock", "Hard Rock", "Heavy Metal"]
+  }
+]
