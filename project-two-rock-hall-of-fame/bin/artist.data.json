@@ -1,18 +1,18 @@
 [
   {
     "name": "Jim Morrison",
-    "profilePicture": "public/images/artists/JimMorrison.JPG",
+    "profilePicture": "/images/artists/JimMorrison.JPG",
     "origin": "Melbourne, Florida, United States",
     "birthday": "December 8, 1943",
     "deathDate": "July 3, 1971",
     "bands": ["The Doors", "Rick & the Ravens"],
     "instrument": ["Vocals"],
     "genre": ["Rock", "Psychedelic Rock", "Blues Rock"],
-    "occupation": ["Musician", "Songwritter", "Poet"]
+    "occupation": ["Musician", "Songwriter", "Poet"]
   },
   {
     "name": "Ray Manzarek",
-    "profilePicture": "public/images/artists/RayManzarek.png",
+    "profilePicture": "/images/artists/RayManzarek.png",
     "origin": "Chicago, Illinois, United States",
     "birthday": "February 12, 1939",
     "deathDate": "May 20, 2013",
@@ -23,7 +23,7 @@
   },
   {
     "name": "Bobby Krieger",
-    "profilePicture": "public/images/artists/BobbyKrieger.jpg",
+    "profilePicture": "/images/artists/BobbyKrieger.jpg",
     "origin": "Los Angeles, California, United States",
     "birthday": "January 8, 1946",
     "deathDate": "",
@@ -40,7 +40,7 @@
   },
   {
     "name": "John Densmore",
-    "profilePicture": "public/images/artists/JohnDensmore.png",
+    "profilePicture": "/images/artists/JohnDensmore.png",
     "origin": "Los Angeles, California, United States",
     "birthday": "December 1, 1944",
     "deathDate": "",
@@ -52,7 +52,7 @@
 
   {
     "name": "Jimmy Page",
-    "profilePicture": "public/images/artists/JimmyPage.jpg",
+    "profilePicture": "/images/artists/JimmyPage.jpg",
     "origin": "Heston, Middlesex, England",
     "birthday": "January 9, 1944",
     "deathDate": "",
@@ -70,7 +70,7 @@
   },
   {
     "name": "Robert Plant",
-    "profilePicture": "public/images/artists/RobertPlant.jpg",
+    "profilePicture": "/images/artists/RobertPlant.jpg",
     "origin": "Halesowen, England",
     "birthday": "August 20, 1948",
     "deathDate": "",
@@ -92,7 +92,7 @@
   },
   {
     "name": "John Bonham",
-    "profilePicture": "public/images/artists/JohnBonham.jpg",
+    "profilePicture": "/images/artists/JohnBonham.jpg",
     "origin": "Redditch, Worcestershire, England",
     "birthday": "May 31, 1948",
     "deathDate": "September 25, 1980",
@@ -103,7 +103,7 @@
   },
   {
     "name": "John Paul Jones",
-    "profilePicture": "public/images/artists/JohnPaulJones.jpg",
+    "profilePicture": "/images/artists/JohnPaulJones.jpg",
     "origin": "Sidcup, Kent, England",
     "birthday": "January 3, 1946",
     "deathDate": "",
@@ -115,7 +115,7 @@
 
   {
     "name": "Carlos Santana",
-    "profilePicture": "public/images/artists/Santana.jpg",
+    "profilePicture": "/images/artists/Santana.jpg",
     "origin": "Autlán, Jalisco, Mexico",
     "birthday": "July 20, 1947",
     "deathDate": "",
@@ -127,7 +127,7 @@
 
   {
     "name": "Chuck Berry",
-    "profilePicture": "public/images/artists/ChuckBerry.jpg",
+    "profilePicture": "/images/artists/ChuckBerry.jpg",
     "origin": "St. Louis, Missouri, United States",
     "birthday": "October 1, 1926",
     "deathDate": "March 18, 2017",
@@ -139,7 +139,7 @@
 
   {
     "name": "Roger Waters",
-    "profilePicture": "public/images/artists/RogerWaters.jpg",
+    "profilePicture": "/images/artists/RogerWaters.jpg",
     "origin": "Great Bookham, England",
     "birthday": "September 6, 1943",
     "deathDate": "",
@@ -152,12 +152,12 @@
       "Rock",
       "Experimental Rock"
     ],
-    "occupation": ["Musician", "Songwritter", "Producer"]
+    "occupation": ["Musician", "Songwriter", "Producer"]
   },
 
   {
     "name": "Syd Barrett",
-    "profilePicture": "public/images/artists/SydBarrett.jpg",
+    "profilePicture": "/images/artists/SydBarrett.jpg",
     "origin": "Cambridge, England",
     "birthday": "January 6, 1946",
     "deathDate": "July 7, 2006",
@@ -170,11 +170,11 @@
       "Rock",
       "Experimental Rock"
     ],
-    "occupation": ["Musician", "Songwritter"]
+    "occupation": ["Musician", "Songwriter"]
   },
   {
     "name": "Richard Wright",
-    "profilePicture": "public/images/artists/RichardWright.jpg",
+    "profilePicture": "/images/artists/RichardWright.jpg",
     "origin": "Hatch End, Middlesex, England",
     "birthday": "July 28, 1943",
     "deathDate": "September 15, 2008",
@@ -187,11 +187,11 @@
       "Rock",
       "Experimental Rock"
     ],
-    "occupation": ["Musician", "Songwritter"]
+    "occupation": ["Musician", "Songwriter"]
   },
   {
     "name": "Nick Mason",
-    "profilePicture": "public/images/artists/NickMason.jpg",
+    "profilePicture": "//images/artists/NickMason.jpg",
     "origin": "Birmingham, Warwickshire, England",
     "birthday": "January 27, 1944",
     "deathDate": "",
@@ -208,7 +208,7 @@
   },
   {
     "name": "David Gilmour",
-    "profilePicture": "public/images/artists/DavidGilmour.jpg",
+    "profilePicture": "//images/artists/DavidGilmour.jpg",
     "origin": "Cambridge, England",
     "birthday": "March 6, 1946",
     "deathDate": "",
@@ -226,7 +226,7 @@
 
   {
     "name": "Brian Jones",
-    "profilePicture": "public/images/artists/BrianJones.jpg",
+    "profilePicture": "//images/artists/BrianJones.jpg",
     "origin": "Cheltenham, Gloucestershire, England",
     "birthday": "February 28, 1942",
     "deathDate": "July 3, 1969",
@@ -240,33 +240,33 @@
       "Keyboards"
     ],
     "genre": ["Blues Rock", "Rock", "Blues", "Rhythm & Blues"],
-    "occupation": ["Musician", "Songwritter"]
+    "occupation": ["Musician", "Songwriter"]
   },
   {
     "name": "Mick Jagger",
-    "profilePicture": "public/images/artists/MickJagger.jpg",
+    "profilePicture": "/images/artists/MickJagger.jpg",
     "origin": "Dartford, Kent, England",
     "birthday": "July 26, 1943",
     "deathDate": "",
     "bands": ["The Rolling Stones"],
     "instrument": ["Guitar", "Vocals", "Harmonica"],
     "genre": ["Blues Rock", "Rock", "Blues", "Rhythm & Blues"],
-    "occupation": ["Musician", "Songwritter"]
+    "occupation": ["Musician", "Songwriter"]
   },
   {
     "name": "Keith Richards",
-    "profilePicture": "public/images/artists/MickJagger.jpg",
+    "profilePicture": "/images/artists/MickJagger.jpg",
     "origin": "Dartford, Kent, England",
     "birthday": "December 18, 1943",
     "deathDate": "",
     "bands": ["The Rolling Stones"],
     "instrument": ["Guitar", "Vocals"],
     "genre": ["Blues Rock", "Rock", "Blues", "Rhythm & Blues"],
-    "occupation": ["Musician", "Songwritter"]
+    "occupation": ["Musician", "Songwriter"]
   },
   {
     "name": "Ronnie Wood",
-    "profilePicture": "public/images/artists/RonWood.jpg",
+    "profilePicture": "/images/artists/RonWood.jpg",
     "origin": "Hillingdon, England",
     "birthday": "June 1, 1947",
     "deathDate": "",
@@ -283,7 +283,7 @@
   },
   {
     "name": "Mick Taylor",
-    "profilePicture": "public/images/artists/MickTaylor.jpg",
+    "profilePicture": "/images/artists/MickTaylor.jpg",
     "origin": "Welwyn Garden City, England",
     "birthday": "January 14, 1949",
     "deathDate": "",
@@ -295,22 +295,22 @@
     ],
     "instrument": ["Guitar"],
     "genre": ["Blues Rock", "Rock", "Blues", "Rhythm & Blues"],
-    "occupation": ["Musician", "Songwritter"]
+    "occupation": ["Musician", "Songwriter"]
   },
   {
     "name": "Bill Wyman",
-    "profilePicture": "public/images/artists/BillWyman.jpg",
+    "profilePicture": "/images/artists/BillWyman.jpg",
     "origin": "London, England",
     "birthday": "October 24, 1936",
     "deathDate": "",
     "bands": ["The Rolling Stones"],
     "instrument": ["Bass Guitar", "Vocals"],
     "genre": ["Blues Rock", "Rock", "Blues", "Rhythm & Blues"],
-    "occupation": ["Musician", "Songwritter", "Photographer"]
+    "occupation": ["Musician", "Songwriter", "Photographer"]
   },
   {
     "name": "Charlie Watts",
-    "profilePicture": "public/images/artists/CharlieWatts.jpg",
+    "profilePicture": "/images/artists/CharlieWatts.jpg",
     "origin": "London, England",
     "birthday": "June 2, 1941",
     "deathDate": "August 24, 2021",
@@ -318,5 +318,185 @@
     "instrument": ["Drums"],
     "genre": ["Blues Rock", "Rock", "Blues", "Rhythm & Blues"],
     "occupation": ["Musician"]
+  },
+  {
+    "name": "David Bowie",
+    "profilePicture": "/images/artists/DavidBowie.jpg",
+    "origin": "London, England",
+    "birthday": "January 8, 1947",
+    "deathDate": "January 10, 2016",
+    "bands": [],
+    "instrument": ["Vocals", "Guitar", "Piano"],
+    "genre": ["Rock", "Art Rock", "Glam Rock", "Pop"],
+    "occupation": ["Musician", "Songwriter", "Actor"]
+  },
+  {
+    "name": "Morrisey",
+    "profilePicture": "/images/artists/Morrisey.jpg",
+    "origin": "London, England",
+    "birthday": "May 22, 1959",
+    "deathDate": "",
+    "bands": ["The Smiths"],
+    "instrument": ["Vocals"],
+    "genre": ["Rock", "Indie Rock", "Alternative Rock", "Indie Pop"],
+    "occupation": ["Musician", "Songwriter"]
+  },
+  {
+    "name": "Johnny Marr",
+    "profilePicture": "/images/artists/JohnnyMarr.jpg",
+    "origin": "Manchester, England",
+    "birthday": "October 31, 1963",
+    "deathDate": "",
+    "bands": ["The Smiths", "The Pretenders", "Modest Mouse"],
+    "instrument": ["Guitar", "Vocals"],
+    "genre": ["Rock", "Indie Rock", "Alternative Rock", "Indie Pop"],
+    "occupation": ["Musician", "Songwriter"]
+  },
+  {
+    "name": "Andy Rourke",
+    "profilePicture": "/images/artists/AndyRourke.jpg",
+    "origin": "Manchester, England",
+    "birthday": "January 17, 1964",
+    "deathDate": "",
+    "bands": ["The Smiths", "The Pretenders"],
+    "instrument": ["Bass Guitar", "Guitar"],
+    "genre": ["Rock", "Indie Rock", "Alternative Rock", "Indie Pop"],
+    "occupation": ["Musician"]
+  },
+  {
+    "name": "Mike Joyce",
+    "profilePicture": "/images/artists/MikeJoyce.jpg",
+    "origin": "Fallowfield, England",
+    "birthday": "June 1, 1963",
+    "deathDate": "",
+    "bands": ["The Smiths"],
+    "instrument": ["Drums"],
+    "genre": ["Rock", "Indie Rock", "Alternative Rock", "Indie Pop"],
+    "occupation": ["Musician"]
+  },
+  {
+    "name": "Jimi Hendrix",
+    "profilePicture": "/images/artists/JimiHendrix.jpg",
+    "origin": "Seattle, Washington, United States",
+    "birthday": "November 27, 1942",
+    "deathDate": "September 18, 1970",
+    "bands": ["The Jimi Hendrix Experience"],
+    "instrument": ["Guitar", "Vocals"],
+    "genre": ["Rock", "Psychedelic Rock", "Blues Rock", "Rhythm & Blues"],
+    "occupation": ["Musician", "Songwriter"]
+  },
+  {
+    "name": "Noel Redding",
+    "profilePicture": "/images/artists/NoelRedding.jpg",
+    "origin": "Folkestone, Kent, England",
+    "birthday": "December 25, 1945",
+    "deathDate": "May 11, 2003",
+    "bands": ["The Jimi Hendrix Experience"],
+    "instrument": ["Guitar", "Bass Guitar"],
+    "genre": ["Rock", "Psychedelic Rock", "Blues Rock", "Rhythm & Blues", "Folk Rock"],
+    "occupation": ["Musician"]
+  },
+  {
+    "name": "Mitch Mitchell",
+    "profilePicture": "/images/artists/MitchMitchell.jpg",
+    "origin": "London, England",
+    "birthday": "July 9, 1946",
+    "deathDate": "November 12, 2008",
+    "bands": ["The Jimi Hendrix Experience"],
+    "instrument": ["Drums"],
+    "genre": ["Rock", "Psychedelic Rock", "Blues Rock", "Rhythm & Blues", "Folk Rock"],
+    "occupation": ["Musician"]
+  },
+  {
+    "name": "Pete Townshend",
+    "profilePicture": "/images/artists/PeteTownshend.jpg",
+    "origin": "Chiswick, England",
+    "birthday": "May 19, 1945",
+    "deathDate": "",
+    "bands": ["The Who"],
+    "instrument": ["Guitar", "Vocals"],
+    "genre": ["Rock", "Art Rock", "Hard Rock", "Jazz"],
+    "occupation": ["Musician", "Songwriter"]
   }
+  {
+    "name": "Roger Daltrey",
+    "profilePicture": "/images/artists/RogerDaltrey.jpg",
+    "origin": "London, England",
+    "birthday": "Marxh 1, 1944",
+    "deathDate": "",
+    "bands": ["The Who"],
+    "instrument": ["Vocals"],
+    "genre": ["Rock", "Art Rock", "Hard Rock", "Jazz"],
+    "occupation": ["Musician", "Songwriter", "Actor"]
+  },
+  {
+    "name": "Mark Knopfler",
+    "profilePicture": "/images/artists/MarkKnopfler.jpg",
+    "origin": "Newcastle upon Tyne, England",
+    "birthday": "August 12, 1949",
+    "deathDate": "",
+    "bands": ["Dire Straits"],
+    "instrument": ["Vocals", "Guitar"],
+    "genre": ["Rock", "Blues Rock", "Country Rock", "Celtic Rock"],
+    "occupation": ["Musician", "Songwriter"]
+  },
+  {
+    "name": "David Knopfler",
+    "profilePicture": "/images/artists/DavidKnopfler.jpg",
+    "origin": "Newcastle upon Tyne, England",
+    "birthday": "December 27, 1952",
+    "deathDate": "",
+    "bands": ["Dire Straits"],
+    "instrument": ["Vocals", "Guitar"],
+    "genre": ["Rock", "Blues Rock", "Country Rock", "Celtic Rock"],
+    "occupation": ["Musician", "Songwriter"]
+  },
+  {
+    "name": "Black Francis",
+    "profilePicture": "/images/artists/BlackFrancis.jpg",
+    "origin": "Boston, Massachusetts, United States",
+    "birthday": "April 6, 1965",
+    "deathDate": "",
+    "bands": ["Pixies"],
+    "instrument": ["Vocals", "Guitar"],
+    "genre": ["Rock", "Alternative Rock", "Indie Rock", "Punk Rock", "Surf Rock", "Noise Rock"],
+    "occupation": ["Musician", "Songwriter"]
+  },
+  {
+    "name": "Joey Santiago",
+    "profilePicture": "/images/artists/JoeySantiago.jpg",
+    "origin": "Longmeadow, Massachusetts, United States",
+    "birthday": "June 10, 1965",
+    "deathDate": "",
+    "bands": ["Pixies"],
+    "instrument": ["Guitar"],
+    "genre": ["Rock", "Alternative Rock", "Indie Rock", "Punk Rock", "Surf Rock", "Noise Rock"],
+    "occupation": ["Musician", "Songwriter"]
+  },
+  {
+    "name": "Kim Deal",
+    "profilePicture": "/images/artists/KimDeal.jpg",
+    "origin": "Dayton, Ohio, United States",
+    "birthday": "June 10, 1961",
+    "deathDate": "",
+    "bands": ["Pixies", "The Breeders"],
+    "instrument": ["Guitar", "Bass Guitar", "Keyboards", "Drums", "Vocals"],
+    "genre": ["Rock", "Alternative Rock", "Indie Rock", "Noise Pop"],
+    "occupation": ["Musician", "Songwriter"]
+  },
+  {
+    "name": "David Lovering",
+    "profilePicture": "/images/artists/DavidLovering.jpg",
+    "origin": "Winchester, Massachusetts, United States",
+    "birthday": "December 6, 1961",
+    "deathDate": "",
+    "bands": ["Pixies"],
+    "instrument": ["Drums"],
+    "genre": ["Rock", "Alternative Rock"],
+    "occupation": ["Musician", "Magician"]
+  },
+
+
+
+
 ]
