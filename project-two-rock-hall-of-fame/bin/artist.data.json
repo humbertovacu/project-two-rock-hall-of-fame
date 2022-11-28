@@ -119,8 +119,63 @@
     "origin": "Autlán, Jalisco, Mexico",
     "birthday": "July 20, 1947",
     "deathDate": "",
-    "bands": ["Santana"],
+    "bands": ["Santana's Blues Band", "Carlos Santana"],
     "instrument": ["Guitar"],
+    "genre": ["Rock", "Blues", "Blues Rock", "Latin Rock", "Latin Jazz"],
+    "occupation": ["Musician"]
+  },
+  {
+    "name": "Michael Shrieve",
+    "profilePicture": "/images/artists/MichaelShrieve.jpg",
+    "origin": "San Francisco, California, United States",
+    "birthday": "July 6, 1949",
+    "deathDate": "",
+    "bands": ["Santana's Blues Band"],
+    "instrument": ["Drums", "Percussion"],
+    "genre": ["Rock", "Blues", "Blues Rock", "Latin Rock", "Latin Jazz"],
+    "occupation": ["Musician"]
+  },
+  {
+    "name": "Gregg Rollie",
+    "profilePicture": "/images/artists/GreggRollie.jpg",
+    "origin": "Seattle, Washington, United States",
+    "birthday": "June 17, 1947",
+    "deathDate": "",
+    "bands": ["Santana's Blues Band"],
+    "instrument": ["Keyboards", "Organ"],
+    "genre": ["Rock", "Blues", "Blues Rock", "Latin Rock", "Latin Jazz"],
+    "occupation": ["Musician"]
+  },
+  {
+    "name": "Jose “Chepito” Areas ",
+    "profilePicture": "/images/artists/JoseChepitoAreas.jpg",
+    "origin": "León, Nicaragua",
+    "birthday": "July 25, 1946",
+    "deathDate": "",
+    "bands": ["Santana's Blues Band"],
+    "instrument": ["Timbales", "Congas", "Percussion"],
+    "genre": ["Rock", "Blues", "Blues Rock", "Latin Rock", "Latin Jazz"],
+    "occupation": ["Musician"]
+  },
+  {
+    "name": "David Brown",
+    "profilePicture": "/images/artists/DavidBrown.jpg",
+    "origin": "New York City, United States",
+    "birthday": "February 15, 1947",
+    "deathDate": "September 4, 2000",
+    "bands": ["Santana's Blues Band"],
+    "instrument": ["Bass Guitar"],
+    "genre": ["Rock", "Blues", "Blues Rock", "Latin Rock", "Latin Jazz"],
+    "occupation": ["Musician"]
+  },
+  {
+    "name": "Michael Carabello",
+    "profilePicture": "/images/artists/MichaelCarabello.jpg",
+    "origin": "San Francisco, California, United States",
+    "birthday": "November 18, 1947",
+    "deathDate": "",
+    "bands": ["Santana's Blues Band"],
+    "instrument": ["Bass Guitar"],
     "genre": ["Rock", "Blues", "Blues Rock", "Latin Rock", "Latin Jazz"],
     "occupation": ["Musician"]
   },
@@ -393,7 +448,13 @@
     "deathDate": "May 11, 2003",
     "bands": ["The Jimi Hendrix Experience"],
     "instrument": ["Guitar", "Bass Guitar"],
-    "genre": ["Rock", "Psychedelic Rock", "Blues Rock", "Rhythm & Blues", "Folk Rock"],
+    "genre": [
+      "Rock",
+      "Psychedelic Rock",
+      "Blues Rock",
+      "Rhythm & Blues",
+      "Folk Rock"
+    ],
     "occupation": ["Musician"]
   },
   {
@@ -404,7 +465,13 @@
     "deathDate": "November 12, 2008",
     "bands": ["The Jimi Hendrix Experience"],
     "instrument": ["Drums"],
-    "genre": ["Rock", "Psychedelic Rock", "Blues Rock", "Rhythm & Blues", "Folk Rock"],
+    "genre": [
+      "Rock",
+      "Psychedelic Rock",
+      "Blues Rock",
+      "Rhythm & Blues",
+      "Folk Rock"
+    ],
     "occupation": ["Musician"]
   },
   {
@@ -417,7 +484,7 @@
     "instrument": ["Guitar", "Vocals"],
     "genre": ["Rock", "Art Rock", "Hard Rock", "Jazz"],
     "occupation": ["Musician", "Songwriter"]
-  }
+  },
   {
     "name": "Roger Daltrey",
     "profilePicture": "/images/artists/RogerDaltrey.jpg",
@@ -452,6 +519,28 @@
     "occupation": ["Musician", "Songwriter"]
   },
   {
+    "name": "John Illsley",
+    "profilePicture": "/images/artists/JohnIllsley.jpg",
+    "origin": "Leicester, England",
+    "birthday": "Juin 24, 1949",
+    "deathDate": "",
+    "bands": ["Dire Straits"],
+    "instrument": ["Bass Guitar", "Guitar", "Vocals"],
+    "genre": ["Rock", "Blues Rock", "Country Rock", "Celtic Rock"],
+    "occupation": ["Musician"]
+  },
+  {
+    "name": "Pick Withers",
+    "profilePicture": "/images/artists/PickWithers.jpg",
+    "origin": "Leicester, England",
+    "birthday": "April 4, 1948",
+    "deathDate": "",
+    "bands": ["Dire Straits"],
+    "instrument": ["Drums"],
+    "genre": ["Rock", "Blues Rock", "Country Rock", "Celtic Rock"],
+    "occupation": ["Musician"]
+  },
+  {
     "name": "Black Francis",
     "profilePicture": "/images/artists/BlackFrancis.jpg",
     "origin": "Boston, Massachusetts, United States",
@@ -459,7 +548,14 @@
     "deathDate": "",
     "bands": ["Pixies"],
     "instrument": ["Vocals", "Guitar"],
-    "genre": ["Rock", "Alternative Rock", "Indie Rock", "Punk Rock", "Surf Rock", "Noise Rock"],
+    "genre": [
+      "Rock",
+      "Alternative Rock",
+      "Indie Rock",
+      "Punk Rock",
+      "Surf Rock",
+      "Noise Rock"
+    ],
     "occupation": ["Musician", "Songwriter"]
   },
   {
@@ -470,7 +566,14 @@
     "deathDate": "",
     "bands": ["Pixies"],
     "instrument": ["Guitar"],
-    "genre": ["Rock", "Alternative Rock", "Indie Rock", "Punk Rock", "Surf Rock", "Noise Rock"],
+    "genre": [
+      "Rock",
+      "Alternative Rock",
+      "Indie Rock",
+      "Punk Rock",
+      "Surf Rock",
+      "Noise Rock"
+    ],
     "occupation": ["Musician", "Songwriter"]
   },
   {
@@ -503,7 +606,13 @@
     "deathDate": "",
     "bands": ["The Cure"],
     "instrument": ["Vocals", "Guitar"],
-    "genre": ["Rock", "Alternative Rock", "Post Punk", "Gothic Rock", "New Wave"],
+    "genre": [
+      "Rock",
+      "Alternative Rock",
+      "Post Punk",
+      "Gothic Rock",
+      "New Wave"
+    ],
     "occupation": ["Musician", "Songwriter"]
   },
   {
@@ -514,8 +623,13 @@
     "deathDate": "",
     "bands": ["The Cure"],
     "instrument": ["Bass Guitar", "Keyboards"],
-    "genre": ["Rock", "Alternative Rock", "Post Punk", "Gothic Rock", "New Wave"],
+    "genre": [
+      "Rock",
+      "Alternative Rock",
+      "Post Punk",
+      "Gothic Rock",
+      "New Wave"
+    ],
     "occupation": ["Musician"]
   }
-
 ]
