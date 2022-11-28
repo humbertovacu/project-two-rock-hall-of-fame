@@ -4,6 +4,7 @@ const bandSchema = new Schema({
   name: {
     type: String,
     required: true,
+    unique: true
   },
   bandPicture: {
     type: String,

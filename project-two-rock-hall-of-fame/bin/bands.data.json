@@ -123,5 +123,13 @@
     "year": "1978",
     "members": ["Robert Smith", "Simon Gallup"],
     "genres": ["Rock", "Art Rock", "Hard Rock", "Jazz"]
+  },
+  {
+    "name": "Radiohead",
+    "bandPicture": "/images/bands/Radiohead.jpg",
+    "origin": "Oxfordshire, England",
+    "year": "1985",
+    "members": ["Thom Yorke", "Jonny Greenwood", "Colin Greenwood", "Ed O'Brien", "Philip Selway"],
+    "genres": ["Rock", "Alternative Rock", "Experimental Rock", "Electronica"]
   }
 ]

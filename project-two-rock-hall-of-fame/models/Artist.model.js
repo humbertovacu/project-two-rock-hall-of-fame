@@ -4,6 +4,7 @@ const artistSchema = new Schema({
   name: {
     type: String,
     required: true,
+    unique: true
   },
   profilePicture: {
     type: String,

@@ -631,5 +631,85 @@
       "New Wave"
     ],
     "occupation": ["Musician"]
-  }
+  },
+  {
+    "name": "Thom Yorke",
+    "profilePicture": "/images/artists/ThomYorke.jpg",
+    "origin": "Wellingborough, Northamptonshire, England",
+    "birthday": "October 7, 1968",
+    "deathDate": "",
+    "bands": ["Radiohead"],
+    "instrument": ["Vocals", "Guitar", "Keyboards"],
+    "genre": [
+      "Rock",
+      "Alternative Rock",
+      "Experimental Rock",
+      "Electronica"
+    ],
+    "occupation": ["Musician", "Songwriter"]
+  },
+  {
+    "name": "Jonny Greenwood",
+    "profilePicture": "/images/artists/JonnyGreenwood.jpg",
+    "origin": "Oxford, England",
+    "birthday": "November 5, 1971",
+    "deathDate": "",
+    "bands": ["Radiohead"],
+    "instrument": ["Guitar", "Keyboards"],
+    "genre": [
+      "Rock",
+      "Alternative Rock",
+      "Experimental Rock",
+      "Electronica"
+    ],
+    "occupation": ["Musician", "Composer"]
+  },
+  {
+    "name": "Colin Greenwood",
+    "profilePicture": "/images/artists/ColinGreenwood.jpg",
+    "origin": "Oxford, England",
+    "birthday": "June 26, 1969",
+    "deathDate": "",
+    "bands": ["Radiohead"],
+    "instrument": ["Bass Guitar"],
+    "genre": [
+      "Rock",
+      "Alternative Rock",
+      "Experimental Rock",
+      "Electronica"
+    ],
+    "occupation": ["Musician"]
+  },
+  {
+    "name": "Ed O'Brien",
+    "profilePicture": "/images/artists/EdObrien.jpg",
+    "origin": "Oxford, England",
+    "birthday": "April 15, 1968",
+    "deathDate": "",
+    "bands": ["Radiohead"],
+    "instrument": ["Guitar"],
+    "genre": [
+      "Rock",
+      "Alternative Rock",
+      "Experimental Rock",
+      "Electronica"
+    ],
+    "occupation": ["Musician", "Songwriter"]
+  },
+  {
+    "name": "Philip Selway",
+    "profilePicture": "/images/artists/PhilipSelway.jpg",
+    "origin": "Abingdon-on-Thames, Oxfordshire, England",
+    "birthday": "May 23, 1967",
+    "deathDate": "",
+    "bands": ["Radiohead"],
+    "instrument": ["Drums", "Guitar"],
+    "genre": [
+      "Rock",
+      "Alternative Rock",
+      "Experimental Rock",
+      "Electronica"
+    ],
+    "occupation": ["Musician", "Songwriter"]
+  },
 ]
