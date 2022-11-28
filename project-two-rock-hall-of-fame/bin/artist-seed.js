@@ -1,4 +1,22 @@
-[
+const mongoose = require('mongoose');
+
+const MONGO_URI =
+  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/project-two-rock-hall-of-fame";
+
+mongoose
+  .connect(MONGO_URI)
+  .then((x) => {
+    const databaseName = x.connections[0].name;
+    console.log(`Connected to Mongo! Database name: "${databaseName}"`);
+  })
+  .catch((err) => {
+    console.error("Error connecting to mongo: ", err);
+  });
+
+const Artist = require('../models/Artist.model')
+
+
+const artistSeed = [
   {
     "name": "Jim Morrison",
     "profilePicture": "/images/artists/JimMorrison.JPG",
@@ -829,3 +847,8 @@
     "occupation": ["Musician"]
   }
 ]
+
+Artist.insertMany(artistSeed)
+.then(() => console.log('artists have been added'))
+.then(mongoose.connection.close())
+.catch(err => console.log(err))

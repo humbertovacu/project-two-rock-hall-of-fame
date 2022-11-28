@@ -22,7 +22,7 @@ const artistSchema = new Schema({
     type: String,
     required: false,
   },
-  bands: [{ type: Schema.Types.ObjectId, ref: "Band" }],
+  bands: [String],
 
   instrument: {
     type: [String],
