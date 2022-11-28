@@ -495,8 +495,27 @@
     "genre": ["Rock", "Alternative Rock"],
     "occupation": ["Musician", "Magician"]
   },
-
-
-
+  {
+    "name": "Robert Smith",
+    "profilePicture": "/images/artists/RobertSmith.jpg",
+    "origin": "Crawley, England",
+    "birthday": "April 21, 1959",
+    "deathDate": "",
+    "bands": ["The Cure"],
+    "instrument": ["Vocals", "Guitar"],
+    "genre": ["Rock", "Alternative Rock", "Post Punk", "Gothic Rock", "New Wave"],
+    "occupation": ["Musician", "Songwriter"]
+  },
+  {
+    "name": "Simon Gallup",
+    "profilePicture": "/images/artists/SimonGallup.jpg",
+    "origin": "Duxhurst, Surrey, England",
+    "birthday": "June 1, 1960",
+    "deathDate": "",
+    "bands": ["The Cure"],
+    "instrument": ["Bass Guitar", "Keyboards"],
+    "genre": ["Rock", "Alternative Rock", "Post Punk", "Gothic Rock", "New Wave"],
+    "occupation": ["Musician"]
+  }
 
 ]
