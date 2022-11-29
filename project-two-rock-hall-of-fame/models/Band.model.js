@@ -4,31 +4,30 @@ const bandSchema = new Schema({
   name: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   bandPicture: {
     type: String,
     required: true,
-    default: "/images/artists/BlankArtist.jpg"
+    default: "/images/artists/BlankArtist.jpg",
   },
   origin: {
     type: String,
     required: true,
-    default: "Not available"
+    default: "Not available",
   },
   year: {
-    type: String,
+    type: Date,
     required: true,
-    default: "Not available"
+    default: "Not available",
   },
 
-  members: {type:[Schema.Types.ObjectId], ref: "Artist", 
-  required: true},
+  members: { type: [Schema.Types.ObjectId], ref: "Artist", required: true },
 
-  genres: {
+  genre: {
     type: [String],
     required: true,
-    default: "Not available"
+    default: "Not available",
   },
 });
 

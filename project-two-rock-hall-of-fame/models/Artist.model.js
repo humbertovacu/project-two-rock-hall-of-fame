@@ -4,25 +4,25 @@ const artistSchema = new Schema({
   name: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   profilePicture: {
     type: String,
     required: true,
-    default: "/images/artists/BlankArtist.jpg"
+    default: "/images/artists/BlankArtist.jpg",
   },
   origin: {
     type: String,
     required: true,
-    default: "Not available"
+    default: "Not available",
   },
   birthday: {
-    type: String,
+    type: Date,
     required: true,
-    default: "Not available"
+    default: "Not available",
   },
   deathDate: {
-    type: String,
+    type: Date,
     required: false,
   },
   bands: [String],
@@ -30,18 +30,18 @@ const artistSchema = new Schema({
   instrument: {
     type: [String],
     required: true,
-    default: "Not available"
+    default: "Not available",
   },
-  genres: {
+  genre: {
     type: [String],
     required: true,
-    default: "Not available"
+    default: "Not available",
   },
   occupation: {
     type: [String],
     required: true,
-    default: "Not available"
-  }
+    default: "Not available",
+  },
 });
 
 const Artist = model("Artist", artistSchema);
