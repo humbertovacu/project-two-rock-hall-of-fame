@@ -9,14 +9,17 @@ const artistSchema = new Schema({
   profilePicture: {
     type: String,
     required: true,
+    default: "/images/artists/BlankArtist.jpg"
   },
   origin: {
     type: String,
     required: true,
+    default: "Not available"
   },
   birthday: {
     type: String,
     required: true,
+    default: "Not available"
   },
   deathDate: {
     type: String,
@@ -27,15 +30,18 @@ const artistSchema = new Schema({
   instrument: {
     type: [String],
     required: true,
+    default: "Not available"
   },
   genres: {
     type: [String],
     required: true,
+    default: "Not available"
   },
   occupation: {
     type: [String],
     required: true,
-  },
+    default: "Not available"
+  }
 });
 
 const Artist = model("Artist", artistSchema);
