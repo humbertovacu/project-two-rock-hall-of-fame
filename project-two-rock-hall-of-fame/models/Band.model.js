@@ -17,12 +17,13 @@ const bandSchema = new Schema({
     default: "Not available",
   },
   year: {
-    type: Date,
+    type: String,
     required: true,
     default: "Not available",
   },
 
-  members: { type: [Schema.Types.ObjectId], ref: "Artist", required: true },
+  // members: { type: [Schema.Types.ObjectId], ref: "Artist", required: true },
+  members: {type: [String]},
 
   genre: {
     type: [String],

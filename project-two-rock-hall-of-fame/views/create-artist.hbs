@@ -1,5 +1,5 @@
 <h1>New Artist</h1>
-<form action="/new-artist" method="post" id="new-artist-form">
+<form action="/artist/new-artist" method="post" id="new-artist-form">
     <label for="new-artist-name">Name:
         <input type="text" name="name" id="new-artist-name">
     </label> 
@@ -40,8 +40,8 @@
         </select>
      </label>
      <br>
-     <label for="new-artist-genres"> Genres:
-        <select form="new-artist-form" name="genres" id="new-artist-genres" multiple>
+     <label for="new-artist-genre"> Genres:
+        <select form="new-artist-form" name="genre" id="new-artist-genre" multiple>
             <option value="Alternative Rock">Alternative Rock</option>
             <option value="Art Rock">Art Rock</option>
             <option value="Blues">Blues</option>
@@ -90,4 +90,5 @@
         </select>
        {{!-- Other: <input type="text" name="occupation"> --}}
      </label>
+     <button type="submit">Create</button>
 </form>
