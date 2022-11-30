@@ -14,7 +14,7 @@ const express = require("express");
 const hbs = require("hbs");
 
 const app = express();
-app.use(express.static('public')); 
+app.use(express.static("public"));
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require("./config")(app);
@@ -23,8 +23,8 @@ require("./config")(app);
 const capitalize = require("./utils/capitalize");
 const projectName = "project-two-rock-hall-of-fame";
 
-const Artist = require('./models/Artist.model')
-const Band = require('./models/Band.model')
+const Artist = require("./models/Artist.model");
+const Band = require("./models/Band.model");
 
 app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 
@@ -33,6 +33,9 @@ const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 const artistRoutes = require("./routes/artist.routes");
 app.use("/artist", artistRoutes);
+
+const bandRoutes = require("./routes/band.routes");
+app.use("/bands", bandRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
