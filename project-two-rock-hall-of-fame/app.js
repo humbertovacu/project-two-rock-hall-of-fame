@@ -38,6 +38,12 @@ app.use("/artist", artistRoutes);
 const bandRoutes = require("./routes/band.routes");
 app.use("/bands", bandRoutes);
 
+const loginRoutes = require("./routes/login.routes");
+app.use("/auth/login", loginRoutes);
+
+const signupRoutes = require("./routes/sign-up.routes");
+app.use("/auth/sign-up", signupRoutes);
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
