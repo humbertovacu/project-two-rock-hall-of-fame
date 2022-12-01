@@ -1,1 +1,8 @@
-<h1>The bands page</h1>
+<h1>The bands list page</h1>
+
+{{#each bands}}
+  <div>
+    <h3>{{name}}</h3>
+    <img src="{{bandPicture}}" alt={{name}} "picture" width=400px height="auto">
+  </div>
+{{/each}}
