@@ -8,8 +8,17 @@ router.get("/new-artist", (req, res) => {
 });
 
 router.get("/", (req, res) => {
-  res.render("artists");
+    Artist.find()
+    .then(artists => res.render("artists", {artists}))
+    .catch(err => res.send(err))
+  ;
 });
+
+router.get("/:artistID", (req, res) => {
+    const { artistID } = req.params;
+    Artist.findById(artistID)
+    .then(foundArtist => res.render('artist-details', {artist: foundArtist, formattedDate: { $dateToString: { format: "%Y-%m-%d %H:%M", date: "$birthday" } }}))
+})
 
 router.get("/new-band", (req, res) => {
   res.render("create-band");
