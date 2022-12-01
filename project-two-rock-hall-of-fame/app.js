@@ -39,7 +39,7 @@ const bandRoutes = require("./routes/band.routes");
 app.use("/bands", bandRoutes);
 
 const loginRoutes = require("./routes/login.routes");
-app.use("/auth/login", loginRoutes);
+app.use("/login", loginRoutes);
 
 const signupRoutes = require("./routes/sign-up.routes");
 app.use("/auth/sign-up", signupRoutes);
