@@ -7,6 +7,10 @@ router.get("/new-artist", (req, res) => {
   res.render("create-artist");
 });
 
+router.get("/", (req, res) => {
+  res.render("artists");
+});
+
 router.get("/new-band", (req, res) => {
   res.render("create-band");
 });

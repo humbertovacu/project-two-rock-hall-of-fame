@@ -33,7 +33,7 @@ const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 
 const artistRoutes = require("./routes/artist.routes");
-app.use("/artist", artistRoutes);
+app.use("/artists", artistRoutes);
 
 const bandRoutes = require("./routes/band.routes");
 app.use("/bands", bandRoutes);
