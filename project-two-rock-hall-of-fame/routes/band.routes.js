@@ -10,15 +10,32 @@ router.get("/", (req, res, next) => {
   Band.find()
     .then((allTheBandsFromDB) => {
       console.log("Retrieved bands from DB:", allTheBandsFromDB);
-      // we call the render method after we obtain the bands data from the database -> allTheBandsFromDB
-      res.render("bands.hbs", { bands: allTheBandsFromDB }); // pass `allTheBandsFromDB` to the view (as a variable bands to be used in the HBS)
+      res.render("bands.hbs", { bands: allTheBandsFromDB });
     })
 
     .catch((error) => {
       console.log("Error while getting the bands from the DB: ", error);
-      // Call the error-middleware to display the error page to the user
       next(error);
     });
+});
+
+// to create artist dynamic, to change bands
+
+// router.get("/:bandID", (req, res) => {
+//   const { bandID } = req.params;
+//   Band.findById(bandID).then((foundBand) =>
+//     res.render("band-details", { artist: foundBand })
+//   );
+// });
+
+router.get("/:bandId", (req, res) => {
+  const { bandId } = req.params;
+  Band.findById(bandId)
+    .then((bandFound) => {
+      console.log("bandFound", bandFound);
+      res.render("band-details.hbs", { singleBand: bandFound });
+    })
+    .catch((err) => console.log(err));
 });
 
 module.exports = router;

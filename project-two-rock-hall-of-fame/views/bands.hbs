@@ -1,8 +1,6 @@
 <h1>The bands list page</h1>
 
 {{#each bands}}
-  <div>
-    <h3>{{name}}</h3>
-    <img src="{{bandPicture}}" alt={{name}} "picture" width=400px height="auto">
-  </div>
+  <a href="/bands/{{_id}}"><h2>{{name}}</h2></a>
+  <img src="{{bandPicture}}" alt={{name}} "picture" width=300px height="auto">
 {{/each}}

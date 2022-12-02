@@ -1,12 +1,17 @@
 {{#with artist}}
-<h1>{{name}}</h1>
-<img src="{{profilePicture}}" alt="{{name}}-picture" width="400" height="auto">
-<h3>Origin:</h3>
-<p>{{origin}}</p>
-<h3>Birthday:</h3>
-<p>{{birthday}}</p>
-    {{#if deathDate}}
+  <h1>{{name}}</h1>
+  <img
+    src="{{profilePicture}}"
+    alt="{{name}}-picture"
+    width="400"
+    height="auto"
+  />
+  <h3>Origin:</h3>
+  <p>{{origin}}</p>
+  <h3>Birthday:</h3>
+  <p>{{birthday}}</p>
+  {{#if deathDate}}
     <h3>Death</h3>
-        <p>{{deathDate}}</p>
-    {{/if}}
+    <p>{{deathDate}}</p>
+  {{/if}}
 {{/with}}
