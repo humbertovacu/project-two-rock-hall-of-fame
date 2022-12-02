@@ -6,6 +6,18 @@ router.get("/new-band", (req, res) => {
   res.render("create-band");
 });
 
+//Route search a band
+router.get("/search", (req, res) => {
+  const { bandName } = req.query;
+
+  Band.findOne({ name: bandName })
+    .then((foundBand) => {
+      res.render("/band-details.hbs", { singleBand: foundBand });
+    })
+    .catch((err) => console.log(err));
+});
+
+// Route List of bands
 router.get("/", (req, res, next) => {
   Band.find()
     .then((allTheBandsFromDB) => {
@@ -19,15 +31,7 @@ router.get("/", (req, res, next) => {
     });
 });
 
-// to create artist dynamic, to change bands
-
-// router.get("/:bandID", (req, res) => {
-//   const { bandID } = req.params;
-//   Band.findById(bandID).then((foundBand) =>
-//     res.render("band-details", { artist: foundBand })
-//   );
-// });
-
+// Route band details
 router.get("/:bandId", (req, res) => {
   const { bandId } = req.params;
   Band.findById(bandId)

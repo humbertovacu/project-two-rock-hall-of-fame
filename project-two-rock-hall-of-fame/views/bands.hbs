@@ -1,5 +1,14 @@
 <h1>The bands list page</h1>
 
+
+{{!-- Research a band --}}
+<form method="GET" action="/bands/search" >
+    <input name="bandName" type="text">
+    <button type="submit">Search Band</button>
+</form>
+
+
+{{!-- Display all bands --}}
 {{#each bands}}
   <a href="/bands/{{_id}}"><h2>{{name}}</h2></a>
   <img src="{{bandPicture}}" alt={{name}} "picture" width=300px height="auto">
