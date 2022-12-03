@@ -8,6 +8,9 @@ router.get("/new-band", (req, res) => {
   res.render("create-band");
 });
 
+router.post("/new-band", (req, res) => {
+  // const { name, origin, year, members, genre}
+})
 
 
 // Route List of bands
@@ -46,5 +49,6 @@ router.get("/search/:bandName", (req, res) => {
     })
     .catch((err) => console.log(err));
 });
+
 
 module.exports = router;

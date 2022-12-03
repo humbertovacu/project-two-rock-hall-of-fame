@@ -1,5 +1,5 @@
 <h1>New Band</h1>
-<form action="/new-band" method="post" id="new-band-form" enctype="multipart/form-data">
+<form action="/bands/new-band" method="post" id="new-band-form" enctype="multipart/form-data">
     <label for="new-band-name">Band Name:
         <input type="text" name="name" id="new-band-name">
     </label> 
@@ -9,16 +9,17 @@
     </label>
     <br>
     <label for="new-band-origin"> Band origin:
-        <input type="text" name="origin" id="new-artist-origin">
+        <input type="text" name="origin" id="new-band-origin">
     </label>
     <br>
      <label for="new-band-year"> Year:
         <input type="type" name="year" id="new-band-year">
      </label>
     <br>
-    <label for="new-band-members"> Band Members:
+    <label for="new-band-members" id="add-member-label"> Band Members:
         <input type="text" name="members" id="new-band-members">
     </label>
+        <button type="button" id="add-member-btn">+</button>
     <br>
      <label for="new-band-genre"> Genre:
         <select form="new-band-genre" name="genre" id="new-band-genre" multiple>
@@ -60,5 +61,8 @@
      <br>
        {{!-- Other: <input type="text" name="occupation"> --}}
      </label>
-     <button>Create Band</button>
+     <button type="submit">Create Band</button>
 </form>
+
+ 
+ <script src="/js/create-band-script.js"></script>

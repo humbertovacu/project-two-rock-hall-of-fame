@@ -28,7 +28,6 @@ router.get("/new-band", (req, res) => {
 router.post("/new-artist", fileUploader.single('artist-profile-picture'), async (req, res, next) => {
   const {
     name,
-    profilePicture,
     origin,
     birthday,
     deathDate,
@@ -42,7 +41,6 @@ router.post("/new-artist", fileUploader.single('artist-profile-picture'), async 
 
   Artist.create({
     name,
-    profilePicture,
     origin,
     birthday,
     deathDate,
