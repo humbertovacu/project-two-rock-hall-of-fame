@@ -33,11 +33,13 @@ router.post("/new-artist", fileUploader.single('artist-profile-picture'), async 
     birthday,
     deathDate,
     bands,
-    instruments,
+    instrument,
     genre,
     occupation,
   } = req.body;
+
   let bandsDB = await Band.find();
+
   Artist.create({
     name,
     profilePicture,
@@ -45,19 +47,22 @@ router.post("/new-artist", fileUploader.single('artist-profile-picture'), async 
     birthday,
     deathDate,
     bands,
-    instruments,
+    instrument,
     genre,
     occupation,
     imageUrl: req.file.path 
   })
     .then((newArtist) => {
-      let newArtistBands = newArtist.bands;
-      newArtistBands.forEach((band) => {
-        if (!bandsDB.includes(band)) {
-          Band.create({ name: band });
-        }
-      });
-    })
+      if(newArtist.bands==""){next()}
+      else{
+        let newArtistBands = newArtist.bands
+        newArtistBands.forEach(band => {
+          if(!bandsDB.includes(band)){
+            Band.create({ name: band })
+          }
+        })
+      }
+  })
     .then(() => res.redirect("/"))
     .catch((err) => res.send(err));
 });
