@@ -25,7 +25,7 @@ router.get("/new-band", (req, res) => {
   res.render("create-band");
 });
 
-router.post("/new-artist", fileUploader.single('artist-profile-picture'), async (req, res) => {
+router.post("/new-artist", fileUploader.single('artist-profile-picture'), async (req, res, next) => {
   const {
     name,
     profilePicture,
