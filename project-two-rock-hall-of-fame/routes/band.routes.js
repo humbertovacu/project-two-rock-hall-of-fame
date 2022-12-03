@@ -5,11 +5,23 @@ const router = express.Router();
 const fileUploader = require('../config/cloudinary.config')
 
 router.get("/new-band", (req, res) => {
-  res.render("create-band");
+  Artist.find()
+  .then((allArtists) => res.render("create-band", {artists:allArtists}));
 });
 
-router.post("/new-band", (req, res) => {
-  // const { name, origin, year, members, genre}
+router.post("/new-band", async (req, res, next) => {
+  //  const { name, origin, year, members, genre } = req.body;
+  //  let artistsDB = await Artist.find();
+  //  members.forEach(member => {
+  //   if(!artistsDB.includes(member){
+  //     Artist.create({})
+  //   })
+  //  })
+  //  Band.create({name, origin, year, genre, imageUrl: req.file.path})
+  //  .then(newBand => {
+  //     members.forEach
+  //  })
+  
 })
 
 

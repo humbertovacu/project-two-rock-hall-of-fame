@@ -17,7 +17,12 @@
      </label>
     <br>
     <label for="new-band-members" id="add-member-label"> Band Members:
-        <input type="text" name="members" id="new-band-members">
+        <input type="text" name="members" id="new-band-members" list="artists-list">
+        <datalist id="artists-list">
+            {{#each artists}}
+                <option value="{{name}}">{{name}}</option>
+            {{/each}}
+        </datalist>
     </label>
         <button type="button" id="add-member-btn">+</button>
     <br>
