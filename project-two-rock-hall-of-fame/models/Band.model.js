@@ -6,7 +6,7 @@ const bandSchema = new Schema({
     required: true,
     unique: true,
   },
-  bandPicture: {
+  imageUrl: {
     type: String,
     required: true,
     default: "/images/artists/BlankArtist.jpg",

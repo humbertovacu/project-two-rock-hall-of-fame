@@ -6,7 +6,7 @@ const artistSchema = new Schema({
     required: true,
     unique: true,
   },
-  profilePicture: {
+  imageUrl: {
     type: String,
     required: true,
     default: "/images/artists/BlankArtist.jpg",

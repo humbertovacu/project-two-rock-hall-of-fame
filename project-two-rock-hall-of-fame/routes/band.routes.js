@@ -1,6 +1,8 @@
 const express = require("express");
+const Artist = require("../models/Artist.model");
 const Band = require("../models/Band.model");
 const router = express.Router();
+const fileUploader = require('../config/cloudinary.config')
 
 router.get("/new-band", (req, res) => {
   res.render("create-band");

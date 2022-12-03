@@ -1,11 +1,11 @@
 <h1>New Artist</h1>
-<form action="/artists/new-artist" method="post" id="new-artist-form">
+<form action="/artists/new-artist" method="post" id="new-artist-form" enctype="multipart/form-data">
     <label for="new-artist-name">Name:
         <input type="text" name="name" id="new-artist-name">
     </label> 
     <br>
     <label for="new-artist-picture"> Profile Photo:
-        <input type="file" name="profilePicture" id="new-artist-picture">
+        <input type="file" name="artist-profile-picture" id="new-artist-picture">
     </label>
     <br>
     <label for="new-artist-origin"> Origin:

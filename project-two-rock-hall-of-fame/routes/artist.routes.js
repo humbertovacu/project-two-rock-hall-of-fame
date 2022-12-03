@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Artist = require("../models/Artist.model");
 const Band = require("../models/Band.model");
+const fileUploader = require('../config/cloudinary.config')
 
 router.get("/new-artist", (req, res) => {
   res.render("create-artist");
@@ -24,7 +25,7 @@ router.get("/new-band", (req, res) => {
   res.render("create-band");
 });
 
-router.post("/new-artist", async (req, res) => {
+router.post("/new-artist", fileUploader.single('artist-profile-picture'), async (req, res) => {
   const {
     name,
     profilePicture,
@@ -47,6 +48,7 @@ router.post("/new-artist", async (req, res) => {
     instruments,
     genre,
     occupation,
+    imageUrl: req.file.path 
   })
     .then((newArtist) => {
       let newArtistBands = newArtist.bands;
