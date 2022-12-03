@@ -2,28 +2,78 @@ const express = require("express");
 const Artist = require("../models/Artist.model");
 const Band = require("../models/Band.model");
 const router = express.Router();
-const fileUploader = require('../config/cloudinary.config')
+const fileUploader = require("../config/cloudinary.config");
 
 router.get("/new-band", (req, res) => {
-  Artist.find()
-  .then((allArtists) => res.render("create-band", {artists:allArtists}));
+  Artist.find().then((allArtists) =>
+    res.render("create-band", { artists: allArtists })
+  );
 });
 
-router.post("/new-band", async (req, res, next) => {
-  //  const { name, origin, year, members, genre } = req.body;
-  //  let artistsDB = await Artist.find();
-  //  members.forEach(member => {
-  //   if(!artistsDB.includes(member){
-  //     Artist.create({})
-  //   })
-  //  })
-  //  Band.create({name, origin, year, genre, imageUrl: req.file.path})
-  //  .then(newBand => {
-  //     members.forEach
-  //  })
-  
-})
+router.post(
+  "/new-band",
+  fileUploader.single("band-profile-picture"),
+  async (req, res, next) => {
+    //  const { name, origin, year, members, genre } = req.body;
+    //  let artistsDB = await Artist.find();
+    //  members.forEach(member => {
+    //   if(!artistsDB.includes(member){
+    //     Artist.create({})
+    //   })
+    //  })
+    //  Band.create({name, origin, year, genre, imageUrl: req.file.path})
+    //  .then(newBand => {
+    //     members.forEach
+    //  })
 
+    const { name, origin, year, members, genre } = req.body;
+    // create band
+    Band.create({
+      name,
+      imageUrl: req.file.path,
+      origin,
+      year,
+      // members,
+      genre,
+    })
+      .then(() => res.redirect("/"))
+      .catch((err) => res.send(err));
+  }
+);
+
+// edit band route shows form
+router.get("/:id/edit", async (req, res, next) => {
+  const { id } = req.params;
+  Band.findById(id)
+    .then((band) => {
+      res.render("edit-band", { band });
+    })
+    .catch((err) => res.send(err));
+});
+
+// edit band route sends information form
+router.post(
+  "/:id",
+  fileUploader.single("band-profile-picture"),
+  async (req, res, next) => {
+    const { name, origin, year, members, genre } = req.body;
+    const { id } = req.params;
+    Band.findByIdAndUpdate(
+      id,
+      {
+        name,
+        imageUrl: req.file.path,
+        origin,
+        year,
+        // members,
+        genre,
+      },
+      { new: true }
+    )
+      .then((updatedBand) => res.redirect(`/bands/${updatedBand._id}`))
+      .catch((err) => res.send(err));
+  }
+);
 
 // Route List of bands
 router.get("/", (req, res, next) => {
@@ -50,9 +100,7 @@ router.get("/:bandId", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-
-
-//Route search a band 
+//Route search a band
 router.get("/search/:bandName", (req, res) => {
   const { bandName } = req.query;
   Band.findOne({ name: bandName })
@@ -62,5 +110,6 @@ router.get("/search/:bandName", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+//name.toLowerCase().includes(searchText.toLowerCase())
 
 module.exports = router;

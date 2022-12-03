@@ -2,7 +2,7 @@
 <br />
 <h2>{{singleBand.name}}</h2>
 
-<img src="{{singleBand.bandPicture}}" alt={{singleBand.name}} "picture" width=300px height="auto">
+<img src={{singleBand.imageUrl}} alt={{singleBand.name}} "picture" width=300px height="auto">
 
 <h3>Origin:</h3>
 <p>{{singleBand.origin}}</p>
@@ -12,3 +12,6 @@
 <p>{{singleBand.members}}</p>
 <h3>Genre:</h3>
 <p>{{singleBand.genre}}</p>
+
+
+<a href="/bands/{{singleBand._id}}/edit">Edit Band</a>
