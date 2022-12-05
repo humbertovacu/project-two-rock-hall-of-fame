@@ -20,11 +20,12 @@
         <input type="text" name="members" id="new-band-members" list="artists-list">
         <datalist id="artists-list">
             {{#each artists}}
-                <option value="{{name}}">{{name}}</option>
+                <option data-value="{{_id}}" value="{{name}}"></option>
             {{/each}}
         </datalist>
     </label>
         <button type="button" id="add-member-btn">+</button>
+        <button type="button" id="add-new-member-btn">Add New Memeber</button>
     <br>
      <label for="new-band-genre"> Genre:
         <select form="new-band-genre" name="genre" id="new-band-genre" multiple>
@@ -69,4 +70,4 @@
 </form>
 
  
- <script src="/js/create-band-script.js"></script>
+ <script type="module" src="/js/create-band-script.js"></script>

@@ -10,36 +10,24 @@ router.get("/new-band", (req, res) => {
   );
 });
 
-router.post(
-  "/new-band",
-  fileUploader.single("band-profile-picture"),
-  async (req, res, next) => {
-    //  const { name, origin, year, members, genre } = req.body;
-    //  let artistsDB = await Artist.find();
-    //  members.forEach(member => {
-    //   if(!artistsDB.includes(member){
-    //     Artist.create({})
-    //   })
-    //  })
-    //  Band.create({name, origin, year, genre, imageUrl: req.file.path})
-    //  .then(newBand => {
-    //     members.forEach
-    //  })
+router.post("/new-band", fileUploader.single("band-profile-picture"), async (req, res, next) => {
 
-    const { name, origin, year, members, genre } = req.body;
-    // create band
-    Band.create({
-      name,
-      imageUrl: req.file.path,
-      origin,
-      year,
-      // members,
-      genre,
-    })
-      .then(() => res.redirect("/"))
-      .catch((err) => res.send(err));
-  }
-);
+    const { name, origin, members, year, genre } = req.body;
+
+    Artist.findOne({name: members})
+    .then(foundArtist => console.log(genre)
+      // Band.create({
+      //   name,
+      //   imageUrl: req.file.path,
+      //   origin,
+      //   year, 
+      //   members: foundArtist._id,
+      //   genre})
+      )
+     
+      .then(() => res.redirect('/bands'))
+      .catch((err) => console.log(err))
+});
 
 // edit band route shows form
 router.get("/:id/edit", async (req, res, next) => {
@@ -52,10 +40,7 @@ router.get("/:id/edit", async (req, res, next) => {
 });
 
 // edit band route sends information form
-router.post(
-  "/:id",
-  fileUploader.single("band-profile-picture"),
-  async (req, res, next) => {
+router.post("/:id", fileUploader.single("band-profile-picture"), async (req, res, next) => {
     const { name, origin, year, members, genre } = req.body;
     const { id } = req.params;
     Band.findByIdAndUpdate(
@@ -79,7 +64,7 @@ router.post(
 router.get("/", (req, res, next) => {
   Band.find()
     .then((allTheBandsFromDB) => {
-      console.log("Retrieved bands from DB:", allTheBandsFromDB);
+      // console.log("Retrieved bands from DB:", allTheBandsFromDB);
       res.render("bands.hbs", { bands: allTheBandsFromDB });
     })
 
