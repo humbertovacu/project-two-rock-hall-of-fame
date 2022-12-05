@@ -10,6 +10,19 @@ router.get("/new-band", (req, res) => {
   );
 });
 
+// //Route search a band
+// router.get("/search", (req, res) => {
+//   const { bandName } = req.query;
+
+//   const regex = new RegExp(bandName, "i");// regex= patron, RegExp reserved to js
+
+//   Band.find({ name: { $regex: regex } }) // $regex, filtro de mongoose, a ese rege
+//     .then((allTheBandsFromDB) => {
+//       res.render("band-results.hbs", { bands: allTheBandsFromDB });
+//     })
+//     .catch((err) => console.log(err));
+// });
+
 router.post(
   "/new-band",
   fileUploader.single("band-profile-picture"),
@@ -21,7 +34,7 @@ router.post(
     //     Artist.create({})
     //   })
     //  })
-    //  Band.create({name, origin, year, genre, imageUrl: req.file.path})
+    //  Band.create({name, origin, year, genre, imageUrl: req.file?.path})
     //  .then(newBand => {
     //     members.forEach
     //  })
@@ -30,7 +43,7 @@ router.post(
     // create band
     Band.create({
       name,
-      imageUrl: req.file.path,
+      imageUrl: req.file?.path,
       origin,
       year,
       // members,
@@ -62,7 +75,7 @@ router.post(
       id,
       {
         name,
-        imageUrl: req.file.path,
+        imageUrl: req.file?.path,
         origin,
         year,
         // members,
@@ -74,6 +87,15 @@ router.post(
       .catch((err) => res.send(err));
   }
 );
+
+// // POST route to delete a band from the database
+
+router.post("/:bandId/delete", (req, res, next) => {
+  const { bandId } = req.params;
+  Band.findByIdAndDelete(bandId)
+    .then(() => res.redirect("/bands"))
+    .catch((error) => next(error));
+});
 
 // Route List of bands
 router.get("/", (req, res, next) => {
@@ -99,17 +121,5 @@ router.get("/:bandId", (req, res) => {
     })
     .catch((err) => console.log(err));
 });
-
-//Route search a band
-router.get("/search/:bandName", (req, res) => {
-  const { bandName } = req.query;
-  Band.findOne({ name: bandName })
-    .then((foundBand) => {
-      res.redirect(`/bands/${foundBand._id}`);
-    })
-    .catch((err) => console.log(err));
-});
-
-//name.toLowerCase().includes(searchText.toLowerCase())
 
 module.exports = router;

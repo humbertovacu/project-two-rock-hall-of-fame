@@ -2,9 +2,9 @@
 
 
 {{!-- Research a band --}}
-<form method="GET" action="/bands/search/bandName">
+<form method="GET" action="/bands/search">
     <input name="bandName" type="text">
-    <button type="submit">Search Band</button>
+    <button>Search Band</button>
 </form>
 
 {{!-- Create a Band --}}
@@ -13,7 +13,11 @@
 </div>
 
 {{!-- Display all bands --}}
-{{#each bands}}
-  <a href="/bands/{{_id}}"><h2>{{name}}</h2></a>
-<img src={{singleBand.imageUrl}} alt={{singleBand.name}} "picture" width=300px height="auto">
-{{/each}}
+<div class="list-of-bands">
+  {{#each bands}}
+  <div>
+    <a href="/bands/{{_id}}"><h2>{{name}}</h2></a>
+    <img src={{imageUrl}} alt={{name}} "picture" width=300px height="auto">
+  </div>
+  {{/each}}
+</div>
