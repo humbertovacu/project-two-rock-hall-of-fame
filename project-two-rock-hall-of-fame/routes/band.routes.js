@@ -12,21 +12,23 @@ router.get("/new-band", (req, res) => {
 
 router.post("/new-band", fileUploader.single("band-profile-picture"), async (req, res, next) => {
 
-    const { name, origin, members, year, genre } = req.body;
+  const { name, origin, members, year, genre } = req.body;
+  let bandMembers = [];
+  members.forEach(member => {
+      Artist.findOne({name: member})
+      .then(foundArtist => bandMembers.push(foundArtist._id))
+      .then(() => console.log(bandMembers))
+  });
 
-    Artist.findOne({name: members})
-    .then(foundArtist => console.log(genre)
-      // Band.create({
-      //   name,
-      //   imageUrl: req.file.path,
-      //   origin,
-      //   year, 
-      //   members: foundArtist._id,
-      //   genre})
-      )
-     
-      .then(() => res.redirect('/bands'))
-      .catch((err) => console.log(err))
+  Band.create({
+      name,
+      imageUrl: req.file.path,
+      origin,
+      year, 
+      members: bandMembers,
+      genre})
+  .then(() => res.redirect('/bands'))
+  .catch((err) => console.log(err))
 });
 
 // edit band route shows form

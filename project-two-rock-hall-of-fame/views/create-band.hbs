@@ -17,7 +17,7 @@
      </label>
     <br>
     <label for="new-band-members" id="add-member-label"> Band Members:
-        <input type="text" name="members" id="new-band-members" list="artists-list">
+        <input type="text" name="members[]" id="new-band-members" list="artists-list">
         <datalist id="artists-list">
             {{#each artists}}
                 <option data-value="{{_id}}" value="{{name}}"></option>
@@ -28,7 +28,7 @@
         <button type="button" id="add-new-member-btn">Add New Memeber</button>
     <br>
      <label for="new-band-genre"> Genre:
-        <select form="new-band-genre" name="genre" id="new-band-genre" multiple>
+        <select form="new-band-form" name="genre" id="new-band-genre" multiple>
             <option value="Alternative Rock">Alternative Rock</option>
             <option value="Art Rock">Art Rock</option>
             <option value="Blues">Blues</option>
