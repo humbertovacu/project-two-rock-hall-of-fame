@@ -15,5 +15,5 @@
 {{!-- Display all bands --}}
 {{#each bands}}
   <a href="/bands/{{_id}}"><h2>{{name}}</h2></a>
-  <img src="{{bandPicture}}" alt={{name}} "picture" width=300px height="auto">
+<img src={{singleBand.imageUrl}} alt={{singleBand.name}} "picture" width=300px height="auto">
 {{/each}}
