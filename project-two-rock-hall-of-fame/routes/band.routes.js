@@ -10,12 +10,54 @@ router.get("/new-band", (req, res) => {
   );
 });
 
-router.post("/new-band", fileUploader.single("band-profile-picture"), (req, res, next) => {
+//Route search a band
+router.get("/search", (req, res) => {
+  const { bandName } = req.query;
 
-  const { name, origin, members, year, genre } = req.body;
-  console.log(members)
-  
+  /*regex is the pattern. RegExp() is a constructor reserved to J that 
+  searchs for a string pattern, that pattern is represented as the first 
+  argument. The second argument "i" is also called a flag, 
+  there are different flags to be used. In this case the "i" flag is used to  */
+  const regex = new RegExp(bandName, "i");
+
+  /*$regex is a method from Mongo DB to look for matches */
+  Band.find({ name: { $regex: regex } })
+    .then((allTheBandsFromDB) => {
+      res.render("band-results.hbs", { bands: allTheBandsFromDB });
+    })
+    .catch((err) => console.log(err));
 });
+
+router.post(
+  "/new-band",
+  fileUploader.single("band-profile-picture"),
+  async (req, res, next) => {
+    //  const { name, origin, year, members, genre } = req.body;
+    //  let artistsDB = await Artist.find();
+    //  members.forEach(member => {
+    //   if(!artistsDB.includes(member){
+    //     Artist.create({})
+    //   })
+    //  })
+    //  Band.create({name, origin, year, genre, imageUrl: req.file?.path})
+    //  .then(newBand => {
+    //     members.forEach
+    //  })
+
+    const { name, origin, year, members, genre } = req.body;
+    // create band
+    Band.create({
+      name,
+      imageUrl: req.file?.path,
+      origin,
+      year,
+      // members,
+      genre,
+    })
+      .then(() => res.redirect("/"))
+      .catch((err) => res.send(err));
+  }
+);
 
 // edit band route shows form
 router.get("/:id/edit", async (req, res, next) => {
@@ -35,7 +77,7 @@ router.post("/:id", fileUploader.single("band-profile-picture"), async (req, res
       id,
       {
         name,
-        imageUrl: req.file.path,
+        imageUrl: req.file?.path,
         origin,
         year,
         // members,
@@ -47,6 +89,15 @@ router.post("/:id", fileUploader.single("band-profile-picture"), async (req, res
       .catch((err) => res.send(err));
   }
 );
+
+// // POST route to delete a band from the database
+
+router.post("/:bandId/delete", (req, res, next) => {
+  const { bandId } = req.params;
+  Band.findByIdAndDelete(bandId)
+    .then(() => res.redirect("/bands"))
+    .catch((error) => next(error));
+});
 
 // Route List of bands
 router.get("/", (req, res, next) => {
@@ -72,17 +123,5 @@ router.get("/:bandId", (req, res) => {
     })
     .catch((err) => console.log(err));
 });
-
-//Route search a band
-router.get("/search/:bandName", (req, res) => {
-  const { bandName } = req.query;
-  Band.findOne({ name: bandName })
-    .then((foundBand) => {
-      res.redirect(`/bands/${foundBand._id}`);
-    })
-    .catch((err) => console.log(err));
-});
-
-//name.toLowerCase().includes(searchText.toLowerCase())
 
 module.exports = router;

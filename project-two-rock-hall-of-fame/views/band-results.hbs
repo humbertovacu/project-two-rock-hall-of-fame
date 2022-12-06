@@ -1,0 +1,20 @@
+<h1>Results:</h1>
+
+{{!-- Display all bands --}}
+<div class="list-of-bands">
+  {{#each bands}}
+  <div>
+    <a href="/bands/{{_id}}"><h2>{{name}}</h2></a>
+    <img src={{imageUrl}} alt={{name}} "picture" width=300px height="auto">
+  </div>
+  {{/each}}
+</div>
+
+{{#unless bands}}
+{{!-- Create a Band --}}
+<div>
+<button><a href="bands/new-band"> Create a Band</a></button>
+</div>
+{{/unless}}
+
+<a href="/bands">Go back</a>

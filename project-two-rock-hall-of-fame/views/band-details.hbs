@@ -15,3 +15,9 @@
 
 
 <a href="/bands/{{singleBand._id}}/edit">Edit Band</a>
+
+
+{{!-- Delete a Band --}}
+<form action="/bands/{{singleBand._id}}/delete" method="POST">
+    <button>Delete</button>
+</form>
