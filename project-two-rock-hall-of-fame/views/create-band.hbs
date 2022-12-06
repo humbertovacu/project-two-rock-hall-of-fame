@@ -1,5 +1,5 @@
 <h1>New Band</h1>
-<form action="/bands/new-band" method="post" id="new-band-form" enctype="multipart/form-data">
+<form onsubmit="toID()" action="/bands/new-band" method="post" id="new-band-form" enctype="multipart/form-data">
     <label for="new-band-name">Band Name:
         <input type="text" name="name" id="new-band-name">
     </label> 
@@ -17,7 +17,7 @@
      </label>
     <br>
     <label for="new-band-members" id="add-member-label"> Band Members:
-        <input type="text" name="members[]" id="new-band-members" list="artists-list">
+        <input type="text" name="members" class="new-band-members" list="artists-list">
         <datalist id="artists-list">
             {{#each artists}}
                 <option data-value="{{_id}}" value="{{name}}"></option>
@@ -66,7 +66,7 @@
      </label>
      <br>
      </label>
-     <button type="submit">Create Band</button>
+     <button id="add-band-btn" type="submit">Create Band</button>
 </form>
 
  
