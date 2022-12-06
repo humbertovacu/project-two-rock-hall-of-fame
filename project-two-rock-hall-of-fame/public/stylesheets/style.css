@@ -9,6 +9,7 @@
 
 li,
 a,
+label,
 button {
   font-family: "Montserrat Alternates", sans-serif;
   font-weight: 400;
@@ -77,6 +78,8 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
   color: #edf0f1;
 }
 
