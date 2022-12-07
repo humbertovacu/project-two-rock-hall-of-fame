@@ -1,55 +1,38 @@
 
 if (typeof window !== 'undefined'){
-
-  document.getElementById('add-member-btn').addEventListener('click', () => {
-
-    const memberLabel = document.getElementById('add-member-label');
-    const newMemberInput = document.createElement('input');
-    // const artistsDatalist = document.getElementById('artists-list')
-    // const newMemberOption = document.createElement('option')
-    // newMemberOption.setAttribute('value', '{{name}}')
-    // newMemberOption.setAttribute('id', 'artists-list')
-    newMemberInput.setAttribute('type', 'text')
-    newMemberInput.setAttribute('name', 'members')
-    newMemberInput.setAttribute('list','artists-list')
-    newMemberInput.setAttribute('class', 'new-band-members')
-    memberLabel.appendChild(newMemberInput)
-    // newMemberInput.appendChild(artistsDatalist)
-    // artistsDatalist.appendChild(newMemberOption)
-
-    // for(let i=0; i < allArtists.lenght; i++){
-    //   let newMemberOption = document.createElement('option');
-    //   newMemberOption.setAttribute('value', `${allArtists[i].name}`)
-    //   artistsDatalist.appendChild(newMemberOption)
-    // }
-  }); 
-
-    // document.getElementById('add-band-btn').addEventListener('click', () => {
-
-    //   let allOptions = document.querySelectorAll('#artists-list option')
-    //   let memberInput = document.getElementsByClassName('new-band-members')
-
-    //   allOptions.forEach(option => {
-    //     let artistListNames = option.getAttributeNode('value').value
-    //     let artistListID = option.getAttributeNode('data-value').value
-    //     artistListNames = artistListID
-    //     console.log(artistListNames)
-    //   })
+  let bandMembersID = [];
+  let bandMembersName = [];
+  document.getElementById("add-new-member-btn").addEventListener('click', (event)=> {
+      let addedMembers = document.getElementById('added-members');
+      
+      let form = document.getElementById("newBandForm");
+      let inputs = document.getElementsByClassName('new-band-members')
+      let currentArtist = form.members.value; 
+      let artistOptions = document.getElementsByClassName('artist-option');
     
-
-      function toID(){
-        let allOptions = document.querySelectorAll('#artists-list option')
-        let memberInput = document.getElementsByClassName('new-band-members')
-  
-        allOptions.forEach(option => {
-          let artistListNames = option.getAttributeNode('value').value
-          let artistListID = option.getAttributeNode('data-value').value
-          artistListNames = artistListID
-          memberInput.value=artistListID
-        })
+      for(const option of artistOptions){
+          const artistID = option.getAttribute('data-value');
+          const artistValue = option.value;
+              if(currentArtist === artistValue) {
+                  bandMembersName.push(artistValue)
+                  form.members.value = artistID
+                  bandMembersID.push(form.members.value)}
+                  addedMembers.innerText = bandMembersName
       }
 
-  
+      form.members.value = "";
+      console.log(bandMembersID)
+      console.log(bandMembersName)
+      // event.preventDefault();
+
+  })
+
+  document.getElementById('newBandForm').addEventListener('submit', () => {
+    let membersInput = document.getElementById('members-array');
+    membersInput.value = bandMembersID
+    console.log(`band members passed: ${bandMembersID}`)
+  })
+
 };
 
 

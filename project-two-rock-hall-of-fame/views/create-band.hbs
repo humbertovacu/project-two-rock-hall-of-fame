@@ -1,12 +1,13 @@
 <h1>New Band</h1>
-<form onsubmit="toID()" action="/bands/new-band" method="post" id="new-band-form" enctype="multipart/form-data">
+<form action="/bands/new-band" method="post" id="newBandForm" enctype="multipart/form-data">
     <label for="new-band-name">Band Name:
         <input type="text" name="name" id="new-band-name">
     </label> 
     <br>
-    <label for="new-band-picture"> Band Picture:
-        <input type="file" name="band-profile-picture" id="new-artist-picture">
+     <label for="new-band-picture"> Band Picture:
+        <input type="file" name="band-profile-picture" id="new-band-picture">
     </label>
+   
     <br>
     <label for="new-band-origin"> Band origin:
         <input type="text" name="origin" id="new-band-origin">
@@ -17,16 +18,17 @@
      </label>
     <br>
     <label for="new-band-members" id="add-member-label"> Band Members:
-        <input type="text" name="members" class="new-band-members" list="artists-list">
+        <p id="added-members"></p>
+        <input type="text" name="members" class="new-band-members" list="artists-list" id="members">
         <datalist id="artists-list">
             {{#each artists}}
-                <option data-value="{{_id}}" value="{{name}}"></option>
+                <option class="artist-option" value ="{{name}}" data-value="{{_id}}"></option>
             {{/each}}
         </datalist>
     </label>
-        <button type="button" id="add-member-btn">+</button>
-        <button type="button" id="add-new-member-btn">Add New Memeber</button>
+        <button type="button" onclick="return false" id="add-new-member-btn">Add New Memeber</button>
     <br>
+     <input type="hidden" value="" id="members-array" name="membersArray[]">
      <label for="new-band-genre"> Genre:
         <select form="new-band-form" name="genre" id="new-band-genre" multiple>
             <option value="Alternative Rock">Alternative Rock</option>
@@ -68,6 +70,4 @@
      </label>
      <button id="add-band-btn" type="submit">Create Band</button>
 </form>
-
- 
- <script type="module" src="/js/create-band-script.js"></script>
+ <script src="/js/create-band-script.js"></script>

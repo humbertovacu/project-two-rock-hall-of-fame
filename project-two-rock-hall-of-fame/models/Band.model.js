@@ -23,7 +23,7 @@ const bandSchema = new Schema({
   },
 
   // members: { type: [Schema.Types.ObjectId], ref: "Artist", required: true },
-  members: {type: [Schema.Types.ObjectId], ref: 'Artist'},
+  members: [{type: Schema.Types.ObjectId, ref: 'Artist'}],
 
   genre: {
     type: [String],

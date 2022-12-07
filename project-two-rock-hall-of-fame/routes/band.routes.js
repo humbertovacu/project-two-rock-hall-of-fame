@@ -28,34 +28,13 @@ router.get("/search", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.post(
-  "/new-band",
-  fileUploader.single("band-profile-picture"),
-  async (req, res, next) => {
-    //  const { name, origin, year, members, genre } = req.body;
-    //  let artistsDB = await Artist.find();
-    //  members.forEach(member => {
-    //   if(!artistsDB.includes(member){
-    //     Artist.create({})
-    //   })
-    //  })
-    //  Band.create({name, origin, year, genre, imageUrl: req.file?.path})
-    //  .then(newBand => {
-    //     members.forEach
-    //  })
-
-    const { name, origin, year, members, genre } = req.body;
-    // create band
-    Band.create({
-      name,
-      imageUrl: req.file?.path,
-      origin,
-      year,
-      // members,
-      genre,
-    })
-      .then(() => res.redirect("/"))
-      .catch((err) => res.send(err));
+router.post("/new-band", fileUploader.single("band-profile-picture"), async (req, res, next) => {
+     const { name, origin, year, members, genre, membersArray } = req.body;
+     membersArrayOrdered = membersArray[0].split(',')
+     console.log(membersArrayOrdered)
+     Band.create({name, origin, year, genre, members: membersArrayOrdered, imageUrl: req.file.path })
+      .then(newBand => {res.redirect(`/bands/${newBand._id}`)})
+      .catch((err) => console.log(err));
   }
 );
 
@@ -77,7 +56,7 @@ router.post("/:id", fileUploader.single("band-profile-picture"), async (req, res
       id,
       {
         name,
-        imageUrl: req.file?.path,
+        imageUrl: req.file.path,
         origin,
         year,
         // members,

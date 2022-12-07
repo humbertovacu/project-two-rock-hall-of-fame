@@ -26,7 +26,7 @@ const projectName = "project-two-rock-hall-of-fame";
 const Artist = require("./models/Artist.model");
 const Band = require("./models/Band.model");
 
-app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
+// app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
