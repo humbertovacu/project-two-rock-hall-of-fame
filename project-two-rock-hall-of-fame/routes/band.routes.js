@@ -28,7 +28,7 @@ router.get("/search", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.post("/new-band", fileUploader.single("band-profile-picture"), (req, res) => {
+router.post("/new-band", fileUploader.single("band-profile-picture"),  (req, res) => {
      const { name, origin, year, genre, membersArray } = req.body;
      if(!name || !origin || !year || !genre) {
       res.render("create-band", {emptyField: "Please complete all fields before submitting"})
@@ -40,9 +40,13 @@ router.post("/new-band", fileUploader.single("band-profile-picture"), (req, res)
      }
      console.log(req.body)
      let membersArrayOrdered = membersArray[0].split(',')
-     console.log(membersArrayOrdered)
      Band.create({name, origin, year, genre, members: membersArrayOrdered, imageUrl: req.file.path })
-      .then(newBand => {res.redirect(`/bands/${newBand._id}`)})
+      .then(async (newBand) => {
+        for (const memberID of membersArrayOrdered){ 
+          await Artist.findByIdAndUpdate(memberID, {$push: {bands: newBand._id}}, {new: true})
+        }
+      })
+      .then(() => res.redirect('/bands'))
       .catch((err) => console.log(err));
   }
 );
