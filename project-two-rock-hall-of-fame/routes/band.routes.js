@@ -29,8 +29,9 @@ router.get("/search", (req, res) => {
 });
 
 router.post("/new-band", fileUploader.single("band-profile-picture"), async (req, res, next) => {
-     const { name, origin, year, members, genre, membersArray } = req.body;
-     membersArrayOrdered = membersArray[0].split(',')
+     const { name, origin, year, genre, membersArray } = req.body;
+     console.log(req.body)
+     let membersArrayOrdered = membersArray[0].split(',')
      console.log(membersArrayOrdered)
      Band.create({name, origin, year, genre, members: membersArrayOrdered, imageUrl: req.file.path })
       .then(newBand => {res.redirect(`/bands/${newBand._id}`)})

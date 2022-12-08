@@ -44,23 +44,22 @@ router.post("/new-artist", fileUploader.single('artist-profile-picture'), async 
     origin,
     birthday,
     deathDate,
-    bands,
     instrument,
     genre,
     occupation,
     imageUrl: req.file.path 
   })
-    .then((newArtist) => {
-      if(newArtist.bands==""){next()}
-      else{
-        let newArtistBands = newArtist.bands
-        newArtistBands.forEach(band => {
-          if(!bandsDB.includes(band)){
-            Band.create({ name: band })
-          }
-        })
-      }
-  })
+  //   .then((newArtist) => {
+  //     if(newArtist.bands==""){next()}
+  //     else{
+  //       let newArtistBands = newArtist.bands
+  //       newArtistBands.forEach(band => {
+  //         if(!bandsDB.includes(band)){
+  //           Band.create({ name: band })
+  //         }
+  //       })
+  //     }
+  // })
     .then(() => res.redirect("/"))
     .catch((err) => res.send(err));
 });
