@@ -9,7 +9,9 @@
 
 li,
 a,
+form,
 label,
+input,
 button {
   font-family: "Montserrat Alternates", sans-serif;
   font-weight: 400;

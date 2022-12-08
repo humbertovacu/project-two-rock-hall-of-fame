@@ -41,7 +41,7 @@ app.use("/bands", bandRoutes);
 const loginRoutes = require("./routes/login.routes");
 app.use("/login", loginRoutes);
 
-const signupRoutes = require("./routes/sign-up.routes");
+const signupRoutes = require("./routes/signup.routes");
 app.use("/sign-up", signupRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
