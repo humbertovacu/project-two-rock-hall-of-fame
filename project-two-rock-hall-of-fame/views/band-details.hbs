@@ -9,7 +9,9 @@
 <h3>Year:</h3>
 <p>{{singleBand.year}}</p>
 <h3>Members:</h3>
-<p>{{singleBand.members}}</p>
+{{#each singleBand.members}}
+<a href="/artists/{{id}}">{{name}}</a>
+{{/each}}
 <h3>Genre:</h3>
 <p>{{singleBand.genre}}</p>
 

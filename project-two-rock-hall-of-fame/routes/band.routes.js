@@ -28,8 +28,16 @@ router.get("/search", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.post("/new-band", fileUploader.single("band-profile-picture"), async (req, res, next) => {
+router.post("/new-band", fileUploader.single("band-profile-picture"), (req, res) => {
      const { name, origin, year, genre, membersArray } = req.body;
+     if(!name || !origin || !year || !genre) {
+      res.render("create-band", {emptyField: "Please complete all fields before submitting"})
+      return
+     }
+     if(!membersArray){
+      res.render("create-band", {noMembers: "Please add a band member before submitting"})
+      return
+     }
      console.log(req.body)
      let membersArrayOrdered = membersArray[0].split(',')
      console.log(membersArrayOrdered)
@@ -96,7 +104,7 @@ router.get("/", (req, res, next) => {
 // Route band details
 router.get("/:bandId", (req, res) => {
   const { bandId } = req.params;
-  Band.findById(bandId)
+  Band.findById(bandId).populate("members")
     .then((bandFound) => {
       console.log("bandFound", bandFound);
       res.render("band-details.hbs", { singleBand: bandFound });

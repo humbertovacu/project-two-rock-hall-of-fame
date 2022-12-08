@@ -31,6 +31,7 @@ if (typeof window !== 'undefined'){
     let membersInput = document.getElementById('members-array');
     membersInput.value = bandMembersID
     console.log(`band members passed: ${bandMembersID}`)
+    if(!bandMembersID){bandMembersID = null}
   })
 
 };

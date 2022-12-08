@@ -61,7 +61,7 @@ router.post("/new-artist", fileUploader.single('artist-profile-picture'), async 
   //     }
   // })
     .then(() => res.redirect("/"))
-    .catch((err) => res.send(err));
+    .catch((err) => {console.log(err)})
 });
 
 module.exports = router;

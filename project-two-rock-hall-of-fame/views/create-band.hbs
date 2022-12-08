@@ -2,6 +2,7 @@
 <form action="/bands/new-band" method="post" id="newBandForm" enctype="multipart/form-data">
     <label for="new-band-name">Band Name:
         <input type="text" name="name" id="new-band-name">
+      
     </label> 
     <br>
      <label for="new-band-picture"> Band Picture:
@@ -27,8 +28,12 @@
         </datalist>
     </label>
         <button type="button" onclick="return false" id="add-new-member-btn">Add New Memeber</button>
+       
+     <input type="hidden" value="" id="members-array" name="membersArray[]"> 
+        {{#if noMembers}}
+            <p>{{noMembers}}</p>
+        {{/if}}
     <br>
-     <input type="hidden" value="" id="members-array" name="membersArray[]">
      <label for="new-band-genre"> Genre:
         <select form="newBandForm" name="genre" id="new-band-genre" multiple>
             <option value="Alternative Rock">Alternative Rock</option>
@@ -68,6 +73,10 @@
      </label>
      <br>
      </label>
-     <button id="add-band-btn" type="submit">Create Band</button>
+     <button id="add-band-btn" type="submit">Create Band</button>  
+
+     {{#if emptyField}}
+            <p>{{emptyField}}</p>
+    {{/if}}
 </form>
  <script src="/js/create-band-script.js"></script>
