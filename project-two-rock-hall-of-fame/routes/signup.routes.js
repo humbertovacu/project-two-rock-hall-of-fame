@@ -26,7 +26,7 @@ router.post("/", (req, res, next) => {
     })
     .then((userFromDB) => {
       // console.log("Newly created user is: ", userFromDB);
-      res.redirect("/userProfile");
+      res.redirect(`/auth/userprofile/${username}`);
     })
     .catch((error) => next(error));
 });
@@ -36,9 +36,7 @@ router.get("/user-profile/:username", (req, res, next) => {
   const { username } = req.params;
 
   User.findOne({ username })
-    .then((foundUser) =>
-      res.render("auth/user-profile/${username}", { user: foundUser })
-    )
+    .then((foundUser) => res.render("auth/user-profile", { user: foundUser }))
     .catch((err) => console.log(err));
 });
 
