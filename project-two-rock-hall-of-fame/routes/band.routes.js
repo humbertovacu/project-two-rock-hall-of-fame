@@ -28,7 +28,7 @@ router.get("/search", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.post("/new-band", fileUploader.single("band-profile-picture"),  (req, res) => {
+router.post("/new-band", fileUploader.single("band-profile-picture"), (req, res) => {
      const { name, origin, year, genre, membersArray } = req.body;
      if(!name || !origin || !year || !genre) {
       res.render("create-band", {emptyField: "Please complete all fields before submitting"})
@@ -52,11 +52,12 @@ router.post("/new-band", fileUploader.single("band-profile-picture"),  (req, res
 );
 
 // edit band route shows form
-router.get("/:id/edit", async (req, res, next) => {
+router.get("/:id/edit", (req, res, next) => {
   const { id } = req.params;
-  Band.findById(id)
-    .then((band) => {
-      res.render("edit-band", { band });
+  Band.findById(id).populate('members')
+    .then( async (band) => {
+      const allArtists = await Artist.find()
+      res.render("edit-band", {band, allArtists});
     })
     .catch((err) => res.send(err));
 });
@@ -65,20 +66,20 @@ router.get("/:id/edit", async (req, res, next) => {
 router.post("/:id", fileUploader.single("band-profile-picture"), async (req, res, next) => {
     const { name, origin, year, members, genre } = req.body;
     const { id } = req.params;
-    Band.findByIdAndUpdate(
-      id,
-      {
-        name,
-        imageUrl: req.file.path,
-        origin,
-        year,
-        // members,
-        genre,
-      },
-      { new: true }
-    )
-      .then((updatedBand) => res.redirect(`/bands/${updatedBand._id}`))
-      .catch((err) => res.send(err));
+    console.log(req.body)
+    // Band.findByIdAndUpdate(
+    //   id,{
+    //     name,
+    //     imageUrl: req.file.path,
+    //     origin,
+    //     year,
+    //     members,
+    //     genre,
+    //   },
+    //   { new: true }
+    // )
+    //   .then((updatedBand) => res.redirect(`/bands/${updatedBand._id}`))
+    //   .catch((err) => res.send(err));
   }
 );
 

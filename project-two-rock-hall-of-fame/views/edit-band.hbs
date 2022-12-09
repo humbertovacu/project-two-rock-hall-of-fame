@@ -1,34 +1,43 @@
 <h1>Edit Band</h1>
-<form action="/bands/{{band._id}}" method="post" id="new-band-form" enctype="multipart/form-data">
-    <label for="new-band-name">Band Name:
-        <input type="text" name="name" id="new-band-name" placeholder="{{band.name}}">
+<form action="/bands/{{band._id}}" method="post" id="editBandForm" enctype="multipart/form-data">
+    <label for="edit-band-name">Band Name:
+        <input type="text" name="name" id="edit-band-name" value="{{band.name}}">
     </label> 
     <br>
-    <label for="new-band-picture"> Band Picture:
-        <input type="file" name="band-profile-picture" id="new-artist-picture">
+    <img src="{{band.imageUrl}}" alt="{{band.name}}-image" width="400" height="auto">
+    <br>
+    <label for="edit-band-picture"> Change Band Picture:
+        <input type="file" name="band-profile-picture" id="edit-artist-picture">
     </label>
     <br>
-    <label for="new-band-origin"> Band origin:
-        <input type="text" name="origin" id="new-band-origin" placeholder="{{band.origin}}">
+    <label for="edit-band-origin"> Band origin:
+        <input type="text" name="origin" id="edit-band-origin" value="{{band.origin}}">
     </label>
     <br>
-     <label for="new-band-year"> Year:
-        <input type="type" name="year" id="new-band-year" placeholder="{{band.year}}">
+     <label for="edit-band-year"> Year:
+        <input type="type" name="year" id="edit-band-year" value="{{band.year}}">
      </label>
     <br>
-    <label for="new-band-members" id="add-member-label"> Band Members:
-        <input type="text" name="members" id="new-band-members" list="artists-list">
+    <label for="edit-band-members" id="add-member-label"> Band Members:
+        <br>
+        {{#each band.members}}
+          <input type="checkbox" name="originalMembers[]" value="{{_id}}" checked>
+          <label for="member-{{@index}}">{{name}}</label><br>
+        {{/each}}
+        
+        {{!-- <input type="hidden" name="originalMembers[]" id="edit-band-members" list="artists-list" value="{{#each band.members}}{{_id}},{{/each}}"> --}}
+        <input type="text" name="members[]" id="edit-band-members" list="artists-list">
         <datalist id="artists-list">
-            {{#each artists}}
+            {{#each allArtists}}
                 <option value="{{name}}">{{name}}</option>
             {{/each}}
         </datalist>
     </label>
         <button type="button" id="add-member-btn">+</button>
     <br>
-     <label for="new-band-genre"> Genre:
-        <select form="new-band-genre" name="genre" id="new-band-genre" multiple>
-            <option value="Alternative Rock">Alternative Rock</option>
+     <label for="edit-band-genre"> Genre:
+        <select form="edit-band-genre" name="genre" id="edit-band-genre" multiple>
+            <option value="Alternative Rock" selected>Alternative Rock</option>
             <option value="Art Rock">Art Rock</option>
             <option value="Blues">Blues</option>
             <option value="Blues Rock">Blues Rock</option>
@@ -69,4 +78,4 @@
 </form>
 
  
- <script src="/js/create-band-script.js"></script>
+ <script src="/js/edit-band-script.js"></script>

@@ -19,6 +19,7 @@ router.get("/:artistID", (req, res) => {
     const { artistID } = req.params;
     Artist.findById(artistID)
     .then(foundArtist => res.render('artist-details', {artist: foundArtist}))
+    //
 })
 
 router.get("/new-band", (req, res) => {
