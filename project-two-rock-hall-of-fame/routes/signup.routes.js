@@ -8,13 +8,24 @@ router.get("/", (req, res) => {
   res.render("auth/sign-up");
 });
 
+/* POST Signup page */
+
+// router.post("/signup", async (req, res, next) => {
+//   const { username, email, password } = req.body;
+
+//   const passwordHash = await bcrypt.hash(password, saltRounds);
+
+//   User.create({ username, email, passwordHash })
+//     .then((newUser) => res.redirect(`/auth/user-profile/${newUser.username}`))
+//     .catch((err) => console.log(err));
+// });
+
 router.post("/", (req, res, next) => {
   console.log("The form data: ", req.body);
 
   const { username, email, password } = req.body;
 
   bcryptjs
-
     .genSalt(saltRounds)
     .then((salt) => bcryptjs.hash(password, salt))
     .then((hashedPassword) => {
@@ -31,6 +42,13 @@ router.post("/", (req, res, next) => {
     .catch((error) => next(error));
 });
 
-router.get("/userProfile", (req, res) => res.render("users/user-profile"));
+/*Get profile page*/
+router.get("/user-profile/:username", (req, res, next) => {
+  const { username } = req.params;
+
+  User.findOne({ username })
+    .then((foundUser) => res.render("auth/user-profile", { user: foundUser }))
+    .catch((err) => console.log(err));
+});
 
 module.exports = router;
