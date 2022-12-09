@@ -9,17 +9,6 @@ router.get("/", (req, res) => {
 });
 
 /* POST Signup page */
-
-// router.post("/signup", async (req, res, next) => {
-//   const { username, email, password } = req.body;
-
-//   const passwordHash = await bcrypt.hash(password, saltRounds);
-
-//   User.create({ username, email, passwordHash })
-//     .then((newUser) => res.redirect(`/auth/user-profile/${newUser.username}`))
-//     .catch((err) => console.log(err));
-// });
-
 router.post("/", (req, res, next) => {
   console.log("The form data: ", req.body);
 
