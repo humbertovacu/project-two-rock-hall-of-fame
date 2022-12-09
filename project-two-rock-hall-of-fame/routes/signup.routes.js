@@ -47,7 +47,9 @@ router.get("/user-profile/:username", (req, res, next) => {
   const { username } = req.params;
 
   User.findOne({ username })
-    .then((foundUser) => res.render("auth/user-profile", { user: foundUser }))
+    .then((foundUser) =>
+      res.render("auth/user-profile/${username}", { user: foundUser })
+    )
     .catch((err) => console.log(err));
 });
 
