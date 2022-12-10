@@ -1,12 +1,14 @@
-{{#with artist}}
-  <h1>{{name}}</h1>
+
+<h1>{{artist.name}}</h1>
   <img src="{{imageUrl}}" alt="{{name}}-picture" width="400" height="auto" />
   <h3>Origin:</h3>
-  <p>{{origin}}</p>
+  <p>{{artist.origin}}</p>
   <h3>Birthday:</h3>
   <p>{{birthday}}</p>
-  {{#if deathDate}}
+  {{#if artist.deathDate}}
     <h3>Death</h3>
-    <p>{{deathDate}}</p>
+    <p>{{artist.deathDate}}</p>
   {{/if}}
-{{/with}}
+  {{#each artist.bands}}
+    <h3>{{name}}</h3>
+  {{/each}}

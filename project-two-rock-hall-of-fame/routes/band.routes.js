@@ -85,7 +85,12 @@ router.post("/:id", fileUploader.single("band-profile-picture"), async (req, res
       },
       { new: true }
     )
-      .then((updatedBand) => res.redirect(`/bands/${updatedBand._id}`))
+      .then( async (updatedBand) => {
+       const updatedBandMembers = updatedBand.members;
+        for (const memberID of updatedBandMembers){ 
+          await Artist.findByIdAndUpdate(memberID, {$push: {bands: updatedBand._id}}, {new: true})
+        }
+        res.redirect(`/bands/${updatedBand._id}`)})
       .catch((err) => res.send(err));
   }
 );
