@@ -1,9 +1,11 @@
 <h1>The artists page</h1>
+<br />
 
 {{! Create an Artist }}
 <div>
-  <button><a href="artists/new-artist"> Create an Artist</a></button>
+  <a href="artists/new-artist"><button>Create an Artist!</button></a>
 </div>
+<br />
 
 {{#each artists}}
   <a href="/artists/{{_id}}"><h2>{{name}}</h2></a>
