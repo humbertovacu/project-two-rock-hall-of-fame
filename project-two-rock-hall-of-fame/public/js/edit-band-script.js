@@ -1,16 +1,18 @@
 if (typeof window !== 'undefined'){
-    
+  
   let form = document.getElementById("editBandForm"); 
+    
+  window.addEventListener('load', () => {
+    
+  
   const originalGenres = form.bandGenres.value
-
-  form.addEventListener('load', () => {
-    let bandGenresArray = originalGenres.split(',');
+  let bandGenresArray = originalGenres.split(',');
+    
     const genreOptions = document.getElementsByClassName('genre-option')
     for (const genre of genreOptions)
-      if(bandGenresArray.includes(genre.value)){
+      if(bandGenresArray.includes(genre.innerText)){
         genre.selected = true;
       }
-
   })
 
   document.getElementById("add-member-btn-edit").addEventListener('click', (event)=> {
@@ -35,7 +37,6 @@ if (typeof window !== 'undefined'){
                     editMemberLabel.appendChild(editMemberInput);
                     editMemberLabel.appendChild(checkedListLabel)
                     editMemberLabel.appendChild(addBreak)
-                    let bandGenresArray = originalGenres.split(',');
                     form.members.value = ""
                     }   
         }
