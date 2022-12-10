@@ -9,8 +9,10 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res, next) => {
+  console.log("SESSION =====> ", req.session);
+
   const { email, password } = req.body;
-  console.log(req.body)
+  console.log(req.body);
 
   if (email === "" || password === "") {
     res.render("auth/login", {
@@ -21,7 +23,7 @@ router.post("/", (req, res, next) => {
 
   User.findOne({ email: email })
     .then((user) => {
-      console.log(user)
+      console.log(user);
       if (!user) {
         res.render("auth/login", {
           errorMessage: "Email is not registered. Try with other email.",
