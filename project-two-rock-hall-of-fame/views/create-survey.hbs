@@ -1,0 +1,22 @@
+<H1>CREATE SURVEY</H1>
+
+<form action="/surveys/create" method="POST">
+  <label for="question"> Question</label>
+  <br />
+  <input type="text" id="question" name="question" />
+  <br />
+
+  <label for="options"> Options</label><br />
+  <textarea
+    type="text"
+    id="options"
+    name="option"
+    cols="50"
+    rows="10"
+    placeholder=" Split your options with a comma(,)"
+  ></textarea>
+  <br />
+
+  <button>Create</button>
+
+</form>
