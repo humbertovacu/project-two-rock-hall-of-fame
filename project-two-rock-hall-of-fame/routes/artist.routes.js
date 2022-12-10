@@ -21,10 +21,6 @@ router.get("/:artistID", (req, res) => {
     .then(foundArtist => res.render('artist-details', {artist: foundArtist}))
 })
 
-router.get("/new-band", (req, res) => {
-  res.render("create-band");
-});
-
 router.post("/new-artist", fileUploader.single('artist-profile-picture'), async (req, res, next) => {
   const {
     name,
@@ -63,5 +59,22 @@ router.post("/new-artist", fileUploader.single('artist-profile-picture'), async 
     .then(() => res.redirect("/"))
     .catch((err) => {console.log(err)})
 });
+
+//edit artist
+
+router.get('/:id/edit', (req, res) => {
+  const { id } = req.params;
+  Artist.findById(id)
+  .then((foundArtist) => {
+    res.render('edit-artist', {artist: foundArtist})
+  })
+  
+})
+
+router.post('/:id', fileUploader.single("artist-profile-picture"), (req, res) => {
+  const { id } = req.params;
+  const { name, origin, birthday, deathDate, genre } = req.body;
+  console.log(req.body)
+})
 
 module.exports = router;

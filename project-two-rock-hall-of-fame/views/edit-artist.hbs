@@ -1,0 +1,72 @@
+<h1>Edit Artist</h1>
+<form action="/artists/{{artist._id}}" method="post" id="editArtistForm" enctype="multipart/form-data">
+    <label for="edit-artist-name">Name:
+        <input type="text" name="name" id="edit-artist-name" value="{{artist.name}}">
+    </label> 
+    <br>
+    <img src="{{artist.imageUrl}}" alt="{{artist.name}}-image" width="400" height="auto">
+    <br>
+    <input type="hidden" name="originalPicture" value="{{band.imageUrl}}">
+    <label for="edit-band-picture"> Change Artist Picture:
+        <input type="file" name="artist-profile-picture" id="edit-artist-picture">
+    </label>
+    <br>
+    <label for="edit-artist-origin"> Band origin:
+        <input type="text" name="origin" id="edit-artist-origin" value="{{artist.origin}}">
+    </label>
+    <br>
+     <label for="edit-artist-birthday"> Birthday:
+        <input type="date" name="birthday" id="edit-artist-birthday" value="{{artist.birthday}}">
+     </label>
+     <br>
+     <label for="edit-artist-deathdate"> Date of Death:
+        <input type="date" name="deathDate" id="edit-artist-deathdate" value="{{artist.deathdate}}">
+     </label>
+    <br>
+    <input type="hidden" name="bandGenres" value="{{artist.genre}}">
+    <p>Hold Cmd or Ctrl to add a new genre. Deselect to remove genre:</p>
+ 
+    <label for="edit-band-genre"> Genres:
+        <select form="editArtistForm" name="genre" id="edit-band-genre" multiple>
+            <option class="genre-option" value="Alternative Rock">Alternative Rock</option>
+            <option class="genre-option" value="Art Rock">Art Rock</option>
+            <option class="genre-option" value="Blues">Blues</option>
+            <option class="genre-option" value="Blues Rock">Blues Rock</option>
+            <option class="genre-option" value="Celtic Rock">Celtic Rock</option>
+            <option class="genre-option" value="Country">Country</option>
+            <option class="genre-option" value="Country Rock">Country Rock</option>
+            <option class="genre-option" value="Electronica">Electronica</option>
+            <option class="genre-option" value="Experimental Rock">Experimental Rock</option>
+            <option class="genre-option" value="Folk">Folk</option>
+            <option class="genre-option" value="Folk Rock">Harmonica</option>
+            <option class="genre-option" value="Glam Rock">Glam Rock</option>
+            <option class="genre-option" value="Gothic Rock">Gothic Rock</option>
+            <option class="genre-option" value="Hard Rock">Hard Rock</option>
+            <option class="genre-option" value="Indie Pop">Indie Pop</option>
+            <option class="genre-option" value="Indie Rock">Indie Rock</option>
+            <option class="genre-option" value="Jazz">Jazz</option>
+            <option class="genre-option" value="Latin Jazz">Latin Jazz</option>
+            <option class="genre-option" value="Latin Rock">Latin Rock</option>
+            <option class="genre-option" value="Metal">Metal</option>
+            <option class="genre-option" value="New Wave">New Wave</option>
+            <option class="genre-option" value="Noise Pop">Noise Pop</option>
+            <option class="genre-option" value="Noise Rock">Noise Rock</option>
+            <option class="genre-option" value="Pop">Pop</option>
+            <option class="genre-option" value="Post Punk">Post Punk</option>
+            <option class="genre-option" value="Progressive Rock">Progressive Rock</option>
+            <option class="genre-option" value="Psychedelic Rock">Psychedelic Rock</option>
+            <option class="genre-option" value="Punk Rock">Punk Rock</option>
+            <option class="genre-option" value="Rhythm & Blues">Rhythm & Blues</option>
+            <option class="genre-option" value="Rock">Rock</option>
+            <option class="genre-option" value="Rock & Roll">Rock & Roll</option>
+            <option class="genre-option" value="Surf Rock">Surf Rock</option>
+            <option class="genre-option" value="Synthpop">Synthpop</option>
+        </select>
+     </label>
+     <br>
+     </label>
+     <button type="submit">Save Changes</button>
+</form>
+
+ 
+ <script src="/js/edit-artist-script.js"></script>
