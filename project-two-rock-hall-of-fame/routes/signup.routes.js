@@ -4,6 +4,7 @@ const bcryptjs = require("bcryptjs");
 const saltRounds = 10;
 const User = require("../models/User.model");
 
+/////////SIGNUP/////////
 router.get("/", (req, res) => {
   res.render("auth/sign-up");
 });
@@ -26,10 +27,13 @@ router.post("/", (req, res, next) => {
     })
     .then((userFromDB) => {
       // console.log("Newly created user is: ", userFromDB);
-      res.render('users/user-profile', userFromDB);
+      res.render("users/user-profile", userFromDB);
     })
     .catch((error) => next(error));
 });
+
+/////////LOGIN/////////
+router.get("/login", (req, res) => res.render("auth/login"));
 
 /*Get profile page*/
 router.get("/user-profile/:username", (req, res, next) => {
