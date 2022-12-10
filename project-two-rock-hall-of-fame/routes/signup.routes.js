@@ -32,14 +32,17 @@ router.post("/", (req, res, next) => {
     .catch((error) => next(error));
 });
 
-
 /*Get profile page*/
-router.get("/user-profile/:username", (req, res, next) => {
-  const { username } = req.params;
+// router.get("/user-profile/:username", (req, res, next) => {
+//   const { username } = req.params;
 
-  User.findOne({ username })
-    .then((foundUser) => res.render("users/user-profile", { user: foundUser }))
-    .catch((err) => console.log(err));
+//   User.findOne({ username })
+//     .then((foundUser) => res.render("users/user-profile", { user: foundUser }))
+//     .catch((err) => console.log(err));
+// });
+
+router.get("/user-profile", (req, res) => {
+  res.render("users/user-profile", { userInSession: req.session.currentUser });
 });
 
 module.exports = router;
