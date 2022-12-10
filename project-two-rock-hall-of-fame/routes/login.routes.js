@@ -34,7 +34,7 @@ router.post("/", (req, res, next) => {
 
         //******* SAVE THE USER IN THE SESSION ********//
         req.session.currentUser = user;
-        res.redirect("/");
+        res.redirect("/auth/userProfile");
       } else {
         res.render("auth/login", { errorMessage: "Incorrect password." });
       }
