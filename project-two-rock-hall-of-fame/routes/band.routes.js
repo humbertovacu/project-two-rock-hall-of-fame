@@ -64,22 +64,29 @@ router.get("/:id/edit", (req, res, next) => {
 
 // edit band route sends information form
 router.post("/:id", fileUploader.single("band-profile-picture"), async (req, res, next) => {
-    const { name, origin, year, members, genre } = req.body;
+    const { name, origin, year, originalMembers, genre, originalPicture, file} = req.body;
     const { id } = req.params;
-    console.log(req.body)
-    // Band.findByIdAndUpdate(
-    //   id,{
-    //     name,
-    //     imageUrl: req.file.path,
-    //     origin,
-    //     year,
-    //     members,
-    //     genre,
-    //   },
-    //   { new: true }
-    // )
-    //   .then((updatedBand) => res.redirect(`/bands/${updatedBand._id}`))
-    //   .catch((err) => res.send(err));
+    let image = req.file
+    let updatedImage = "";
+    if(image === undefined){
+      updatedImage = originalPicture;
+    }
+    else {
+      updatedImage = req.file.path;
+    }
+    Band.findByIdAndUpdate(
+      id,{
+        name,
+        imageUrl: updatedImage,
+        origin,
+        year,
+        members: originalMembers,
+        genre,
+      },
+      { new: true }
+    )
+      .then((updatedBand) => res.redirect(`/bands/${updatedBand._id}`))
+      .catch((err) => res.send(err));
   }
 );
 
