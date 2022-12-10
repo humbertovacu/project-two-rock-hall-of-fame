@@ -1,13 +1,12 @@
-<h1>Welcome to your profile page, {{username}}!</h1>
-
 {{#if user}}
   <h2>Welcome, {{user.username}}!</h2>
 
   <p>This is your profile page rockstar!</p>
 
-  <button>
-    <a href="/user-profile">Reload the page</a>
-  </button>
+  <div>
+    <a href="/user-profile"><button>Reload the page</button></a>
+  </div>
+  <br />
 
 {{else}}
   <p>Still no logged in user, sorry!</p>
