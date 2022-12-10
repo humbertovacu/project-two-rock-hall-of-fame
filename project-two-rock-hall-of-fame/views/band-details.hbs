@@ -15,9 +15,11 @@
 <h3>Genre:</h3>
 <p>{{singleBand.genre}}</p>
 
-
-<a href="/bands/{{singleBand._id}}/edit">Edit Band</a>
-
+{{!-- Edit a Band --}}
+<div>
+<a href="/bands/{{singleBand._id}}/edit"><button>Edit</button></a>
+</div>
+<br>
 
 {{!-- Delete a Band --}}
 <form action="/bands/{{singleBand._id}}/delete" method="POST">
