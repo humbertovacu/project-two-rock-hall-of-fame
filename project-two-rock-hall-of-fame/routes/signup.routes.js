@@ -14,6 +14,11 @@ router.post("/", (req, res, next) => {
   console.log("The form data: ", req.body);
 
   const { username, email, password } = req.body;
+  // here the 4 validations:
+  // validation 1:  check if we have all info
+  // validation 2: Check email format, with a regex
+  // validation 3: check password strength
+  // validation 4: check if username is unique
 
   bcryptjs
     .genSalt(saltRounds)
@@ -40,6 +45,5 @@ router.post("/", (req, res, next) => {
 //     .then((foundUser) => res.render("users/user-profile", { user: foundUser }))
 //     .catch((err) => console.log(err));
 // });
-
 
 module.exports = router;
