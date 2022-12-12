@@ -14,7 +14,7 @@ form,
 label,
 input,
 textarea,
-button {
+.regular-btn, .nav-buttons{
   font-family: "Montserrat Alternates", sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -64,7 +64,7 @@ a {
   display: inline-block;
   padding: 0px 20px;
 }
-button {
+.regular-btn  {
   padding: 9px 25px;
   background-color: rgba(0, 136, 169, 1);
   border: none;
@@ -73,9 +73,10 @@ button {
   transition: all 0.3s ease 0s;
 }
 
-button:hover {
+.regular-btn:hover {
   background-color: rgba(0, 136, 169, 0.8);
 }
+
 
 h1,
 h2,
@@ -92,4 +93,24 @@ h6 {
 .list-of-artists {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+.artist-star-rating{
+  user-select: none;
+}
+
+.star {
+  font-size: 3rem;
+  color: yellow;
+  padding: 9px 25px;
+  background-color: unset;
+  border: none;
+  border-radius: 0;
+}
+
+
+
+.star:hover{
+  cursor: pointer;
+  background-color:unset;
 }

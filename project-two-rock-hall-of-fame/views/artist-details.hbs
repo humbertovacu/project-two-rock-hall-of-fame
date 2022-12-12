@@ -1,5 +1,17 @@
 
 <h1>{{artist.name}}</h1>
+<div class="artist-star-rating">
+  <button class="star">&#9734;<button> 
+  <button class="star">&#9734;<button> 
+  <button class="star">&#9734;<button> 
+  <button class="star">&#9734;<button> 
+  <button class="star">&#9734;<button> 
+  <button class="star">&#9734;<button> 
+  <button class="star">&#9734;<button> 
+  <button class="star">&#9734;<button> 
+  <button class="star">&#9734;<button> 
+  <button class="star">&#9734;<button> 
+</div>
   <img src="{{artist.imageUrl}}" alt="{{name}}-picture" width="400" height="auto" />
   <h3>Origin:</h3>
   <p>{{artist.origin}}</p>
@@ -25,5 +37,5 @@
   <a href="/artists/{{artist._id}}/edit">Edit Artist</a>
 
   <form action="/artists/{{artist._id}}/delete" method="POST">
-    <button>Delete</button>
+    <button class="regular-btn">Delete</button>
 </form>
