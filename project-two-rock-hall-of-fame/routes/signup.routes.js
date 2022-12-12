@@ -34,31 +34,45 @@ router.post("/", (req, res, next) => {
   }
   // validation 3: check password strength
   // validation 4: check if username is unique
-
-  bcryptjs
-    .genSalt(saltRounds)
-    .then((salt) => bcryptjs.hash(password, salt))
-    .then((hashedPassword) => {
-      return User.create({
-        username,
-        email,
-        passwordHash: hashedPassword,
-      });
+  User.findOne({ username })
+    .then((user) => {
+      if (user) {
+        res.render("auth/signup", { err: "that user is already registered" });
+      } else {
+        //encrypt password and create the user in the DB
+        bcryptjs
+          .genSalt(saltRounds)
+          .then((salt) => bcryptjs.hash(password, salt))
+          .then((hashedPassword) => {
+            return User.create({
+              username,
+              email,
+              passwordHash: hashedPassword,
+            });
+          })
+          .then((userFromDB) => {
+            req.session.currentUser = userFromDB;
+            res.redirect("/auth/userProfile");
+          })
+          .catch((error) => next(error));
+      }
     })
-    .then((userFromDB) => {
-      req.session.currentUser = userFromDB;
-      res.redirect("/auth/userProfile");
-    })
-    .catch((error) => next(error));
+    .catch((error) => {
+      next(error);
+    });
 });
 
 /*Get profile page*/
-// router.get("/user-profile/:username", (req, res, next) => {
-//   const { username } = req.params;
 
-//   User.findOne({ username })
-//     .then((foundUser) => res.render("users/user-profile", { user: foundUser }))
-//     .catch((err) => console.log(err));
+// router.get("/userProfile", (req, res) => {
+//   res.render("users/user-profile", { userInSession: req.session.currentUser });
+// });
+
+// router.post("/logout", (req, res, next) => {
+//   req.session.destroy((err) => {
+//     if (err) next(err);
+//     res.redirect("/");
+//   });
 // });
 
 module.exports = router;
