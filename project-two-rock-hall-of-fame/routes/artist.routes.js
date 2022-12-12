@@ -73,8 +73,27 @@ router.get('/:id/edit', (req, res) => {
 
 router.post('/:id', fileUploader.single("artist-profile-picture"), (req, res) => {
   const { id } = req.params;
-  const { name, origin, birthday, deathDate, genre } = req.body;
-  console.log(req.body)
+  const { name, origin, birthday, deathDate, genre, originalPicture } = req.body;
+  let image = req.file;
+    let updatedImage = "";
+    if (image === undefined) {
+      updatedImage = originalPicture;
+    } else {
+      updatedImage = req.file.path;
+    }
+  Artist.findByIdAndUpdate(id, {name, origin, birthday, deathDate, genre, imageUrl: updatedImage})
+  .then(updatedArtist => res.redirect(`/artists/${updatedArtist._id}`))
+  .catch(err => console.log(err));
 })
+
+//Delete artist
+
+router.post("/:artistId/delete", (req, res) => {
+  const { artistId } = req.params;
+  Artist.findByIdAndDelete(artistId)
+    .then(() => res.redirect("/artists"))
+    .catch((error) => next(error));
+});
+
 
 module.exports = router;
