@@ -59,6 +59,7 @@ a {
   color: #0088a9;
 }
 
+#logout-form,
 .nav-buttons {
   display: inline-block;
   padding: 0px 20px;
