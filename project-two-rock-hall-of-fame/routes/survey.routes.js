@@ -28,8 +28,6 @@ router.post("/create", (req, res, next) => {
     .catch((error) => next(error));
 });
 
-module.exports = router;
-
 // Route List of surveys
 router.get("/", (req, res, next) => {
   Survey.find()
@@ -47,3 +45,5 @@ router.get("/", (req, res, next) => {
       next(error);
     });
 });
+
+module.exports = router;
