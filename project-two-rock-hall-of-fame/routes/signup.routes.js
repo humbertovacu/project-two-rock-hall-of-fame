@@ -14,7 +14,7 @@ router.post("/", (req, res, next) => {
   console.log("The form data: ", req.body);
 
   const { username, email, password } = req.body;
-  // here the 4 validations:
+  // here 4 backend validators:
   // validation 1:  check if we have all info
   if (!username || !email || !password) {
     res.render("auth/sign-up", {
