@@ -1,11 +1,14 @@
 <h1>Results:</h1>
+<br>
 
 {{!-- Display all bands --}}
 <div class="list-of-bands">
   {{#each bands}}
   <div>
     <a href="/bands/{{_id}}"><h2>{{name}}</h2></a>
+    <br>
     <img src={{imageUrl}} alt={{name}} "picture" width=300px height="auto">
+    <br>
   </div>
   {{/each}}
 </div>
@@ -18,7 +21,6 @@
 <a href="/bands/new-band"><button class="regular-btn">Create a Band!</button></a>
 </div>
 {{/unless}}
-
 <br>
 
 <div>

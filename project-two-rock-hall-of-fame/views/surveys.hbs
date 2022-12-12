@@ -1,7 +1,20 @@
 <h1>The Surveys Page</h1>
 <br />
+
 {{! Create a Survey }}
 <div>
   <a href="surveys/create"><button class="regular-btn">Create a Survey!</button></a>
 </div>
 <br />
+
+
+{{!-- Display all surveys --}}
+<div class="list-of-surveys">
+  {{#each surveys}}
+  <div>
+    <a href="/surveys/{{_id}}"><h2>{{question}}</h2></a>
+    <a href="/surveys/{{_id}}"><img src={{imageUrl}} alt={{name}} "picture" width=300px height="auto"></a>
+    
+  </div>
+  {{/each}}
+</div>

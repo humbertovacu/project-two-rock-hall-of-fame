@@ -2,22 +2,24 @@
 <form action="/bands/new-band" method="post" id="newBandForm" enctype="multipart/form-data">
     <label for="new-band-name">Band Name:
         <input type="text" name="name" id="new-band-name">
-      
     </label> 
     <br>
+
      <label for="new-band-picture"> Band Picture:
         <input type="file" name="band-profile-picture" id="new-band-picture">
     </label>
-   
     <br>
+
     <label for="new-band-origin"> Band origin:
         <input type="text" name="origin" id="new-band-origin">
     </label>
     <br>
+
      <label for="new-band-year"> Year:
         <input type="type" name="year" id="new-band-year">
      </label>
     <br>
+    
     <label for="new-band-members" id="add-member-label"> Band Members:
         <p id="added-members"></p>
         <input type="text" name="members" class="new-band-members" list="artists-list" id="members">
@@ -34,6 +36,7 @@
             <p>{{noMembers}}</p>
         {{/if}}
     <br>
+    
      <label for="new-band-genre"> Genre:
         <select form="newBandForm" name="genre" id="new-band-genre" multiple>
             <option value="Alternative Rock">Alternative Rock</option>
@@ -72,6 +75,7 @@
         </select>
      </label>
      <br>
+
      </label>
      <button id="add-band-btn" type="submit">Create Band</button>  
 
