@@ -26,8 +26,8 @@ router.post("/", (req, res, next) => {
       });
     })
     .then((userFromDB) => {
-      // console.log("Newly created user is: ", userFromDB);
-      res.render("users/user-profile", userFromDB);
+      req.session.currentUser = userFromDB;
+      res.redirect("/auth/userProfile");
     })
     .catch((error) => next(error));
 });
@@ -41,8 +41,5 @@ router.post("/", (req, res, next) => {
 //     .catch((err) => console.log(err));
 // });
 
-router.get("/user-profile", (req, res) => {
-  res.render("users/user-profile", { userInSession: req.session.currentUser });
-});
 
 module.exports = router;

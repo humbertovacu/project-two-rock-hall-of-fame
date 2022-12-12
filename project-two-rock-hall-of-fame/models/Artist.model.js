@@ -1,6 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 function formatDate(date) {
+  if(date){
   let d = new Date(date),
       month = '' + (d.getMonth() + 1),
       day = '' + d.getDate(),
@@ -9,7 +10,8 @@ function formatDate(date) {
   if (month.length < 2) month = '0' + month;
   if (day.length < 2) day = '0' + day;
 
-  return [year, month, day].join('-');
+  return [year, month, day].join('-')}
+  else return ""
 }
 
 const artistSchema = new Schema({
@@ -36,11 +38,9 @@ const artistSchema = new Schema({
   },
   deathDate: {
     type: String,
-    required: true,
     set: date => formatDate(date),
-    default: "Not available",
   },
-  bands: [{type: Schema.Types.ObjectId, ref: 'Band'}],
+  bands: [{type: Schema.Types.ObjectId, ref: 'Band', unique: true}],
 
   instrument: {
     type: [String],

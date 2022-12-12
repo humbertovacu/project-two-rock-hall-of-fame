@@ -3,6 +3,7 @@ const Artist = require("../models/Artist.model");
 const Band = require("../models/Band.model");
 const router = express.Router();
 const fileUploader = require("../config/cloudinary.config");
+const { default: mongoose } = require("mongoose");
 
 router.get("/new-band", (req, res) => {
   Artist.find().then((allArtists) =>
@@ -45,7 +46,6 @@ router.post(
       });
       return;
     }
-    console.log(req.body);
     let membersArrayOrdered = membersArray[0].split(",");
     Band.create({
       name,
@@ -55,11 +55,11 @@ router.post(
       members: membersArrayOrdered,
       imageUrl: req.file.path,
     })
-      .then(async (newBand) => {
+    .then(async (newBand) => {
         for (const memberID of membersArrayOrdered) {
-          await Artist.findByIdAndUpdate(
-            memberID,
-            { $push: { bands: newBand._id } },
+          await Artist.updateOne(
+            {_id: memberID},
+            { $addToSet: { bands: newBand._id } },
             { new: true }
           );
         }
@@ -118,9 +118,9 @@ router.post(
       .then(async (updatedBand) => {
         const updatedBandMembers = updatedBand.members;
         for (const memberID of updatedBandMembers) {
-          await Artist.findByIdAndUpdate(
-            memberID,
-            { $push: { bands: updatedBand._id } },
+          await Artist.updateOne(
+            {_id: memberID},
+            { $addToSet: { bands: updatedBand._id } },
             { new: true }
           );
         }
