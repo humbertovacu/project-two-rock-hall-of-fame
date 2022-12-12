@@ -14,4 +14,8 @@
     <button type="submit" class="regular-btn">Signup</button>
     <br />
   </form>
+
+  {{#if errorMessage}}
+    <p class="error">{{errorMessage}}</p>
+  {{/if}}
 </div>

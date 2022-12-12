@@ -37,7 +37,9 @@ router.post("/", (req, res, next) => {
   User.findOne({ username })
     .then((user) => {
       if (user) {
-        res.render("auth/signup", { err: "that user is already registered" });
+        res.render("auth/signup", {
+          errorMessage: "that user is already registered",
+        });
       } else {
         //encrypt password and create the user in the DB
         bcryptjs
