@@ -87,7 +87,8 @@ h6 {
   color: #edf0f1;
 }
 
-.list-of-bands {
+.list-of-bands,
+.list-of-artists {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
