@@ -16,7 +16,18 @@ router.post("/", (req, res, next) => {
   const { username, email, password } = req.body;
   // here the 4 validations:
   // validation 1:  check if we have all info
+  if (!username || !email || !password) {
+    res.render("auth/signup", { err: "please fill out all information" });
+    return;
+  }
   // validation 2: Check email format, with a regex
+  const emailRegex =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  if (!emailRegex.test(email)) {
+    res.render("auth/signup", { signUpErr: "Please present a valid email" });
+    return;
+  }
   // validation 3: check password strength
   // validation 4: check if username is unique
 
