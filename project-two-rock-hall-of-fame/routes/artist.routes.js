@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Artist = require("../models/Artist.model");
 const Band = require("../models/Band.model");
-const fileUploader = require('../config/cloudinary.config')
+const fileUploader = require('../config/cloudinary.config');
+const Rating = require("../models/Rating.model");
 
 router.get("/new-artist", (req, res) => {
   res.render("create-artist");
@@ -48,6 +49,21 @@ router.post("/new-artist", fileUploader.single('artist-profile-picture'), async 
     .then(() => res.redirect("/artists"))
     .catch((err) => {console.log(err)})
 });
+
+//rate artist
+
+router.post('/:artistID/rating', (req, res)=> {
+  const { artistID } = req.params;
+  console.log(req.params)
+  const { artistRating } = req.body;
+  const userID = req.session.currentUser._id;
+  console.log(req.body)
+  console.log(userID)
+  Rating.create({userVote: userID, objectID: artistID, ratingModel:'Artist', rating: artistRating})
+  .then((ratedArtist)=>res.redirect(`/artists/${ratedArtist.objectID}`))
+  .catch(err => console.log(err));
+
+})
 
 //edit artist
 
