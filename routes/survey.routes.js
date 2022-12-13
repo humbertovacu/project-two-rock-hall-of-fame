@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const Survey = require("../models/Survey.model");
+const { userLoggedIn, userLoggedOut } = require("../middleware/route-guard.js");
 
-router.get("/", (req, res) => {
+router.get("/", userLoggedIn, (req, res) => {
   res.render("surveys");
 });
 
