@@ -17,9 +17,12 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:artistID", async (req, res) => {
-    const { userID } = req.session.currentUser._id;
-    const { artistID } = req.params;
-    let artistRating = await Rating.find({userId: userID, objectID: artistID})
+  const { artistID } = req.params;
+    if(req.session.currentUser){
+      const { userID } = req.session.currentUser._id;
+      let artistRating = await Rating.find({userId: userID, objectID: artistID})
+    } else artistRating = "";
+    
     Artist.findById(artistID).populate('bands')
     .then(foundArtist => {
       console.log(`artist rating:${artistRating}`)

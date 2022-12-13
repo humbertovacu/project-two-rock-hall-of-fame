@@ -181,9 +181,12 @@ router.get("/", (req, res, next) => {
 
 // Route band details
 router.get("/:bandID", async (req, res) => {
-  const { userID } = req.session.currentUser._id;
   const { bandID } = req.params;
+  if(req.session.currentUser){
+  const { userID } = req.session.currentUser._id;
   let bandRating = await Rating.find({userId: userID, objectID: bandID})
+  } else bandRating = "";
+  
   Band.findById(bandID)
     .populate("members")
     .then((bandFound) => {
