@@ -5,6 +5,8 @@ const Rating = require("../models/Rating.model");
 const router = express.Router();
 const fileUploader = require("../config/cloudinary.config");
 const { default: mongoose } = require("mongoose");
+const { userLoggedIn, userLoggedOut } = require('../middleware/route-guard.js')
+
 
 router.get("/new-band", (req, res) => {
   Artist.find().then((allArtists) =>
@@ -72,7 +74,7 @@ router.post(
 
 //rate band
 
-router.post('/:bandID/rating', async (req, res, next)=> {
+router.post('/:bandID/rating', userLoggedIn, async (req, res, next)=> {
   const { bandID } = req.params;
   const { bandRating } = req.body;
   const userID = req.session.currentUser._id;

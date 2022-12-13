@@ -4,6 +4,7 @@ const Artist = require("../models/Artist.model");
 const Band = require("../models/Band.model");
 const Rating = require("../models/Rating.model");
 const fileUploader = require('../config/cloudinary.config');
+const { userLoggedIn, userLoggedOut } = require('../middleware/route-guard.js')
 
 router.get("/new-artist", (req, res) => {
   res.render("create-artist");
@@ -59,7 +60,7 @@ router.post("/new-artist", fileUploader.single('artist-profile-picture'), async 
 
 //rate artist
 
-router.post('/:artistID/rating', async (req, res, next)=> {
+router.post('/:artistID/rating', userLoggedIn, async (req, res, next)=> {
   const { artistID } = req.params;
   const { artistRating } = req.body;
   const userID = req.session.currentUser._id;
