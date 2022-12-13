@@ -15,7 +15,9 @@ router.post("/", (req, res, next) => {
   console.log("The form data: ", req.body);
 
   const { username, email, password } = req.body;
-  // here 4 backend validators:
+
+  // here follow 3 backend validators:
+
   // validation 1:  check if we have all info
   if (!username || !email || !password) {
     res.render("auth/sign-up", {
@@ -33,8 +35,7 @@ router.post("/", (req, res, next) => {
     });
     return;
   }
-  // validation 3: check password strength
-  // validation 4: check if username is unique
+  // validation 3: check if username is unique
   User.findOne({ username })
     .then((user) => {
       if (user) {
@@ -64,18 +65,5 @@ router.post("/", (req, res, next) => {
       next(error);
     });
 });
-
-/*Get profile page*/
-
-// router.get("/userProfile", (req, res) => {
-//   res.render("users/user-profile", { userInSession: req.session.currentUser });
-// });
-
-// router.post("/logout", (req, res, next) => {
-//   req.session.destroy((err) => {
-//     if (err) next(err);
-//     res.redirect("/");
-//   });
-// });
 
 module.exports = router;
