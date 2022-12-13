@@ -30,7 +30,7 @@ router.post("/", (req, res, next) => {
         });
         return;
       } else if (bcryptjs.compareSync(password, user.passwordHash)) {
-        res.render("users/user-profile", { user });
+        // res.render("users/user-profile", { user });
 
         //******* SAVE THE USER IN THE SESSION ********//
         req.session.currentUser = user;

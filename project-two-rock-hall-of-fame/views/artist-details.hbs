@@ -1,6 +1,10 @@
 <h1>{{artist.name}}</h1>
 <br>
-
+{{#if artistRating.[0].rating}}
+  <h3>Your Rating:</h3>
+  {{else}}
+  <h3>Rate artist:</h3>
+{{/if}}
 <div class="artist-star-rating">
   <button class="star">&#9734;</button> 
   <button class="star">&#9734;</button> 
@@ -13,12 +17,16 @@
   <button class="star">&#9734;</button> 
   <button class="star">&#9734;</button>
   <br> 
-  <h3>Rate artist:</h3>
-  <p class="your_rating">0 of 10</p>
+  {{#if artistRating.[0].rating}}
+    <p class="your_rating">{{artistRating.[0].rating}} of 10</p>
+  {{else}}
+    <p class="your_rating">0 of 10</p>
+  {{/if}}
   <form action="/artists/{{artist._id}}/rating" method="POST" id="artist-rating">
     <input id="rating-input" name="artistRating" type="hidden" value="0">
   </form>
 </div>
+    <input type="hidden" id="userVote" value="{{artistRating.[0].rating}}">
 <br>
 
   <img src="{{artist.imageUrl}}" alt="{{name}}-picture" width="400" height="auto" />

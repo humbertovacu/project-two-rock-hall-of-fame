@@ -16,10 +16,14 @@ router.get("/", (req, res) => {
   ;
 });
 
-router.get("/:artistID", (req, res) => {
+router.get("/:artistID", async (req, res) => {
+    const { userID } = req.session.currentUser._id;
     const { artistID } = req.params;
+    let artistRating = await Rating.find({userId: userID, objectID: artistID})
     Artist.findById(artistID).populate('bands')
-    .then(foundArtist => res.render('artist-details', {artist: foundArtist}))
+    .then(foundArtist => {
+      console.log(`artist rating:${artistRating}`)
+      res.render('artist-details', {artist: foundArtist, artistRating})})
 })
 
 router.post("/new-artist", fileUploader.single('artist-profile-picture'), async (req, res, next) => {
@@ -52,18 +56,25 @@ router.post("/new-artist", fileUploader.single('artist-profile-picture'), async 
 
 //rate artist
 
-router.post('/:artistID/rating', (req, res)=> {
+router.post('/:artistID/rating', async (req, res, next)=> {
   const { artistID } = req.params;
-  console.log(req.params)
   const { artistRating } = req.body;
   const userID = req.session.currentUser._id;
+  console.log(`userID: ${userID}`)
   console.log(req.body)
-  console.log(userID)
-  Rating.create({userVote: userID, objectID: artistID, ratingModel:'Artist', rating: artistRating})
-  .then((ratedArtist)=>res.redirect(`/artists/${ratedArtist.objectID}`))
-  .catch(err => console.log(err));
+  
+  Rating.create({userID: userID, objectID: artistID, ratingModel: 'Artist', rating: artistRating})
+  .then((createdRating) => {
+    res.redirect(`/artists/${artistID}`)})
+  .catch(err => {
+    if(err.code === 11000){
+      Rating.findOneAndUpdate({userID: userID, objectID: artistID}, {rating: artistRating}, {new: true})
+      .then(updatedRating => res.redirect(`/artists/${artistID}`))
+    } else (console.log(err))
+  })
+  
+});
 
-})
 
 //edit artist
 
@@ -73,7 +84,6 @@ router.get('/:id/edit', (req, res) => {
   .then((foundArtist) => {
     res.render('edit-artist', {artist: foundArtist})
   })
-  
 })
 
 router.post('/:id', fileUploader.single("artist-profile-picture"), (req, res) => {
