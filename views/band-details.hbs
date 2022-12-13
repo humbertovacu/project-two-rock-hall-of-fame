@@ -1,0 +1,57 @@
+<h1>{{singleBand.name}}</h1>
+{{#if bandRating.[0].rating}}
+    <h2>Your Rating:</h2>
+{{else}}
+    <h2>Rate Band:</h2>
+{{/if}}
+
+<div class="artist-star-rating">
+  <button class="star">&#9734;</button> 
+  <button class="star">&#9734;</button> 
+  <button class="star">&#9734;</button> 
+  <button class="star">&#9734;</button> 
+  <button class="star">&#9734;</button> 
+  <button class="star">&#9734;</button> 
+  <button class="star">&#9734;</button> 
+  <button class="star">&#9734;</button> 
+  <button class="star">&#9734;</button> 
+  <button class="star">&#9734;</button>
+  {{#if bandRating.[0].rating}}
+    <p class="your_rating">{{bandRating.[0].rating}} of 10</p>
+  {{else}}
+    <p class="your_rating">0 of 10</p>
+  {{/if}}
+  <br>
+<form action="/bands/{{singleBand._id}}/rating" method="POST" id="band-rating">
+    <input id="band-rating-input" name="bandRating" type="hidden" value="0">
+</form>
+    <input type="hidden" id="userVote" value="{{bandRating.[0].rating}}">
+</div>
+<br>
+<img src={{singleBand.imageUrl}} alt={{singleBand.name}} "picture" width=300px height="auto">
+<br>
+
+<h3>Origin:</h3>
+<p>{{singleBand.origin}}</p>
+<h3>Year:</h3>
+<p>{{singleBand.year}}</p>
+<h3>Members:</h3>
+{{#each singleBand.members}}
+<a href="/artists/{{id}}">{{name}}</a>
+{{/each}}
+<h3>Genre:</h3>
+<p>{{singleBand.genre}}</p>
+<br>
+
+{{!-- Edit a Band --}}
+<div>
+<a href="/bands/{{singleBand._id}}/edit"><button class="regular-btn">Edit</button></a>
+</div>
+<br>
+
+{{!-- Delete a Band --}}
+<form action="/bands/{{singleBand._id}}/delete" method="POST">
+    <button class="regular-btn">Delete</button>
+</form>
+
+ <script src="/js/band-details-script.js"></script>

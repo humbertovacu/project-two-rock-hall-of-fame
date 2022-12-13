@@ -1,0 +1,62 @@
+<h1>{{artist.name}}</h1>
+<br>
+{{#if artistRating.[0].rating}}
+  <h3>Your Rating:</h3>
+  {{else}}
+  <h3>Rate artist:</h3>
+{{/if}}
+<div class="artist-star-rating">
+  <button class="star">&#9734;</button> 
+  <button class="star">&#9734;</button> 
+  <button class="star">&#9734;</button> 
+  <button class="star">&#9734;</button> 
+  <button class="star">&#9734;</button> 
+  <button class="star">&#9734;</button> 
+  <button class="star">&#9734;</button> 
+  <button class="star">&#9734;</button> 
+  <button class="star">&#9734;</button> 
+  <button class="star">&#9734;</button>
+  <br> 
+  {{#if artistRating.[0].rating}}
+    <p class="your_rating">{{artistRating.[0].rating}} of 10</p>
+  {{else}}
+    <p class="your_rating">0 of 10</p>
+  {{/if}}
+  <form action="/artists/{{artist._id}}/rating" method="POST" id="artist-rating">
+    <input id="rating-input" name="artistRating" type="hidden" value="0">
+  </form>
+</div>
+    <input type="hidden" id="userVote" value="{{artistRating.[0].rating}}">
+<br>
+
+  <img src="{{artist.imageUrl}}" alt="{{name}}-picture" width="400" height="auto" />
+  <br>
+  
+  <h3>Origin:</h3>
+  <p>{{artist.origin}}</p>
+  <h3>Birthday:</h3>
+  <p>{{artist.birthday}}</p>
+  {{#if artist.deathDate}}
+    <h3>Death</h3>
+    <p>{{artist.deathDate}}</p>
+  {{/if}}
+  {{#if artist.bands}} 
+  <h3>Related Bands:</h3>
+    {{#each artist.bands}} 
+      <a href="/bands/{{_id}}"><p>{{name}}</p></a>
+    {{/each}}
+  {{/if}}
+  <h3>Instruments:</h3>
+  <p>{{artist.instrument}}</p>
+  <h3>Musical Genres:</h3>
+  <p>{{artist.genre}}<p>
+  <h3>Occupation:</h3>
+  <p>{{artist.occupation}}</p>
+
+  <a href="/artists/{{artist._id}}/edit">Edit Artist</a>
+
+  <form action="/artists/{{artist._id}}/delete" method="POST">
+    <button class="regular-btn">Delete</button>
+  </form>
+
+  <script src="/js/artist-details-script.js"></script>
