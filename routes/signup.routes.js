@@ -3,9 +3,10 @@ const router = express.Router();
 const bcryptjs = require("bcryptjs");
 const saltRounds = 10;
 const User = require("../models/User.model");
+const { userLoggedIn, userLoggedOut } = require("../middleware/route-guard.js");
 
 /////////SIGNUP/////////
-router.get("/", (req, res) => {
+router.get("/", userLoggedOut, (req, res) => {
   res.render("auth/sign-up");
 });
 
