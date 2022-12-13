@@ -1,6 +1,7 @@
 const express = require("express");
 const Artist = require("../models/Artist.model");
 const Band = require("../models/Band.model");
+const Rating = require("../models/Rating.model");
 const router = express.Router();
 const fileUploader = require("../config/cloudinary.config");
 const { default: mongoose } = require("mongoose");
@@ -68,6 +69,27 @@ router.post(
       .catch((err) => console.log(err));
   }
 );
+
+//rate band
+
+router.post('/:bandID/rating', async (req, res, next)=> {
+  const { bandID } = req.params;
+  const { bandRating } = req.body;
+  const userID = req.session.currentUser._id;
+  console.log(`userID: ${userID}`)
+  console.log(req.body)
+  
+  Rating.create({userID: userID, objectID: bandID, ratingModel: 'Band', rating: bandRating})
+  .then((createdRating) => {
+    res.redirect(`/bands/${bandID}`)})
+  .catch(err => {
+    if(err.code === 11000){
+      Rating.findOneAndUpdate({userID: userID, objectID: bandID}, {rating: bandRating}, {new: true})
+      .then(updatedRating => res.redirect(`/bands/${bandID}`))
+    } else (console.log(err))
+  })
+  
+});
 
 // edit band route shows form
 router.get("/:id/edit", (req, res, next) => {
@@ -158,13 +180,14 @@ router.get("/", (req, res, next) => {
 });
 
 // Route band details
-router.get("/:bandId", (req, res) => {
-  const { bandId } = req.params;
-  Band.findById(bandId)
+router.get("/:bandID", async (req, res) => {
+  const { userID } = req.session.currentUser._id;
+  const { bandID } = req.params;
+  let bandRating = await Rating.find({userId: userID, objectID: bandID})
+  Band.findById(bandID)
     .populate("members")
     .then((bandFound) => {
-      console.log("bandFound", bandFound);
-      res.render("band-details.hbs", { singleBand: bandFound });
+      res.render("band-details.hbs", { singleBand: bandFound, bandRating });
     })
     .catch((err) => console.log(err));
 });
