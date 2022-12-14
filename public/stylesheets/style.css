@@ -112,3 +112,7 @@ h6 {
   cursor: pointer;
   background-color:unset;
 }
+
+.incomplete-field{
+  color: red;
+}

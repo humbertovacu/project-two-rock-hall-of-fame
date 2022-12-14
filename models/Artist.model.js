@@ -23,7 +23,6 @@ const artistSchema = new Schema({
   imageUrl: {
     type: String,
     required: true,
-    default: "/images/artists/BlankArtist.jpg",
   },
   origin: {
     type: String,

@@ -6,7 +6,7 @@ const Rating = require("../models/Rating.model");
 const fileUploader = require("../config/cloudinary.config");
 const { userLoggedIn, userLoggedOut } = require("../middleware/route-guard.js");
 
-router.get("/new-artist", (req, res) => {
+router.get("/new-artist", userLoggedIn, (req, res) => {
   res.render("create-artist");
 });
 
@@ -23,41 +23,34 @@ router.get("/:artistID", async (req, res) => {
     const userID = req.session.currentUser._id
     userRating = await Rating.find({userID: userID}).find({objectID: artistID})
   } else userRating = '';
-  // const userID = req.session.currentUser._id
-  // let userRating = await Rating.find({userID: userID}).find({objectID: artistID})
 
   Artist.findById(artistID).populate('bands')
     .then(foundArtist => {
     res.render('artist-details', {artist: foundArtist, userRating})})
   });
 
-router.post(
-  "/new-artist",
-  fileUploader.single("artist-profile-picture"),
-  async (req, res, next) => {
-    const {
-      name,
-      origin,
-      birthday,
-      deathDate,
-      bands,
-      instrument,
-      genre,
-      occupation,
-    } = req.body;
 
-    let bandsDB = await Band.find();
+router.post("/new-artist", fileUploader.single("artist-profile-picture"), async (req, res) => {
+    const {name, origin, birthday, deathDate, instrument, genre, occupation} = req.body;
+    console.log(req.body)
+    let artistImage;
+    
+    if(!name){
+      res.render('create-artist', {noNameMessage: `Please include artist's name`})
+    }
 
-    Artist.create({
-      name,
-      origin,
-      birthday,
-      deathDate,
-      instrument,
-      genre,
-      occupation,
-      imageUrl: req.file.path,
-    })
+    if(!origin || !birthday) {
+      res.render('create-artist', {missingFieldErr: 'Please complete all required fields'})
+    } 
+
+    if(!req.file){
+      artistImage = 'https://res.cloudinary.com/djwmauhbh/image/upload/v1671036983/rock-page-images/BlankArtist_w2b1hr.webp';
+    } else {
+      artistImage = req.file.path};
+    
+    
+    
+    Artist.create({name, origin, birthday, deathDate, instrument, genre, occupation, imageUrl: artistImage})
       .then(() => res.redirect("/artists"))
       .catch((err) => {
         console.log(err);

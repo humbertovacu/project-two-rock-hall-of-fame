@@ -1,18 +1,30 @@
 <h1>New Artist</h1>
 <form action="/artists/new-artist" method="post" id="new-artist-form" enctype="multipart/form-data">
-    <label for="new-artist-name">Name:
+    <label for="new-artist-name">
+        <p class="required-field">Name:</p>
         <input type="text" name="name" id="new-artist-name">
     </label> 
+    {{#if noNameMessage}}
+     <p>{{noNameMessage}}</p>
+    {{/if}}
     <br>
+    
     <label for="new-artist-picture"> Profile Photo:
         <input type="file" name="artist-profile-picture" id="new-artist-picture">
     </label>
+
     <br>
-    <label for="new-artist-origin"> Origin:
+    {{#if missingFieldErr}}
+        <input type="hidden" id="error-fields" value="1">
+    {{/if}}
+
+    <label for="new-artist-origin"> 
+        <p class="required-field">Origin:</p> 
         <input type="text" name="origin" id="new-artist-origin">
     </label>
     <br>
-     <label for="new-artist-birthday"> Birthday:
+     <label for="new-artist-birthday"> 
+        <p class="required-field">Birthday:</p>
         <input type="date" name="birthday" id="new-artist-birthday">
     </label>
     <br>
@@ -20,13 +32,10 @@
         <input type="date" name="deathDate" id="new-artist-deathdate">
     </label>
     <br>
-    {{!-- <label id="add-band-label" for="new-artist-band"> Bands:
-        <input type="text" name="bands" id="new-artist-band">
-    </label>
-    <button type="button" id="add-band">+</button> --}}
-    
+    <p>Press cmd or ctrl to select several items</p>
     <br>
-    <label for="new-artist-instrument"> Instruments:
+    <label for="new-artist-instrument"> 
+        <p class="required-field">Instruments:</p> 
         <select form="new-artist-form" name="instrument" id="new-artist-instrument" multiple>
             <option value="Bass Guitar">Bass Guitar</option>
             <option value="Congas">Congas</option>
@@ -42,7 +51,8 @@
         </select>
      </label>
      <br>
-     <label for="new-artist-genre"> Genres:
+     <label for="new-artist-genre"> 
+        <p class="required-field">Genres:</p> 
         <select form="new-artist-form" name="genre" id="new-artist-genre" multiple>
             <option value="Alternative Rock">Alternative Rock</option>
             <option value="Art Rock">Art Rock</option>
@@ -80,7 +90,8 @@
         </select>
      </label>
      <br>
-      <label for="new-artist-occupation"> Occupation:
+      <label for="new-artist-occupation"> 
+        <p class="required-field">Occupation:</p> 
         <select form="new-artist-form" name="occupation" id="new-artist-occupation" multiple>
             <option value="Musician">Musician</option>
             <option value="Songwriter">Songwriter</option>
@@ -92,6 +103,7 @@
         </select>
        {{!-- Other: <input type="text" name="occupation"> --}}
      </label>
+     <p>{{missingFieldErr}}</p>
      <button type="submit" class="regular-btn">Create</button>
 </form>
 
