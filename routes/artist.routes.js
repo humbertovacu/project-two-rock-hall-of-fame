@@ -17,15 +17,19 @@ router.get("/", userLoggedIn, (req, res) => {
 });
 
 router.get("/:artistID", async (req, res) => {
-
   const { artistID } = req.params;
-  const userID = req.session.currentUser._id;
-  let userRating = await Rating.find({userID: userID}).find({objectID: artistID})
+  let userRating;
+  if(req.session.currentUser){
+    const userID = req.session.currentUser._id
+    userRating = await Rating.find({userID: userID}).find({objectID: artistID})
+  } else userRating = '';
+  // const userID = req.session.currentUser._id
+  // let userRating = await Rating.find({userID: userID}).find({objectID: artistID})
 
   Artist.findById(artistID).populate('bands')
     .then(foundArtist => {
     res.render('artist-details', {artist: foundArtist, userRating})})
-});
+  });
 
 router.post(
   "/new-artist",

@@ -77,27 +77,19 @@ router.post("/:bandID/rating", userLoggedIn, async (req, res, next) => {
   const { bandID } = req.params;
   const { bandRating } = req.body;
   const userID = req.session.currentUser._id;
-  console.log(`userID: ${userID}`);
-  console.log(req.body);
+  let ratingDoc = await Rating.find({userID: userID}).find({objectID: bandID});
+  console.log(ratingDoc)
 
-  Rating.create({
-    userID: userID,
-    objectID: bandID,
-    ratingModel: "Band",
-    rating: bandRating,
-  })
-    .then((createdRating) => {
-      res.redirect(`/bands/${bandID}`);
-    })
-    .catch((err) => {
-      if (err.code === 11000) {
-        Rating.findOneAndUpdate(
-          { userID: userID, objectID: bandID },
-          { rating: bandRating },
-          { new: true }
-        ).then((updatedRating) => res.redirect(`/bands/${bandID}`));
-      } else console.log(err);
-    });
+  if(ratingDoc.length === 0){
+    Rating.create({userID: userID, objectID: bandID, ratingModel: 'Band', rating: bandRating})
+    .then(()=> res.redirect(`/bands/${bandID}`))
+    .catch(err => console.log(err))
+  } else {
+    return Rating.findByIdAndUpdate(ratingDoc[0]._id, {rating: bandRating, ratingModel: 'Band'}, {new: true})
+    .then(()=> res.redirect(`/bands/${bandID}`))
+    .catch(err => {
+    (console.log(err))
+  })}
 });
 
 // edit band route shows form
@@ -191,19 +183,19 @@ router.get("/", userLoggedIn, (req, res, next) => {
 // Route band details
 router.get("/:bandID", async (req, res) => {
   const { bandID } = req.params;
-  let bandRating = "";
+  let userRating;
   if (req.session.currentUser) {
-    const { userID } = req.session.currentUser._id;
-    bandRating = await Rating.findOne({ userID: userID }).find({
-      objectID: bandID,
-    });
-  }
+    const userID = req.session.currentUser._id;
+    userRating = await Rating.findOne({ userID: userID }).find({
+      objectID: bandID})
+  } else {
+      userRating = '';
+  };
 
   Band.findById(bandID)
     .populate("members")
     .then((bandFound) => {
-      console.log(bandRating);
-      res.render("band-details.hbs", { singleBand: bandFound, bandRating });
+      res.render("band-details.hbs", { singleBand: bandFound, userRating });
     })
     .catch((err) => console.log(err));
 });
