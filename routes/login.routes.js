@@ -3,8 +3,9 @@ const router = express.Router();
 const User = require("../models/User.model");
 const bcryptjs = require("bcryptjs");
 const saltRounds = 10;
+const { userLoggedIn, userLoggedOut } = require("../middleware/route-guard.js");
 
-router.get("/", (req, res) => {
+router.get("/", userLoggedOut, (req, res) => {
   res.render("auth/login");
 });
 
