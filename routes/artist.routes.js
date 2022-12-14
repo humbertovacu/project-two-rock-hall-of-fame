@@ -19,15 +19,12 @@ router.get("/", (req, res) => {
 
 router.get("/:artistID", async (req, res) => {
   const { artistID } = req.params;
-  let artistRating = "";
-    if(req.session.currentUser){
-      const { userID } = req.session.currentUser._id;
-      artistRating = await Rating.find({userId: userID}).find({objectID: artistID})
-    }
-    
-    Artist.findById(artistID).populate('bands')
+  const userID = req.session.currentUser._id;
+  let userRating = await Rating.find({userID: userID}).find({objectID: artistID})
+
+  Artist.findById(artistID).populate('bands')
     .then(foundArtist => {
-      res.render('artist-details', {artist: foundArtist, artistRating})})
+    res.render('artist-details', {artist: foundArtist, userRating})})
 })
 
 router.post("/new-artist", fileUploader.single('artist-profile-picture'), async (req, res, next) => {
@@ -64,19 +61,18 @@ router.post('/:artistID/rating', userLoggedIn, async (req, res, next)=> {
   const { artistID } = req.params;
   const { artistRating } = req.body;
   const userID = req.session.currentUser._id;
-  console.log(`userID: ${userID}`)
-  console.log(req.body)
-  
-  Rating.create({userID: userID, objectID: artistID, ratingModel: 'Artist', rating: artistRating})
-  .then((createdRating) => {
-    res.redirect(`/artists/${artistID}`)})
-  .catch(err => {
-    if(err.code === 11000){
-      Rating.findOneAndUpdate({userID: userID, objectID: artistID}, {rating: artistRating}, {new: true})
-      .then(updatedRating => res.redirect(`/artists/${artistID}`))
-    } else (console.log(err))
-  })
-  
+  let ratingDoc = await Rating.find({userID: userID}).find({objectID: artistID});
+
+  if(ratingDoc.length === 0){
+    Rating.create({userID: userID, objectID: artistID, ratingModel: 'Artist', rating: artistRating})
+    .then(()=> res.redirect(`/artists/${artistID}`))
+    .catch(err => console.log(err))
+  } else {
+    return Rating.findByIdAndUpdate(ratingDoc[0]._id, {rating: artistRating}, {new: true})
+    .then(()=> res.redirect(`/artists/${artistID}`))
+    .catch(err => {
+    (console.log(err))
+  })}
 });
 
 
