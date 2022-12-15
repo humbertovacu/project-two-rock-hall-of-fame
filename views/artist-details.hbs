@@ -1,4 +1,17 @@
 <h1>{{artist.name}}</h1>
+
+{{#if userFavorite}}
+<form action="/artists/{{artist._id}}/favorite" id="userFavorite" method="post">
+  <input type="hidden" value="removeFavorite" name="isFavorite">
+  <button class="regular-btn">Remove from favorites</button>
+</form>
+{{else}}
+<form action="/artists/{{artist._id}}/favorite" id="userFavorite" method="post">
+  <input type="hidden" value="favorite" name="isFavorite">
+  <button class="regular-btn">Add to favorites</button>
+</form>
+{{/if}}
+
 <br>
 {{#if userRating.[0].rating}}
   <h3>Your Rating:</h3>

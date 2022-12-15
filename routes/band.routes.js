@@ -2,6 +2,7 @@ const express = require("express");
 const Artist = require("../models/Artist.model");
 const Band = require("../models/Band.model");
 const Rating = require("../models/Rating.model");
+const User = require("../models/User.model");
 const router = express.Router();
 const fileUploader = require("../config/cloudinary.config");
 const { default: mongoose } = require("mongoose");
@@ -11,6 +12,35 @@ router.get("/new-band", userLoggedIn, (req, res) => {
   Artist.find().then((allArtists) =>
     res.render("create-band", { artists: allArtists })
   );
+});
+
+// Route band details
+router.get("/:bandID", async (req, res) => {
+  const { bandID } = req.params;
+  let userRating;
+  let userFavorite;
+  if (req.session.currentUser) {
+    const userID = req.session.currentUser._id;
+    userRating = await Rating.findOne({ userID: userID }).find({
+      objectID: bandID});
+    User.findById(userID).populate('favoriteArtists')
+    .then(foundUser => {
+      let favorites = foundUser.favoriteArtists;
+        if(favorites.includes(bandID)){
+          userFavorite = true;
+        } else userFavorite = false;
+        console.log(userFavorite)
+      })
+  } else {
+    userRating = "";
+  }
+
+  Band.findById(bandID)
+    .populate("members")
+    .then((bandFound) => {
+      res.render("band-details.hbs", { singleBand: bandFound, userRating, userFavorite});
+    })
+    .catch((err) => console.log(err));
 });
 
 //Route search a band
@@ -104,6 +134,24 @@ router.post("/:bandID/rating", userLoggedIn, async (req, res, next) => {
   }
 });
 
+//add to favorites
+
+router.post('/:bandID/favorite', userLoggedIn, (req, res) => {
+  const { bandID } = req.params;
+  const userID = req.session.currentUser._id;
+  const { isFavorite } = req.body;
+
+  if(isFavorite === 'favorite'){
+    User.findByIdAndUpdate(userID, {$addToSet:{favoriteArtists: bandID, ratingModel:"Band"}})
+    .then((updatedUser) => res.redirect(`/bands/${bandID}`))
+    .catch(err => console.log(err))
+  } else {
+    User.findByIdAndUpdate(userID, {$pull:{favoriteArtists: bandID}})
+    .then((updatedUser) => res.redirect(`/bands/${bandID}`))
+    .catch(err => console.log(err))
+  }
+})
+
 // edit band route shows form
 router.get("/:id/edit", userLoggedIn, (req, res, next) => {
   const { id } = req.params;
@@ -192,25 +240,6 @@ router.get("/", (req, res, next) => {
     });
 });
 
-// Route band details
-router.get("/:bandID", async (req, res) => {
-  const { bandID } = req.params;
-  let userRating;
-  if (req.session.currentUser) {
-    const userID = req.session.currentUser._id;
-    userRating = await Rating.findOne({ userID: userID }).find({
-      objectID: bandID,
-    });
-  } else {
-    userRating = "";
-  }
 
-  Band.findById(bandID)
-    .populate("members")
-    .then((bandFound) => {
-      res.render("band-details.hbs", { singleBand: bandFound, userRating });
-    })
-    .catch((err) => console.log(err));
-});
 
 module.exports = router;

@@ -3,6 +3,7 @@ const router = express.Router();
 const Artist = require("../models/Artist.model");
 const Band = require("../models/Band.model");
 const Rating = require("../models/Rating.model");
+const User = require("../models/User.model");
 const fileUploader = require("../config/cloudinary.config");
 const { userLoggedIn, userLoggedOut } = require("../middleware/route-guard.js");
 
@@ -49,17 +50,24 @@ router.get("/", (req, res, next) => {
 router.get("/:artistID", async (req, res) => {
   const { artistID } = req.params;
   let userRating;
+  let userFavorite;
   if (req.session.currentUser) {
     const userID = req.session.currentUser._id;
-    userRating = await Rating.find({ userID: userID }).find({
-      objectID: artistID,
-    });
-  } else userRating = "";
+    userRating = await Rating.find({ userID: userID }).find({objectID: artistID});
+    User.findById(userID).populate('favoriteArtists')
+    .then(foundUser => {
+      let favorites = foundUser.favoriteArtists;
+      if(favorites.includes(artistID)){
+        userFavorite = true;
+      } else userFavorite = false;
+      console.log(userFavorite)
+    })
+  } else {userRating = ""};
 
   Artist.findById(artistID)
     .populate("bands")
     .then((foundArtist) => {
-      res.render("artist-details", { artist: foundArtist, userRating });
+      res.render("artist-details", { artist: foundArtist, userRating, userFavorite });
     });
 });
 
@@ -139,6 +147,24 @@ router.post("/:artistID/rating", userLoggedIn, async (req, res, next) => {
       });
   }
 });
+
+//add to favorites
+
+router.post('/:artistID/favorite', userLoggedIn, (req, res) => {
+  const { artistID } = req.params;
+  const userID = req.session.currentUser._id;
+  const { isFavorite } = req.body;
+
+  if(isFavorite === 'favorite'){
+    User.findByIdAndUpdate(userID, {$addToSet:{favoriteArtists: artistID, ratingModel:"Artist"}})
+    .then((updatedUser) => res.redirect(`/artists/${artistID}`))
+    .catch(err => console.log(err))
+  } else {
+    User.findByIdAndUpdate(userID, {$pull:{favoriteArtists: artistID}})
+    .then((updatedUser) => res.redirect(`/artists/${artistID}`))
+    .catch(err => console.log(err))
+  }
+})
 
 //edit artist
 

@@ -1,4 +1,17 @@
 <h1>{{singleBand.name}}</h1>
+
+{{#if userFavorite}}
+<form action="/bands/{{singleBand._id}}/favorite" id="userFavoriteBand" method="post">
+  <input type="hidden" value="removeFavorite" name="isFavorite">
+  <button class="regular-btn">Remove from favorites</button>
+</form>
+{{else}}
+<form action="/bands/{{singleBand._id}}/favorite" id="userFavoriteBand" method="post">
+  <input type="hidden" value="favorite" name="isFavorite">
+  <button class="regular-btn">Add to favorites</button>
+</form>
+{{/if}}
+
 {{#if userRating.[0].rating}}
     <h2>Your Rating:</h2>
 {{else}}
