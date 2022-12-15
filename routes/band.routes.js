@@ -7,7 +7,7 @@ const fileUploader = require("../config/cloudinary.config");
 const { default: mongoose } = require("mongoose");
 const { userLoggedIn, userLoggedOut } = require("../middleware/route-guard.js");
 
-router.get("/new-band", (req, res) => {
+router.get("/new-band", userLoggedIn, (req, res) => {
   Artist.find().then((allArtists) =>
     res.render("create-band", { artists: allArtists })
   );
