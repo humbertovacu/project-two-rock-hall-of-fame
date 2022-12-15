@@ -5,7 +5,7 @@ const Band = require("../models/Band.model");
 const Rating = require("../models/Rating.model");
 const User = require("../models/User.model");
 const fileUploader = require("../config/cloudinary.config");
-const { userLoggedIn, userLoggedOut } = require("../middleware/route-guard.js");
+const { userLoggedIn, userLoggedOut, objectIsBand } = require("../middleware/route-guard.js");
 
 router.get("/new-artist", userLoggedIn, (req, res) => {
   res.render("create-artist");
@@ -88,7 +88,7 @@ router.post(
 
     if (!origin || !birthday) {
       res.render("create-artist", {
-        missingFieldErr: "Please complete all required fields",
+        missingFieldErr: "Please complete all required fields.",
       });
     }
 

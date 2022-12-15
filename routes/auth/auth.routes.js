@@ -4,8 +4,17 @@ const {
   userLoggedIn,
   userLoggedOut,
 } = require("../../middleware/route-guard.js");
+const Band = require("../../models/Band.model");
+const User = require("../../models/User.model");
+const Artist = require("../../models/Artist.model");
 
-router.get("/userProfile", userLoggedIn, (req, res) => {
+router.get("/userProfile", userLoggedIn, async (req, res) => {
+  const userFavorites = req.session.currentUser.favoriteArtists;
+  console.log(userFavorites)
+  let favoriteBands = await userFavorites.forEach(favoriteElement => {
+    Artist.findById(favoriteElement)
+  })
+   console.log(favoriteBands)
   res.render("users/user-profile", { userInSession: req.session.currentUser });
 });
 

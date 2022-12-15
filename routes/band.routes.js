@@ -66,6 +66,8 @@ router.post(
   fileUploader.single("band-profile-picture"),
   (req, res) => {
     const { name, origin, year, genre, membersArray } = req.body;
+    let bandImage;
+
     if (!name || !origin || !year || !genre) {
       res.render("create-band", {
         emptyField: "Please complete all fields before submitting",
@@ -78,6 +80,13 @@ router.post(
       });
       return;
     }
+
+    if(!req.file){
+      bandImage = "https://res.cloudinary.com/djwmauhbh/image/upload/v1671036983/rock-page-images/BlankArtist_w2b1hr.webp"
+    } else {
+      bandImage = req.file.path;
+    }
+
     let membersArrayOrdered = membersArray[0].split(",");
     Band.create({
       name,
@@ -85,7 +94,7 @@ router.post(
       year,
       genre,
       members: membersArrayOrdered,
-      imageUrl: req.file.path,
+      imageUrl: bandImage,
     })
       .then(async (newBand) => {
         for (const memberID of membersArrayOrdered) {
@@ -97,7 +106,11 @@ router.post(
         }
       })
       .then(() => res.redirect("/bands"))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        if(err._message === "Band validation failed"){
+          res.render('create-band', {validArtistErr: 'Please add a registered artist or create a new one'})
+        }
+        console.log(err)});
   }
 );
 

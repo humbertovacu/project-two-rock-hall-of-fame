@@ -30,10 +30,14 @@
         </datalist>
     </label>
         <button type="button" class="regular-btn" onclick="return false" id="add-new-member-btn">Add New Memeber</button>
+        <a href="/artists/new-artist" target="_blank"><button type="button" class="regular-btn">Create new Artist</button></a>
        
      <input type="hidden" value="" id="members-array" name="membersArray[]"> 
         {{#if noMembers}}
             <p>{{noMembers}}</p>
+        {{/if}}
+        {{#if validArtistErr}}
+            <p>{{validArtistErr}}</p>
         {{/if}}
     <br>
     
@@ -80,7 +84,7 @@
      <button id="add-band-btn" class="regular-btn" type="submit">Create Band</button>  
 
      {{#if emptyField}}
-            <p>{{emptyField}}</p>
+            <p class="incomplete-field">{{emptyField}}</p>
     {{/if}}
 </form>
  <script src="/js/create-band-script.js"></script>
