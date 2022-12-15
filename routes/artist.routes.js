@@ -10,47 +10,79 @@ router.get("/new-artist", userLoggedIn, (req, res) => {
   res.render("create-artist");
 });
 
-router.get("/", userLoggedIn, (req, res) => {
-  Artist.find()
-    .then((artists) => res.render("artists", { artists }))
-    .catch((err) => res.send(err));
+// Route List of artists
+router.get("/", (req, res, next) => {
+  Band.find()
+    .then((allTheArtistsFromDB) => {
+      const orderedArtistsList = allTheArtistsFromDB.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+
+      console.log("Retrieved artists from DB:", allTheArtistsFromDB);
+      res.render("artists.hbs", { artists: orderedArtistsList });
+    })
+
+    .catch((error) => {
+      console.log("Error while getting the bands from the DB: ", error);
+      next(error);
+    });
 });
 
 router.get("/:artistID", async (req, res) => {
   const { artistID } = req.params;
   let userRating;
-  if(req.session.currentUser){
-    const userID = req.session.currentUser._id
-    userRating = await Rating.find({userID: userID}).find({objectID: artistID})
-  } else userRating = '';
+  if (req.session.currentUser) {
+    const userID = req.session.currentUser._id;
+    userRating = await Rating.find({ userID: userID }).find({
+      objectID: artistID,
+    });
+  } else userRating = "";
 
-  Artist.findById(artistID).populate('bands')
-    .then(foundArtist => {
-    res.render('artist-details', {artist: foundArtist, userRating})})
-  });
+  Artist.findById(artistID)
+    .populate("bands")
+    .then((foundArtist) => {
+      res.render("artist-details", { artist: foundArtist, userRating });
+    });
+});
 
-
-router.post("/new-artist", fileUploader.single("artist-profile-picture"), async (req, res) => {
-    const {name, origin, birthday, deathDate, instrument, genre, occupation} = req.body;
-    console.log(req.body)
+router.post(
+  "/new-artist",
+  fileUploader.single("artist-profile-picture"),
+  async (req, res) => {
+    const { name, origin, birthday, deathDate, instrument, genre, occupation } =
+      req.body;
+    console.log(req.body);
     let artistImage;
-    
-    if(!name){
-      res.render('create-artist', {noNameMessage: `Please include artist's name`})
+
+    if (!name) {
+      res.render("create-artist", {
+        noNameMessage: `Please include artist's name`,
+      });
     }
 
-    if(!origin || !birthday) {
-      res.render('create-artist', {missingFieldErr: 'Please complete all required fields'})
-    } 
+    if (!origin || !birthday) {
+      res.render("create-artist", {
+        missingFieldErr: "Please complete all required fields",
+      });
+    }
 
-    if(!req.file){
-      artistImage = 'https://res.cloudinary.com/djwmauhbh/image/upload/v1671036983/rock-page-images/BlankArtist_w2b1hr.webp';
+    if (!req.file) {
+      artistImage =
+        "https://res.cloudinary.com/djwmauhbh/image/upload/v1671036983/rock-page-images/BlankArtist_w2b1hr.webp";
     } else {
-      artistImage = req.file.path};
-    
-    
-    
-    Artist.create({name, origin, birthday, deathDate, instrument, genre, occupation, imageUrl: artistImage})
+      artistImage = req.file.path;
+    }
+
+    Artist.create({
+      name,
+      origin,
+      birthday,
+      deathDate,
+      instrument,
+      genre,
+      occupation,
+      imageUrl: artistImage,
+    })
       .then(() => res.redirect("/artists"))
       .catch((err) => {
         console.log(err);
@@ -64,23 +96,35 @@ router.post("/:artistID/rating", userLoggedIn, async (req, res, next) => {
   const { artistID } = req.params;
   const { artistRating } = req.body;
   const userID = req.session.currentUser._id;
-  let ratingDoc = await Rating.find({userID: userID}).find({objectID: artistID});
+  let ratingDoc = await Rating.find({ userID: userID }).find({
+    objectID: artistID,
+  });
 
-  if(ratingDoc.length === 0){
-    Rating.create({userID: userID, objectID: artistID, ratingModel: 'Artist', rating: artistRating})
-    .then(()=> res.redirect(`/artists/${artistID}`))
-    .catch(err => console.log(err))
+  if (ratingDoc.length === 0) {
+    Rating.create({
+      userID: userID,
+      objectID: artistID,
+      ratingModel: "Artist",
+      rating: artistRating,
+    })
+      .then(() => res.redirect(`/artists/${artistID}`))
+      .catch((err) => console.log(err));
   } else {
-    return Rating.findByIdAndUpdate(ratingDoc[0]._id, {rating: artistRating}, {new: true})
-    .then(()=> res.redirect(`/artists/${artistID}`))
-    .catch(err => {
-    (console.log(err))
-  })}
+    return Rating.findByIdAndUpdate(
+      ratingDoc[0]._id,
+      { rating: artistRating },
+      { new: true }
+    )
+      .then(() => res.redirect(`/artists/${artistID}`))
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 });
 
 //edit artist
 
-router.get("/:id/edit", (req, res) => {
+router.get("/:id/edit", userLoggedIn, (req, res) => {
   const { id } = req.params;
   Artist.findById(id).then((foundArtist) => {
     res.render("edit-artist", { artist: foundArtist });
@@ -116,7 +160,7 @@ router.post(
 
 //Delete artist
 
-router.post("/:artistId/delete", (req, res) => {
+router.post("/:artistId/delete", userLoggedIn, (req, res) => {
   const { artistId } = req.params;
   Artist.findByIdAndDelete(artistId)
     .then(() => res.redirect("/artists"))

@@ -77,23 +77,35 @@ router.post("/:bandID/rating", userLoggedIn, async (req, res, next) => {
   const { bandID } = req.params;
   const { bandRating } = req.body;
   const userID = req.session.currentUser._id;
-  let ratingDoc = await Rating.find({userID: userID}).find({objectID: bandID});
-  console.log(ratingDoc)
+  let ratingDoc = await Rating.find({ userID: userID }).find({
+    objectID: bandID,
+  });
+  console.log(ratingDoc);
 
-  if(ratingDoc.length === 0){
-    Rating.create({userID: userID, objectID: bandID, ratingModel: 'Band', rating: bandRating})
-    .then(()=> res.redirect(`/bands/${bandID}`))
-    .catch(err => console.log(err))
+  if (ratingDoc.length === 0) {
+    Rating.create({
+      userID: userID,
+      objectID: bandID,
+      ratingModel: "Band",
+      rating: bandRating,
+    })
+      .then(() => res.redirect(`/bands/${bandID}`))
+      .catch((err) => console.log(err));
   } else {
-    return Rating.findByIdAndUpdate(ratingDoc[0]._id, {rating: bandRating, ratingModel: 'Band'}, {new: true})
-    .then(()=> res.redirect(`/bands/${bandID}`))
-    .catch(err => {
-    (console.log(err))
-  })}
+    return Rating.findByIdAndUpdate(
+      ratingDoc[0]._id,
+      { rating: bandRating, ratingModel: "Band" },
+      { new: true }
+    )
+      .then(() => res.redirect(`/bands/${bandID}`))
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 });
 
 // edit band route shows form
-router.get("/:id/edit", (req, res, next) => {
+router.get("/:id/edit", userLoggedIn, (req, res, next) => {
   const { id } = req.params;
   Band.findById(id)
     .populate("members")
@@ -155,7 +167,7 @@ router.post(
 
 // // POST route to delete a band from the database
 
-router.post("/:bandId/delete", (req, res, next) => {
+router.post("/:bandId/delete", userLoggedIn, (req, res, next) => {
   const { bandId } = req.params;
   Band.findByIdAndDelete(bandId)
     .then(() => res.redirect("/bands"))
@@ -163,7 +175,7 @@ router.post("/:bandId/delete", (req, res, next) => {
 });
 
 // Route List of bands
-router.get("/", userLoggedIn, (req, res, next) => {
+router.get("/", (req, res, next) => {
   Band.find()
     .then((allTheBandsFromDB) => {
       const orderedBandList = allTheBandsFromDB.sort((a, b) =>
@@ -187,10 +199,11 @@ router.get("/:bandID", async (req, res) => {
   if (req.session.currentUser) {
     const userID = req.session.currentUser._id;
     userRating = await Rating.findOne({ userID: userID }).find({
-      objectID: bandID})
+      objectID: bandID,
+    });
   } else {
-      userRating = '';
-  };
+    userRating = "";
+  }
 
   Band.findById(bandID)
     .populate("members")

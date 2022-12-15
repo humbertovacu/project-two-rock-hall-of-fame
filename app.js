@@ -49,9 +49,6 @@ app.use("/sign-up", signupRoutes);
 const authRoutes = require("./routes/auth/auth.routes");
 app.use("/auth", authRoutes);
 
-const surveyRoutes = require("./routes/survey.routes");
-app.use("/surveys", surveyRoutes);
-
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
