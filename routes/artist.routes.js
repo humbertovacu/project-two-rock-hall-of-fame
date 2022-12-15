@@ -10,9 +10,27 @@ router.get("/new-artist", userLoggedIn, (req, res) => {
   res.render("create-artist");
 });
 
+//Route search an artist
+router.get("/search", (req, res) => {
+  const { artistName } = req.query;
+
+  /*regex is the pattern. RegExp() is a constructor reserved to J that 
+  searchs for a string pattern, that pattern is represented as the first 
+  argument. The second argument "i" is also called a flag, 
+  there are different flags to be used. In this case the "i" flag is used to  */
+  const regex = new RegExp(artistName, "i");
+
+  /*$regex is a method from Mongo DB to look for matches */
+  Artist.find({ name: { $regex: regex } })
+    .then((allTheArtistsFromDB) => {
+      res.render("artists-results.hbs", { artists: allTheArtistsFromDB });
+    })
+    .catch((err) => console.log(err));
+});
+
 // Route List of artists
 router.get("/", (req, res, next) => {
-  Band.find()
+  Artist.find()
     .then((allTheArtistsFromDB) => {
       const orderedArtistsList = allTheArtistsFromDB.sort((a, b) =>
         a.name.localeCompare(b.name)

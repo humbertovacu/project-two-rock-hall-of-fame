@@ -17,9 +17,9 @@ router.get("/new-band", (req, res) => {
 router.get("/search", (req, res) => {
   const { bandName } = req.query;
 
-  /*regex is the pattern. RegExp() is a constructor reserved to J that 
-  searchs for a string pattern, that pattern is represented as the first 
-  argument. The second argument "i" is also called a flag, 
+  /*regex is the pattern. RegExp() is a constructor reserved to J that
+  searchs for a string pattern, that pattern is represented as the first
+  argument. The second argument "i" is also called a flag,
   there are different flags to be used. In this case the "i" flag is used to  */
   const regex = new RegExp(bandName, "i");
 
