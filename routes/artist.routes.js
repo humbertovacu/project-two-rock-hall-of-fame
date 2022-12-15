@@ -10,10 +10,22 @@ router.get("/new-artist", userLoggedIn, (req, res) => {
   res.render("create-artist");
 });
 
-router.get("/", (req, res) => {
-  Artist.find()
-    .then((artists) => res.render("artists", { artists }))
-    .catch((err) => res.send(err));
+// Route List of artists
+router.get("/", (req, res, next) => {
+  Band.find()
+    .then((allTheArtistsFromDB) => {
+      const orderedArtistsList = allTheArtistsFromDB.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+
+      console.log("Retrieved artists from DB:", allTheArtistsFromDB);
+      res.render("artists.hbs", { artists: orderedArtistsList });
+    })
+
+    .catch((error) => {
+      console.log("Error while getting the bands from the DB: ", error);
+      next(error);
+    });
 });
 
 router.get("/:artistID", async (req, res) => {
