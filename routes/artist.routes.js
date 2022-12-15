@@ -6,7 +6,7 @@ const Rating = require("../models/Rating.model");
 const fileUploader = require("../config/cloudinary.config");
 const { userLoggedIn, userLoggedOut } = require("../middleware/route-guard.js");
 
-router.get("/new-artist", (req, res) => {
+router.get("/new-artist", userLoggedIn, (req, res) => {
   res.render("create-artist");
 });
 
@@ -18,48 +18,39 @@ router.get("/", userLoggedIn, (req, res) => {
 
 router.get("/:artistID", async (req, res) => {
   const { artistID } = req.params;
-  let artistRating = "";
-  if (req.session.currentUser) {
-    const { userID } = req.session.currentUser._id;
-    artistRating = await Rating.find({ userId: userID }).find({
-      objectID: artistID,
-    });
-  }
+  let userRating;
+  if(req.session.currentUser){
+    const userID = req.session.currentUser._id
+    userRating = await Rating.find({userID: userID}).find({objectID: artistID})
+  } else userRating = '';
 
-  Artist.findById(artistID)
-    .populate("bands")
-    .then((foundArtist) => {
-      res.render("artist-details", { artist: foundArtist, artistRating });
-    });
-});
+  Artist.findById(artistID).populate('bands')
+    .then(foundArtist => {
+    res.render('artist-details', {artist: foundArtist, userRating})})
+  });
 
-router.post(
-  "/new-artist",
-  fileUploader.single("artist-profile-picture"),
-  async (req, res, next) => {
-    const {
-      name,
-      origin,
-      birthday,
-      deathDate,
-      bands,
-      instrument,
-      genre,
-      occupation,
-    } = req.body;
 
-    let bandsDB = await Band.find();
+router.post("/new-artist", fileUploader.single("artist-profile-picture"), async (req, res) => {
+    const {name, origin, birthday, deathDate, instrument, genre, occupation} = req.body;
+    console.log(req.body)
+    let artistImage;
+    
+    if(!name){
+      res.render('create-artist', {noNameMessage: `Please include artist's name`})
+    }
 
-    Artist.create({
-      name,
-      origin,
-      birthday,
-      deathDate,
-      instrument,
-      genre,
-      occupation,
-      imageUrl: req.file.path,
-    })
+    if(!origin || !birthday) {
+      res.render('create-artist', {missingFieldErr: 'Please complete all required fields'})
+    } 
+
+    if(!req.file){
+      artistImage = 'https://res.cloudinary.com/djwmauhbh/image/upload/v1671036983/rock-page-images/BlankArtist_w2b1hr.webp';
+    } else {
+      artistImage = req.file.path};
+    
+    
+    
+    Artist.create({name, origin, birthday, deathDate, instrument, genre, occupation, imageUrl: artistImage})
       .then(() => res.redirect("/artists"))
       .catch((err) => {
         console.log(err);
@@ -73,27 +64,18 @@ router.post("/:artistID/rating", userLoggedIn, async (req, res, next) => {
   const { artistID } = req.params;
   const { artistRating } = req.body;
   const userID = req.session.currentUser._id;
-  console.log(`userID: ${userID}`);
-  console.log(req.body);
+  let ratingDoc = await Rating.find({userID: userID}).find({objectID: artistID});
 
-  Rating.create({
-    userID: userID,
-    objectID: artistID,
-    ratingModel: "Artist",
-    rating: artistRating,
-  })
-    .then((createdRating) => {
-      res.redirect(`/artists/${artistID}`);
-    })
-    .catch((err) => {
-      if (err.code === 11000) {
-        Rating.findOneAndUpdate(
-          { userID: userID, objectID: artistID },
-          { rating: artistRating },
-          { new: true }
-        ).then((updatedRating) => res.redirect(`/artists/${artistID}`));
-      } else console.log(err);
-    });
+  if(ratingDoc.length === 0){
+    Rating.create({userID: userID, objectID: artistID, ratingModel: 'Artist', rating: artistRating})
+    .then(()=> res.redirect(`/artists/${artistID}`))
+    .catch(err => console.log(err))
+  } else {
+    return Rating.findByIdAndUpdate(ratingDoc[0]._id, {rating: artistRating}, {new: true})
+    .then(()=> res.redirect(`/artists/${artistID}`))
+    .catch(err => {
+    (console.log(err))
+  })}
 });
 
 //edit artist
