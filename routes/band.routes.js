@@ -23,9 +23,9 @@ router.get("/:bandID", async (req, res) => {
     const userID = req.session.currentUser._id;
     userRating = await Rating.findOne({ userID: userID }).find({
       objectID: bandID});
-    User.findById(userID).populate('favoriteArtists')
+    User.findById(userID)
     .then(foundUser => {
-      let favorites = foundUser.favoriteArtists;
+      let favorites = foundUser.favoriteBands;
         if(favorites.includes(bandID)){
           userFavorite = true;
         } else userFavorite = false;
@@ -123,7 +123,6 @@ router.post("/:bandID/rating", userLoggedIn, async (req, res, next) => {
   let ratingDoc = await Rating.find({ userID: userID }).find({
     objectID: bandID,
   });
-  console.log(ratingDoc);
 
   if (ratingDoc.length === 0) {
     Rating.create({
@@ -155,11 +154,11 @@ router.post('/:bandID/favorite', userLoggedIn, (req, res) => {
   const { isFavorite } = req.body;
 
   if(isFavorite === 'favorite'){
-    User.findByIdAndUpdate(userID, {$addToSet:{favoriteArtists: bandID, ratingModel:"Band"}})
+    User.findByIdAndUpdate(userID, {$addToSet:{favoriteBands: bandID}})
     .then((updatedUser) => res.redirect(`/bands/${bandID}`))
     .catch(err => console.log(err))
   } else {
-    User.findByIdAndUpdate(userID, {$pull:{favoriteArtists: bandID}})
+    User.findByIdAndUpdate(userID, {$pull:{favoriteBands: bandID}})
     .then((updatedUser) => res.redirect(`/bands/${bandID}`))
     .catch(err => console.log(err))
   }
@@ -242,8 +241,6 @@ router.get("/", (req, res, next) => {
       const orderedBandList = allTheBandsFromDB.sort((a, b) =>
         a.name.localeCompare(b.name)
       );
-
-      // console.log("Retrieved bands from DB:", allTheBandsFromDB);
       res.render("bands.hbs", { bands: orderedBandList });
     })
 

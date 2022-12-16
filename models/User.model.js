@@ -20,11 +20,8 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Password is required."],
     },
-    favoriteArtists: [{type: Schema.Types.ObjectId, refPath: 'ratingModel', unique: true}],
-    ratingModel: {
-      type: String,
-      required: true,
-      enum: ['Artist', 'Band']},
+    favoriteArtists: [{type: Schema.Types.ObjectId, ref: 'Artist', unique: true}],
+    favoriteBands: [{type: Schema.Types.ObjectId, ref: 'Band', unique: true}],
   },
   {
     timestamps: true,
