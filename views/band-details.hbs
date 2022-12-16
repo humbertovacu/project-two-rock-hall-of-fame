@@ -1,80 +1,82 @@
-<h1>{{singleBand.name}}</h1>
-<br>
+<section class="page-section">
+  <h1>{{singleBand.name}}</h1>
+  <br>
 
-{{#if userFavorite}}
-<form action="/bands/{{singleBand._id}}/favorite" id="userFavoriteBand" method="post">
-  <input type="hidden" value="removeFavorite" name="isFavorite">
-  <button class="regular-btn">Remove from favorites</button>
-</form>
-{{else}}
-<form action="/bands/{{singleBand._id}}/favorite" id="userFavoriteBand" method="post">
-  <input type="hidden" value="favorite" name="isFavorite">
-  <button class="regular-btn">Add to favorites</button>
-</form>
-{{/if}}
-<br>
-{{#if userRating.[0].rating}}
-    <h2>Your Rating:</h2>
-{{else}}
-    <h2>Rate Band:</h2>
-{{/if}}
-<br>
-<div class="artist-star-rating">
-  <button class="star">&#9734;</button> 
-  <button class="star">&#9734;</button> 
-  <button class="star">&#9734;</button> 
-  <button class="star">&#9734;</button> 
-  <button class="star">&#9734;</button> 
-  <button class="star">&#9734;</button> 
-  <button class="star">&#9734;</button> 
-  <button class="star">&#9734;</button> 
-  <button class="star">&#9734;</button> 
-  <button class="star">&#9734;</button>
-  {{#if userRating.[0].rating}}
-    <p class="your_rating">{{userRating.[0].rating}} of 10</p>
+  {{#if userFavorite}}
+  <form action="/bands/{{singleBand._id}}/favorite" id="userFavoriteBand" method="post">
+    <input type="hidden" value="removeFavorite" name="isFavorite">
+    <button class="regular-btn">Remove from favorites</button>
+  </form>
   {{else}}
-    <p class="your_rating">0 of 10</p>
+  <form action="/bands/{{singleBand._id}}/favorite" id="userFavoriteBand" method="post">
+    <input type="hidden" value="favorite" name="isFavorite">
+    <button class="regular-btn">Add to favorites</button>
+  </form>
   {{/if}}
   <br>
-   {{#if averageRating}}
-  <h3>Global Rating:</h3>
-  <p>{{averageRating}}</p> 
+  {{#if userRating.[0].rating}}
+      <h2>Your Rating:</h2>
+  {{else}}
+      <h2>Rate Band:</h2>
   {{/if}}
   <br>
-<form action="/bands/{{singleBand._id}}/rating" method="POST" id="band-rating">
-    <input id="band-rating-input" name="bandRating" type="hidden" value="0">
-</form>
-    <input type="hidden" id="userVote" value="{{userRating.[0].rating}}">
-</div>
-<br>
-<img src={{singleBand.imageUrl}} alt={{singleBand.name}} "picture" width=300px height="auto">
-<br>
+  <div class="artist-star-rating">
+    <button class="star">&#9734;</button> 
+    <button class="star">&#9734;</button> 
+    <button class="star">&#9734;</button> 
+    <button class="star">&#9734;</button> 
+    <button class="star">&#9734;</button> 
+    <button class="star">&#9734;</button> 
+    <button class="star">&#9734;</button> 
+    <button class="star">&#9734;</button> 
+    <button class="star">&#9734;</button> 
+    <button class="star">&#9734;</button>
+    {{#if userRating.[0].rating}}
+      <p class="your_rating">{{userRating.[0].rating}} of 10</p>
+    {{else}}
+      <p class="your_rating">0 of 10</p>
+    {{/if}}
+    <br>
+    {{#if averageRating}}
+    <h3>Global Rating:</h3>
+    <p>{{averageRating}}</p> 
+    {{/if}}
+    <br>
+  <form action="/bands/{{singleBand._id}}/rating" method="POST" id="band-rating">
+      <input id="band-rating-input" name="bandRating" type="hidden" value="0">
+  </form>
+      <input type="hidden" id="userVote" value="{{userRating.[0].rating}}">
+  </div>
+  <br>
+  <img src={{singleBand.imageUrl}} alt={{singleBand.name}} "picture" width=300px height="auto">
+  <br>
 
-<h3>Origin:</h3>
-<p>{{singleBand.origin}}</p>
-<br>
-<h3>Year:</h3>
-<p>{{singleBand.year}}</p>
-<br>
-<h3>Members:</h3>
-{{#each singleBand.members}}
-<a href="/artists/{{id}}">{{name}}</a>
-<br>
-{{/each}}
-<br>
-<h3>Genre:</h3>
-<p>{{singleBand.genre}}</p>
-<br>
+  <h3>Origin:</h3>
+  <p>{{singleBand.origin}}</p>
+  <br>
+  <h3>Year:</h3>
+  <p>{{singleBand.year}}</p>
+  <br>
+  <h3>Members:</h3>
+  {{#each singleBand.members}}
+  <a href="/artists/{{id}}">{{name}}</a>
+  <br>
+  {{/each}}
+  <br>
+  <h3>Genre:</h3>
+  <p>{{singleBand.genre}}</p>
+  <br>
 
-{{!-- Edit a Band --}}
-<div>
-<a href="/bands/{{singleBand._id}}/edit"><button class="regular-btn">Edit</button></a>
-</div>
-<br>
+  {{!-- Edit a Band --}}
+  <div>
+  <a href="/bands/{{singleBand._id}}/edit"><button class="regular-btn">Edit</button></a>
+  </div>
+  <br>
 
-{{!-- Delete a Band --}}
-<form action="/bands/{{singleBand._id}}/delete" method="POST">
-    <button class="regular-btn">Delete</button>
-</form>
+  {{!-- Delete a Band --}}
+  <form action="/bands/{{singleBand._id}}/delete" method="POST">
+      <button class="regular-btn">Delete</button>
+  </form>
+</section>
 
- <script src="/js/band-details-script.js"></script>
+<script src="/js/band-details-script.js"></script>

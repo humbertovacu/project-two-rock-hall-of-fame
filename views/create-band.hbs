@@ -1,90 +1,92 @@
-<h1>New Band</h1>
-<form action="/bands/new-band" method="post" id="newBandForm" enctype="multipart/form-data">
-    <label for="new-band-name">Band Name:
-        <input type="text" name="name" id="new-band-name">
-    </label> 
-    <br>
+<section class="page-section">
+    <h1>New Band</h1>
+    <form action="/bands/new-band" method="post" id="newBandForm" enctype="multipart/form-data">
+        <label for="new-band-name">Band Name:
+            <input type="text" name="name" id="new-band-name">
+        </label> 
+        <br>
 
-     <label for="new-band-picture"> Band Picture:
-        <input type="file" name="band-profile-picture" id="new-band-picture">
-    </label>
-    <br>
+        <label for="new-band-picture"> Band Picture:
+            <input type="file" name="band-profile-picture" id="new-band-picture">
+        </label>
+        <br>
 
-    <label for="new-band-origin"> Band origin:
-        <input type="text" name="origin" id="new-band-origin">
-    </label>
-    <br>
+        <label for="new-band-origin"> Band origin:
+            <input type="text" name="origin" id="new-band-origin">
+        </label>
+        <br>
 
-     <label for="new-band-year"> Year:
-        <input type="type" name="year" id="new-band-year">
-     </label>
-    <br>
-    
-    <label for="new-band-members" id="add-member-label"> Band Members:
-        <p id="added-members"></p>
-        <input type="text" name="members" class="new-band-members" list="artists-list" id="members">
-        <datalist id="artists-list">
-            {{#each artists}}
-                <option class="artist-option" value ="{{name}}" data-value="{{_id}}"></option>
-            {{/each}}
-        </datalist>
-    </label>
-        <button type="button" class="regular-btn" onclick="return false" id="add-new-member-btn">Add New Memeber</button>
-        <a href="/artists/new-artist" target="_blank"><button type="button" class="regular-btn">Create new Artist</button></a>
-       
-     <input type="hidden" value="" id="members-array" name="membersArray[]"> 
-        {{#if noMembers}}
-            <p>{{noMembers}}</p>
+        <label for="new-band-year"> Year:
+            <input type="type" name="year" id="new-band-year">
+        </label>
+        <br>
+        
+        <label for="new-band-members" id="add-member-label"> Band Members:
+            <p id="added-members"></p>
+            <input type="text" name="members" class="new-band-members" list="artists-list" id="members">
+            <datalist id="artists-list">
+                {{#each artists}}
+                    <option class="artist-option" value ="{{name}}" data-value="{{_id}}"></option>
+                {{/each}}
+            </datalist>
+        </label>
+            <button type="button" class="regular-btn" onclick="return false" id="add-new-member-btn">Add New Memeber</button>
+            <a href="/artists/new-artist" target="_blank"><button type="button" class="regular-btn">Create new Artist</button></a>
+        
+        <input type="hidden" value="" id="members-array" name="membersArray[]"> 
+            {{#if noMembers}}
+                <p>{{noMembers}}</p>
+            {{/if}}
+            {{#if validArtistErr}}
+                <p>{{validArtistErr}}</p>
+            {{/if}}
+        <br>
+        
+        <label for="new-band-genre"> Genre:
+            <select form="newBandForm" name="genre" id="new-band-genre" multiple>
+                <option value="Alternative Rock">Alternative Rock</option>
+                <option value="Art Rock">Art Rock</option>
+                <option value="Blues">Blues</option>
+                <option value="Blues Rock">Blues Rock</option>
+                <option value="Celtic Rock">Celtic Rock</option>
+                <option value="Country">Country</option>
+                <option value="Country Rock">Country Rock</option>
+                <option value="Electronica">Electronica</option>
+                <option value="Experimental Rock">Experimental Rock</option>
+                <option value="Folk">Folk</option>
+                <option value="Folk Rock">Harmonica</option>
+                <option value="Glam Rock">Glam Rock</option>
+                <option value="Gothic Rock">Gothic Rock</option>
+                <option value="Hard Rock">Hard Rock</option>
+                <option value="Indie Pop">Indie Pop</option>
+                <option value="Indie Rock">Indie Rock</option>
+                <option value="Jazz">Jazz</option>
+                <option value="Latin Jazz">Latin Jazz</option>
+                <option value="Latin Rock">Latin Rock</option>
+                <option value="Metal">Metal</option>
+                <option value="New Wave">New Wave</option>
+                <option value="Noise Pop">Noise Pop</option>
+                <option value="Noise Rock">Noise Rock</option>
+                <option value="Pop">Pop</option>
+                <option value="Post Punk">Post Punk</option>
+                <option value="Progressive Rock">Progressive Rock</option>
+                <option value="Psychedelic Rock">Psychedelic Rock</option>
+                <option value="Punk Rock">Punk Rock</option>
+                <option value="Rhythm & Blues">Rhythm & Blues</option>
+                <option value="Rock">Rock</option>
+                <option value="Rock & Roll">Rock & Roll</option>
+                <option value="Surf Rock">Surf Rock</option>
+                <option value="Synthpop">Synthpop</option>
+            </select>
+        </label>
+        <br>
+
+        </label>
+        <button id="add-band-btn" class="regular-btn" type="submit">Create Band</button>  
+
+        {{#if emptyField}}
+                <p class="incomplete-field">{{emptyField}}</p>
         {{/if}}
-        {{#if validArtistErr}}
-            <p>{{validArtistErr}}</p>
-        {{/if}}
-    <br>
-    
-     <label for="new-band-genre"> Genre:
-        <select form="newBandForm" name="genre" id="new-band-genre" multiple>
-            <option value="Alternative Rock">Alternative Rock</option>
-            <option value="Art Rock">Art Rock</option>
-            <option value="Blues">Blues</option>
-            <option value="Blues Rock">Blues Rock</option>
-            <option value="Celtic Rock">Celtic Rock</option>
-            <option value="Country">Country</option>
-            <option value="Country Rock">Country Rock</option>
-            <option value="Electronica">Electronica</option>
-            <option value="Experimental Rock">Experimental Rock</option>
-            <option value="Folk">Folk</option>
-            <option value="Folk Rock">Harmonica</option>
-            <option value="Glam Rock">Glam Rock</option>
-            <option value="Gothic Rock">Gothic Rock</option>
-            <option value="Hard Rock">Hard Rock</option>
-            <option value="Indie Pop">Indie Pop</option>
-            <option value="Indie Rock">Indie Rock</option>
-            <option value="Jazz">Jazz</option>
-            <option value="Latin Jazz">Latin Jazz</option>
-            <option value="Latin Rock">Latin Rock</option>
-            <option value="Metal">Metal</option>
-            <option value="New Wave">New Wave</option>
-            <option value="Noise Pop">Noise Pop</option>
-            <option value="Noise Rock">Noise Rock</option>
-            <option value="Pop">Pop</option>
-            <option value="Post Punk">Post Punk</option>
-            <option value="Progressive Rock">Progressive Rock</option>
-            <option value="Psychedelic Rock">Psychedelic Rock</option>
-            <option value="Punk Rock">Punk Rock</option>
-            <option value="Rhythm & Blues">Rhythm & Blues</option>
-            <option value="Rock">Rock</option>
-            <option value="Rock & Roll">Rock & Roll</option>
-            <option value="Surf Rock">Surf Rock</option>
-            <option value="Synthpop">Synthpop</option>
-        </select>
-     </label>
-     <br>
-
-     </label>
-     <button id="add-band-btn" class="regular-btn" type="submit">Create Band</button>  
-
-     {{#if emptyField}}
-            <p class="incomplete-field">{{emptyField}}</p>
-    {{/if}}
-</form>
- <script src="/js/create-band-script.js"></script>
+    </form>
+<section class="page-section"></section>
+<script src="/js/create-band-script.js"></script>

@@ -1,94 +1,96 @@
-<h1>Edit Band</h1>
-<br>
-
-<form action="/bands/{{band._id}}" method="post" id="editBandForm" enctype="multipart/form-data">
-    <label for="edit-band-name">Band Name:
-        <input type="text" name="name" id="edit-band-name" value="{{band.name}}">
-    </label> 
+<section class="page-section">
+    <h1>Edit Band</h1>
     <br>
 
-    <img src="{{band.imageUrl}}" alt="{{band.name}}-image" width="400" height="auto">
-    <br>
-
-    <input type="hidden" name="originalPicture" value="{{band.imageUrl}}">
-    <br>
-
-    <label for="edit-band-picture"> Change Band Picture:
-        <input type="file" name="band-profile-picture" id="edit-artist-picture">
-    </label>
-    <br>
-
-    <label for="edit-band-origin"> Band origin:
-        <input type="text" name="origin" id="edit-band-origin" value="{{band.origin}}">
-    </label>
-
-    <br>
-     <label for="edit-band-year"> Year:
-        <input type="type" name="year" id="edit-band-year" value="{{band.year}}">
-     </label>
-    <br>
-    
-    <label for="edit-band-members" id="add-member-label"> Band Members:
+    <form action="/bands/{{band._id}}" method="post" id="editBandForm" enctype="multipart/form-data">
+        <label for="edit-band-name">Band Name:
+            <input type="text" name="name" id="edit-band-name" value="{{band.name}}">
+        </label> 
         <br>
-        {{#each band.members}}
-          <input type="checkbox" name="originalMembers[]" value="{{_id}}" checked>
-          <label for="originalMembers[]">{{name}}</label>
-        {{/each}}
-    </label>
-        {{!-- <input type="hidden" name="originalMembers[]" id="edit-band-members" list="artists-list" value="{{#each band.members}}{{_id}},{{/each}}"> --}}
-        <input type="text" name="members" id="members" list="artists-list">
-        <datalist id="artists-list">
-            {{#each allArtists}}
-                <option class="artist-option" value ="{{name}}" data-value="{{_id}}"></option>
-            {{/each}}
-        </datalist>
-        <button type="button" class="regular-btn" id="add-member-btn-edit">Add Member</button>
-    <br>
 
-    <input type="hidden" name="bandGenres" value="{{band.genre}}">
-    <p>Hold Cmd or Ctrl to add a new genre. Deselect to remove genre:</p>
- 
-    <label for="edit-band-genre"> Genres:
-        <select form="editBandForm" name="genre" id="edit-band-genre" multiple>
-            <option class="genre-option" value="Alternative Rock">Alternative Rock</option>
-            <option class="genre-option" value="Art Rock">Art Rock</option>
-            <option class="genre-option" value="Blues">Blues</option>
-            <option class="genre-option" value="Blues Rock">Blues Rock</option>
-            <option class="genre-option" value="Celtic Rock">Celtic Rock</option>
-            <option class="genre-option" value="Country">Country</option>
-            <option class="genre-option" value="Country Rock">Country Rock</option>
-            <option class="genre-option" value="Electronica">Electronica</option>
-            <option class="genre-option" value="Experimental Rock">Experimental Rock</option>
-            <option class="genre-option" value="Folk">Folk</option>
-            <option class="genre-option" value="Folk Rock">Harmonica</option>
-            <option class="genre-option" value="Glam Rock">Glam Rock</option>
-            <option class="genre-option" value="Gothic Rock">Gothic Rock</option>
-            <option class="genre-option" value="Hard Rock">Hard Rock</option>
-            <option class="genre-option" value="Indie Pop">Indie Pop</option>
-            <option class="genre-option" value="Indie Rock">Indie Rock</option>
-            <option class="genre-option" value="Jazz">Jazz</option>
-            <option class="genre-option" value="Latin Jazz">Latin Jazz</option>
-            <option class="genre-option" value="Latin Rock">Latin Rock</option>
-            <option class="genre-option" value="Metal">Metal</option>
-            <option class="genre-option" value="New Wave">New Wave</option>
-            <option class="genre-option" value="Noise Pop">Noise Pop</option>
-            <option class="genre-option" value="Noise Rock">Noise Rock</option>
-            <option class="genre-option" value="Pop">Pop</option>
-            <option class="genre-option" value="Post Punk">Post Punk</option>
-            <option class="genre-option" value="Progressive Rock">Progressive Rock</option>
-            <option class="genre-option" value="Psychedelic Rock">Psychedelic Rock</option>
-            <option class="genre-option" value="Punk Rock">Punk Rock</option>
-            <option class="genre-option" value="Rhythm & Blues">Rhythm & Blues</option>
-            <option class="genre-option" value="Rock">Rock</option>
-            <option class="genre-option" value="Rock & Roll">Rock & Roll</option>
-            <option class="genre-option" value="Surf Rock">Surf Rock</option>
-            <option class="genre-option" value="Synthpop">Synthpop</option>
-        </select>
-     </label>
-     <br>
-     </label>
-     <button type="submit" class="regular-btn">Save Changes</button>
-</form>
+        <img src="{{band.imageUrl}}" alt="{{band.name}}-image" width="400" height="auto">
+        <br>
+
+        <input type="hidden" name="originalPicture" value="{{band.imageUrl}}">
+        <br>
+
+        <label for="edit-band-picture"> Change Band Picture:
+            <input type="file" name="band-profile-picture" id="edit-artist-picture">
+        </label>
+        <br>
+
+        <label for="edit-band-origin"> Band origin:
+            <input type="text" name="origin" id="edit-band-origin" value="{{band.origin}}">
+        </label>
+
+        <br>
+        <label for="edit-band-year"> Year:
+            <input type="type" name="year" id="edit-band-year" value="{{band.year}}">
+        </label>
+        <br>
+        
+        <label for="edit-band-members" id="add-member-label"> Band Members:
+            <br>
+            {{#each band.members}}
+            <input type="checkbox" name="originalMembers[]" value="{{_id}}" checked>
+            <label for="originalMembers[]">{{name}}</label>
+            {{/each}}
+        </label>
+            {{!-- <input type="hidden" name="originalMembers[]" id="edit-band-members" list="artists-list" value="{{#each band.members}}{{_id}},{{/each}}"> --}}
+            <input type="text" name="members" id="members" list="artists-list">
+            <datalist id="artists-list">
+                {{#each allArtists}}
+                    <option class="artist-option" value ="{{name}}" data-value="{{_id}}"></option>
+                {{/each}}
+            </datalist>
+            <button type="button" class="regular-btn" id="add-member-btn-edit">Add Member</button>
+        <br>
+
+        <input type="hidden" name="bandGenres" value="{{band.genre}}">
+        <p>Hold Cmd or Ctrl to add a new genre. Deselect to remove genre:</p>
+    
+        <label for="edit-band-genre"> Genres:
+            <select form="editBandForm" name="genre" id="edit-band-genre" multiple>
+                <option class="genre-option" value="Alternative Rock">Alternative Rock</option>
+                <option class="genre-option" value="Art Rock">Art Rock</option>
+                <option class="genre-option" value="Blues">Blues</option>
+                <option class="genre-option" value="Blues Rock">Blues Rock</option>
+                <option class="genre-option" value="Celtic Rock">Celtic Rock</option>
+                <option class="genre-option" value="Country">Country</option>
+                <option class="genre-option" value="Country Rock">Country Rock</option>
+                <option class="genre-option" value="Electronica">Electronica</option>
+                <option class="genre-option" value="Experimental Rock">Experimental Rock</option>
+                <option class="genre-option" value="Folk">Folk</option>
+                <option class="genre-option" value="Folk Rock">Harmonica</option>
+                <option class="genre-option" value="Glam Rock">Glam Rock</option>
+                <option class="genre-option" value="Gothic Rock">Gothic Rock</option>
+                <option class="genre-option" value="Hard Rock">Hard Rock</option>
+                <option class="genre-option" value="Indie Pop">Indie Pop</option>
+                <option class="genre-option" value="Indie Rock">Indie Rock</option>
+                <option class="genre-option" value="Jazz">Jazz</option>
+                <option class="genre-option" value="Latin Jazz">Latin Jazz</option>
+                <option class="genre-option" value="Latin Rock">Latin Rock</option>
+                <option class="genre-option" value="Metal">Metal</option>
+                <option class="genre-option" value="New Wave">New Wave</option>
+                <option class="genre-option" value="Noise Pop">Noise Pop</option>
+                <option class="genre-option" value="Noise Rock">Noise Rock</option>
+                <option class="genre-option" value="Pop">Pop</option>
+                <option class="genre-option" value="Post Punk">Post Punk</option>
+                <option class="genre-option" value="Progressive Rock">Progressive Rock</option>
+                <option class="genre-option" value="Psychedelic Rock">Psychedelic Rock</option>
+                <option class="genre-option" value="Punk Rock">Punk Rock</option>
+                <option class="genre-option" value="Rhythm & Blues">Rhythm & Blues</option>
+                <option class="genre-option" value="Rock">Rock</option>
+                <option class="genre-option" value="Rock & Roll">Rock & Roll</option>
+                <option class="genre-option" value="Surf Rock">Surf Rock</option>
+                <option class="genre-option" value="Synthpop">Synthpop</option>
+            </select>
+        </label>
+        <br>
+        </label>
+        <button type="submit" class="regular-btn">Save Changes</button>
+    </form>
+</section>
 
  
  <script src="/js/edit-band-script.js"></script>

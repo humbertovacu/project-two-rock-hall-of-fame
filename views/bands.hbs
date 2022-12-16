@@ -1,27 +1,29 @@
-<h1>The bands list page</h1>
-<br>
+<section class="page-section">
+  <h1>The bands list page</h1>
+  <br>
 
-{{!-- Research a band --}}
-<form method="GET" action="/bands/search">
-    <input name="bandName" type="text">
-    <button class="regular-btn">Search Band</button>
-</form>
-<br>
+  {{!-- Research a band --}}
+  <form method="GET" action="/bands/search">
+      <input name="bandName" type="text">
+      <button class="regular-btn">Search Band</button>
+  </form>
+  <br>
 
-{{!-- Create a Band --}}
-<div>
-<a href="bands/new-band"><button class="regular-btn">Create a Band!</button></a>
-</div>
-<br>
-
-{{!-- Display all bands --}}
-<div class="list-of-bands">
-  {{#each bands}}
+  {{!-- Create a Band --}}
   <div>
-    <a href="/bands/{{_id}}"><h2>{{name}}</h2></a>
-    <a href="/bands/{{_id}}"><img src={{imageUrl}} class="profile-picture" alt="{{name}}-picture" width=300px height="auto"></a>
-    
+  <a href="bands/new-band"><button class="regular-btn">Create a Band!</button></a>
   </div>
-  {{/each}}
-</div>
-<br>
+  <br>
+
+  {{!-- Display all bands --}}
+  <div class="list-of-bands">
+    {{#each bands}}
+    <div>
+      <a href="/bands/{{_id}}"><h2>{{name}}</h2></a>
+      <a href="/bands/{{_id}}"><img src={{imageUrl}} class="profile-picture" alt="{{name}}-picture" width=300px height="auto"></a>
+      
+    </div>
+    {{/each}}
+  </div>
+  <br>
+</section>

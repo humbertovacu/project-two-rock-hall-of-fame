@@ -1,118 +1,120 @@
-<h1>New Artist</h1>
-<br>
-<form action="/artists/new-artist" method="post" id="new-artist-form" enctype="multipart/form-data">
-    <label for="new-artist-name">
-        <p class="required-field">Name:</p>
-        <input type="text" name="name" id="new-artist-name">
-    </label> 
+<section class="page-section">
+    <h1>New Artist</h1>
     <br>
-    {{#if noNameMessage}}
-     <p>{{noNameMessage}}</p>
-    {{/if}}
-    <br>
-    
-    <label for="new-artist-picture"> Profile Photo:
-        <input type="file" name="artist-profile-picture" id="new-artist-picture">
+    <form action="/artists/new-artist" method="post" id="new-artist-form" enctype="multipart/form-data">
+        <label for="new-artist-name">
+            <p class="required-field">Name:</p>
+            <input type="text" name="name" id="new-artist-name">
+        </label> 
         <br>
-    </label>
+        {{#if noNameMessage}}
+        <p>{{noNameMessage}}</p>
+        {{/if}}
+        <br>
+        
+        <label for="new-artist-picture"> Profile Photo:
+            <input type="file" name="artist-profile-picture" id="new-artist-picture">
+            <br>
+        </label>
 
-    <br>
-    {{#if missingFieldErr}}
-        <input type="hidden" id="error-fields" value="1">
-    {{/if}}
+        <br>
+        {{#if missingFieldErr}}
+            <input type="hidden" id="error-fields" value="1">
+        {{/if}}
 
-    <label for="new-artist-origin"> 
-        <p class="required-field">Origin:</p> 
-        <input type="text" name="origin" id="new-artist-origin">
+        <label for="new-artist-origin"> 
+            <p class="required-field">Origin:</p> 
+            <input type="text" name="origin" id="new-artist-origin">
+            <br>
+        </label>
         <br>
-    </label>
-    <br>
-     <label for="new-artist-birthday"> 
-        <p class="required-field">Birthday:</p>
-        <input type="date" name="birthday" id="new-artist-birthday">
-        <br>    
-    </label>
-    <br>
-    <label for="new-artist-deathdate"> Death Date:
-        <input type="date" name="deathDate" id="new-artist-deathdate">
-    </label>
-    <br>
-    <p>Press cmd or ctrl to select several items</p>
-    <br>
-    <label for="new-artist-instrument"> 
-        <p class="required-field">Instruments:</p> 
-        <select form="new-artist-form" name="instrument" id="new-artist-instrument" multiple>
-            <option value="Bass Guitar">Bass Guitar</option>
-            <option value="Congas">Congas</option>
-            <option value="Drums">Drums</option>
-            <option value="Guitar">Guitar</option>
-            <option value="Harmonica">Harmonica</option>
-            <option value="Keyboards">Keyboards</option>
-            <option value="Percussion">Percussion</option> 
-            <option value="Saxophone">Saxophone</option>
-            <option value="Sitar">Sitar</option>
-            <option value="Timbales">Timbales</option>
-            <option value="Vocals">Vocals</option>
-        </select>
+        <label for="new-artist-birthday"> 
+            <p class="required-field">Birthday:</p>
+            <input type="date" name="birthday" id="new-artist-birthday">
+            <br>    
+        </label>
         <br>
-     </label>
-     <br>
-     <label for="new-artist-genre"> 
-        <p class="required-field">Genres:</p> 
-        <select form="new-artist-form" name="genre" id="new-artist-genre" multiple>
-            <option value="Alternative Rock">Alternative Rock</option>
-            <option value="Art Rock">Art Rock</option>
-            <option value="Blues">Blues</option>
-            <option value="Blues Rock">Blues Rock</option>
-            <option value="Celtic Rock">Celtic Rock</option>
-            <option value="Country">Country</option>
-            <option value="Country Rock">Country Rock</option>
-            <option value="Electronica">Electronica</option>
-            <option value="Experimental Rock">Experimental Rock</option>
-            <option value="Folk">Folk</option>
-            <option value="Folk Rock">Harmonica</option>
-            <option value="Glam Rock">Glam Rock</option>
-            <option value="Gothic Rock">Gothic Rock</option>
-            <option value="Hard Rock">Hard Rock</option>
-            <option value="Indie Pop">Indie Pop</option>
-            <option value="Indie Rock">Indie Rock</option>
-            <option value="Jazz">Jazz</option>
-            <option value="Latin Jazz">Latin Jazz</option>
-            <option value="Latin Rock">Latin Rock</option>
-            <option value="Metal">Metal</option>
-            <option value="New Wave">New Wave</option>
-            <option value="Noise Pop">Noise Pop</option>
-            <option value="Noise Rock">Noise Rock</option>
-            <option value="Pop">Pop</option>
-            <option value="Post Punk">Post Punk</option>
-            <option value="Progressive Rock">Progressive Rock</option>
-            <option value="Psychedelic Rock">Psychedelic Rock</option>
-            <option value="Punk Rock">Punk Rock</option>
-            <option value="Rhythm & Blues">Rhythm & Blues</option>
-            <option value="Rock">Rock</option>
-            <option value="Rock & Roll">Rock & Roll</option>
-            <option value="Surf Rock">Surf Rock</option>
-            <option value="Synthpop">Synthpop</option>
-        </select>
+        <label for="new-artist-deathdate"> Death Date:
+            <input type="date" name="deathDate" id="new-artist-deathdate">
+        </label>
         <br>
-     </label>
-     <br>
-      <label for="new-artist-occupation"> 
-        <p class="required-field">Occupation:</p> 
-        <select form="new-artist-form" name="occupation" id="new-artist-occupation" multiple>
-            <option value="Musician">Musician</option>
-            <option value="Songwriter">Songwriter</option>
-            <option value="Composer">Composer</option>
-            <option value="Writer">Writer</option>
-            <option value="Actor">Actor</option>
-            <option value="Painter">Painter</option>
-            <option value="Artist">Artist</option>
-        </select>
-     </label>
-     <br>
-     <p class="incomplete-field">{{missingFieldErr}}</p>
-     <br>
-     <button type="submit" class="regular-btn">Create</button>
-</form>
+        <p>Press cmd or ctrl to select several items</p>
+        <br>
+        <label for="new-artist-instrument"> 
+            <p class="required-field">Instruments:</p> 
+            <select form="new-artist-form" name="instrument" id="new-artist-instrument" multiple>
+                <option value="Bass Guitar">Bass Guitar</option>
+                <option value="Congas">Congas</option>
+                <option value="Drums">Drums</option>
+                <option value="Guitar">Guitar</option>
+                <option value="Harmonica">Harmonica</option>
+                <option value="Keyboards">Keyboards</option>
+                <option value="Percussion">Percussion</option> 
+                <option value="Saxophone">Saxophone</option>
+                <option value="Sitar">Sitar</option>
+                <option value="Timbales">Timbales</option>
+                <option value="Vocals">Vocals</option>
+            </select>
+            <br>
+        </label>
+        <br>
+        <label for="new-artist-genre"> 
+            <p class="required-field">Genres:</p> 
+            <select form="new-artist-form" name="genre" id="new-artist-genre" multiple>
+                <option value="Alternative Rock">Alternative Rock</option>
+                <option value="Art Rock">Art Rock</option>
+                <option value="Blues">Blues</option>
+                <option value="Blues Rock">Blues Rock</option>
+                <option value="Celtic Rock">Celtic Rock</option>
+                <option value="Country">Country</option>
+                <option value="Country Rock">Country Rock</option>
+                <option value="Electronica">Electronica</option>
+                <option value="Experimental Rock">Experimental Rock</option>
+                <option value="Folk">Folk</option>
+                <option value="Folk Rock">Harmonica</option>
+                <option value="Glam Rock">Glam Rock</option>
+                <option value="Gothic Rock">Gothic Rock</option>
+                <option value="Hard Rock">Hard Rock</option>
+                <option value="Indie Pop">Indie Pop</option>
+                <option value="Indie Rock">Indie Rock</option>
+                <option value="Jazz">Jazz</option>
+                <option value="Latin Jazz">Latin Jazz</option>
+                <option value="Latin Rock">Latin Rock</option>
+                <option value="Metal">Metal</option>
+                <option value="New Wave">New Wave</option>
+                <option value="Noise Pop">Noise Pop</option>
+                <option value="Noise Rock">Noise Rock</option>
+                <option value="Pop">Pop</option>
+                <option value="Post Punk">Post Punk</option>
+                <option value="Progressive Rock">Progressive Rock</option>
+                <option value="Psychedelic Rock">Psychedelic Rock</option>
+                <option value="Punk Rock">Punk Rock</option>
+                <option value="Rhythm & Blues">Rhythm & Blues</option>
+                <option value="Rock">Rock</option>
+                <option value="Rock & Roll">Rock & Roll</option>
+                <option value="Surf Rock">Surf Rock</option>
+                <option value="Synthpop">Synthpop</option>
+            </select>
+            <br>
+        </label>
+        <br>
+        <label for="new-artist-occupation"> 
+            <p class="required-field">Occupation:</p> 
+            <select form="new-artist-form" name="occupation" id="new-artist-occupation" multiple>
+                <option value="Musician">Musician</option>
+                <option value="Songwriter">Songwriter</option>
+                <option value="Composer">Composer</option>
+                <option value="Writer">Writer</option>
+                <option value="Actor">Actor</option>
+                <option value="Painter">Painter</option>
+                <option value="Artist">Artist</option>
+            </select>
+        </label>
+        <br>
+        <p class="incomplete-field">{{missingFieldErr}}</p>
+        <br>
+        <button type="submit" class="regular-btn">Create</button>
+    </form>
+</section>
 
 <script src="/js/create-artist-script.js"></script>
