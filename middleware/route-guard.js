@@ -1,3 +1,4 @@
+const app = require("../app");
 const Band = require("../models/Band.model");
 
 const userLoggedIn = (req, res, next) => {
@@ -14,16 +15,15 @@ const userLoggedOut = (req, res, next) => {
   next();
 };
 
-// const objectIsBand = (req, res, next) => {
-//   const { objectID } = req.params;
-//   const findBand = Band.findById(objectID);
-//   if(findBand){
-//     return res.redirect(`/bands/${objectID}`)
-//   }
-//   next();
-// };
+const userObject = (req, res, next) => {
+  if (req.session.currentUser){
+    res.locals.userLogged = req.session.currentUser
+  }
+  next();
+}
 
 module.exports = {
   userLoggedIn,
   userLoggedOut,
+  userObject,
 };

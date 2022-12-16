@@ -123,3 +123,9 @@ h6 {
   height: 300px;
   object-fit: cover;
 }
+
+.s-profile-picture{
+  width:  150px;
+  height: 150px;
+  object-fit: cover;
+}

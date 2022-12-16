@@ -23,7 +23,7 @@ require("./config/session.config")(app);
 // default value for title local
 const capitalize = require("./utils/capitalize");
 const projectName = "project-two-rock-hall-of-fame";
-
+const { userObject } = require("./middleware/route-guard.js");
 const Artist = require("./models/Artist.model");
 const Band = require("./models/Band.model");
 const Survey = require("./models/Survey.model");
@@ -31,6 +31,9 @@ const Survey = require("./models/Survey.model");
 // app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 
 // 👇 Start handling routes here
+
+app.use(userObject);
+
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 
@@ -48,6 +51,8 @@ app.use("/sign-up", signupRoutes);
 
 const authRoutes = require("./routes/auth/auth.routes");
 app.use("/auth", authRoutes);
+
+
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

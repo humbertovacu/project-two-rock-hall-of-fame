@@ -9,7 +9,8 @@ const User = require("../../models/User.model");
 const Artist = require("../../models/Artist.model");
 
 router.get("/userProfile", userLoggedIn, async (req, res) => {
-  res.render("users/user-profile", { userInSession: req.session.currentUser});
+  const loggedUser = await User.findById(req.session.currentUser._id).populate("favoriteArtists").populate("favoriteBands");
+  res.render("users/user-profile", { userInSession: loggedUser });
 });
 
 router.post("/logout", (req, res, next) => {

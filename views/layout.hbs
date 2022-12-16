@@ -18,6 +18,7 @@
         /></a>
 
       <nav>
+
         <ul class="nav-links">
           <li><a href="/"> Home</a></li>
           <li><a href="/artists"> Artists</a></li>
@@ -26,12 +27,15 @@
       </nav>
 
       <section class="nav-buttons">
-        <a href="/sign-up"><button class="regular-btn">Sign up</button></a>
-        <a href="/login"><button class="regular-btn">Login</button></a>
-
-        <form id="logout-form" action="/auth/logout" method="POST">
-          <button class="regular-btn">Logout</button>
-        </form>
+        {{#if userLogged}}
+          <a href="/auth/userProfile"><button class="regular-btn">Profile</button></a>
+          <form id="logout-form" action="/auth/logout" method="POST">
+            <button class="regular-btn">Logout</button>
+          </form>
+        {{else}}
+          <a href="/sign-up"><button class="regular-btn">Sign up</button></a>
+          <a href="/login"><button class="regular-btn">Login</button></a>
+        {{/if}}
       </section>
     </header>
     {{{body}}}

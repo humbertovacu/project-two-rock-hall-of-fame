@@ -2,8 +2,21 @@
   <h2>Welcome, {{userInSession.username}}!</h2>
   <br />
 
-  <p>Favorite Artists</p>
-   <p>{{favoriteBands}}</p>
+  <p>Your favorite music:</p>
+  <div>
+    {{#each userInSession.favoriteBands}}
+      <div>
+        <a href="/bands/{{_id}}"><p>{{name}}</p></a>
+        <a href="/bands/{{_id}}"><img class="s-profile-picture" src="{{imageUrl}}" alt="{{name}}-image"></a>
+      </div>
+    {{/each}}
+    {{#each userInSession.favoriteArtists}}
+      <div>
+        <a href="/artists/{{_id}}"><p>{{name}}</p></a>
+        <a href="/artists/{{_id}}"><img class="s-profile-picture" src="{{imageUrl}}" alt="{{name}}-image"></a>
+      </div>
+    {{/each}}
+  </div>
   <br>
 
   <div>
