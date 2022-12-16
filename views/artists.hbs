@@ -1,28 +1,30 @@
-<h1>The artists page</h1>
-<br />
+<section class="page-section">
+  <h1>The artists page</h1>
+  <br />
 
-{{!-- Research an Artist --}}
-<form method="GET" action="/artists/search">
-    <input name="artistName" type="text">
-    <button class="regular-btn">Search an Artist</button>
-</form>
-<br>
+  {{!-- Research an Artist --}}
+  <form method="GET" action="/artists/search">
+      <input name="artistName" type="text">
+      <button class="regular-btn">Search an Artist</button>
+  </form>
+  <br>
 
-{{! Create an Artist }}
-<div>
-  <a href="artists/new-artist"><button class="regular-btn">Create an Artist!</button></a>
-</div>
-<br />
-
-
-{{!-- Display all artists --}}
-<div class="list-of-artists">
-  {{#each artists}}
+  {{! Create an Artist }}
   <div>
-    <a href="/artists/{{_id}}"><h2>{{name}}</h2></a>
-    <a href="/artists/{{_id}}"><img src={{imageUrl}} class="profile-picture" alt="{{name}}-picture" width=300px height="auto"></a>
-    
+    <a href="artists/new-artist"><button class="regular-btn">Create an Artist!</button></a>
   </div>
-  {{/each}}
-</div>
-<br>
+  <br />
+
+
+  {{!-- Display all artists --}}
+  <div class="list-of-artists">
+    {{#each artists}}
+    <div>
+      <a href="/artists/{{_id}}"><h2>{{name}}</h2></a>
+      <a href="/artists/{{_id}}"><img src={{imageUrl}} class="profile-picture" alt="{{name}}-picture" width=300px height="auto"></a>
+      
+    </div>
+    {{/each}}
+  </div>
+  <br>
+</section>

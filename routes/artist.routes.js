@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const mongoose = require("mongoose");
 const Artist = require("../models/Artist.model");
 const Band = require("../models/Band.model");
 const Rating = require("../models/Rating.model");
@@ -47,8 +48,20 @@ router.get("/", (req, res, next) => {
 
 router.get("/:artistID", async (req, res) => {
   const { artistID } = req.params;
+  let idToSearch = mongoose.Types.ObjectId(artistID)
   let userRating;
   let userFavorite;
+  let averageRating;
+  let avgRatingCalc = await Rating.aggregate([{$match: { objectID: idToSearch }},
+    {$group: {_id: null, avgAmount: {$avg: "$rating"}}}
+  ])
+ 
+  if(avgRatingCalc.length === 0){
+    averageRating = "";
+  } else {
+    averageRating = avgRatingCalc[0].avgAmount.toFixed(1);
+  }
+ 
   if (req.session.currentUser) {
     const userID = req.session.currentUser._id;
     userRating = await Rating.find({ userID: userID }).find({objectID: artistID});
@@ -66,7 +79,7 @@ router.get("/:artistID", async (req, res) => {
   Artist.findById(artistID)
     .populate("bands")
     .then((foundArtist) => {
-      res.render("artist-details", { artist: foundArtist, userRating, userFavorite });
+      res.render("artist-details", { artist: foundArtist, userRating, userFavorite, averageRating});
     });
 });
 

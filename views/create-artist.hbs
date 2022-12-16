@@ -1,9 +1,11 @@
 <h1>New Artist</h1>
+<br>
 <form action="/artists/new-artist" method="post" id="new-artist-form" enctype="multipart/form-data">
     <label for="new-artist-name">
         <p class="required-field">Name:</p>
         <input type="text" name="name" id="new-artist-name">
     </label> 
+    <br>
     {{#if noNameMessage}}
      <p>{{noNameMessage}}</p>
     {{/if}}
@@ -11,6 +13,7 @@
     
     <label for="new-artist-picture"> Profile Photo:
         <input type="file" name="artist-profile-picture" id="new-artist-picture">
+        <br>
     </label>
 
     <br>
@@ -21,11 +24,13 @@
     <label for="new-artist-origin"> 
         <p class="required-field">Origin:</p> 
         <input type="text" name="origin" id="new-artist-origin">
+        <br>
     </label>
     <br>
      <label for="new-artist-birthday"> 
         <p class="required-field">Birthday:</p>
         <input type="date" name="birthday" id="new-artist-birthday">
+        <br>    
     </label>
     <br>
     <label for="new-artist-deathdate"> Death Date:
@@ -49,6 +54,7 @@
             <option value="Timbales">Timbales</option>
             <option value="Vocals">Vocals</option>
         </select>
+        <br>
      </label>
      <br>
      <label for="new-artist-genre"> 
@@ -88,6 +94,7 @@
             <option value="Surf Rock">Surf Rock</option>
             <option value="Synthpop">Synthpop</option>
         </select>
+        <br>
      </label>
      <br>
       <label for="new-artist-occupation"> 
@@ -101,9 +108,10 @@
             <option value="Painter">Painter</option>
             <option value="Artist">Artist</option>
         </select>
-       {{!-- Other: <input type="text" name="occupation"> --}}
      </label>
+     <br>
      <p class="incomplete-field">{{missingFieldErr}}</p>
+     <br>
      <button type="submit" class="regular-btn">Create</button>
 </form>
 

@@ -1,5 +1,5 @@
 <h1>{{artist.name}}</h1>
-
+<br>
 {{#if userFavorite}}
 <form action="/artists/{{artist._id}}/favorite" id="userFavorite" method="post">
   <input type="hidden" value="removeFavorite" name="isFavorite">
@@ -11,13 +11,13 @@
   <button class="regular-btn">Add to favorites</button>
 </form>
 {{/if}}
-
 <br>
 {{#if userRating.[0].rating}}
   <h3>Your Rating:</h3>
   {{else}}
   <h3>Rate artist:</h3>
 {{/if}}
+
 <div class="artist-star-rating">
   <button class="star">&#9734;</button> 
   <button class="star">&#9734;</button> 
@@ -35,6 +35,11 @@
   {{else}}
     <p class="your_rating">0 of 10</p>
   {{/if}}
+  <br>
+  {{#if averageRating}}
+  <h3>Global Rating:</h3>
+  <p>{{averageRating}}</p> 
+  {{/if}}
   <form action="/artists/{{artist._id}}/rating" method="POST" id="artist-rating">
     <input id="rating-input" name="artistRating" type="hidden" value="0">
   </form>
@@ -47,24 +52,32 @@
   
   <h3>Origin:</h3>
   <p>{{artist.origin}}</p>
+  <br>
   <h3>Birthday:</h3>
   <p>{{artist.birthday}}</p>
+  <br>
   {{#if artist.deathDate}}
     <h3>Death</h3>
     <p>{{artist.deathDate}}</p>
   {{/if}}
+  <br>
   {{#if artist.bands}} 
   <h3>Related Bands:</h3>
     {{#each artist.bands}} 
-      <a href="/bands/{{_id}}"><p>{{name}}</p></a>
+      <a href="/bands/{{_id}}">{{name}}</a>
+      <br>
     {{/each}}
-  {{/if}}
+  {{/if}} 
+  <br>
   <h3>Instruments:</h3>
   <p>{{artist.instrument}}</p>
+  <br>
   <h3>Musical Genres:</h3>
   <p>{{artist.genre}}<p>
+  <br>
   <h3>Occupation:</h3>
   <p>{{artist.occupation}}</p>
+  <br>
 
 {{!-- Edit an Artist --}}
 <div>

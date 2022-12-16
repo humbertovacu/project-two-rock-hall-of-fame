@@ -1,29 +1,29 @@
-{{#if userInSession}}
-  <h2>Welcome, {{userInSession.username}}!</h2>
-  <br />
+<section class="page-section">
+  {{#if userInSession}}
+    <h2>Welcome, {{userInSession.username}}!</h2>
+    <br />
 
-  <p>Your favorite music:</p>
-  <div>
-    {{#each userInSession.favoriteBands}}
-      <div>
-        <a href="/bands/{{_id}}"><p>{{name}}</p></a>
-        <a href="/bands/{{_id}}"><img class="s-profile-picture" src="{{imageUrl}}" alt="{{name}}-image"></a>
-      </div>
-    {{/each}}
-    {{#each userInSession.favoriteArtists}}
-      <div>
-        <a href="/artists/{{_id}}"><p>{{name}}</p></a>
-        <a href="/artists/{{_id}}"><img class="s-profile-picture" src="{{imageUrl}}" alt="{{name}}-image"></a>
-      </div>
-    {{/each}}
-  </div>
-  <br>
+    <p>Your favorite music:</p>
+    <br>
+    <div class="fav-artists-container">
+      {{#each userInSession.favoriteBands}}
+        <div>
+          <a href="/bands/{{_id}}"><p>{{name}}</p></a>
+          <a href="/bands/{{_id}}"><img class="s-profile-picture" src="{{imageUrl}}" alt="{{name}}-image"></a>
+        </div>
+      {{/each}}
+      {{#each userInSession.favoriteArtists}}
+        <div>
+          <a href="/artists/{{_id}}"><p>{{name}}</p></a>
+          <a href="/artists/{{_id}}"><img class="s-profile-picture" src="{{imageUrl}}" alt="{{name}}-image"></a>
+        </div>
+      {{/each}}
+    </div>
+    <br>
 
-  <div>
-    <a href="/user-profile"><button class="regular-btn">Reload the page</button></a>
-  </div>
-  <br />
 
-{{else}}
-  <br /><p>Still not logged in, sorry!</p>
-{{/if}}
+
+  {{else}}
+    <br /><p>Still not logged in, sorry!</p>
+  {{/if}}
+</section>

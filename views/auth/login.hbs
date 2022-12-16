@@ -1,23 +1,25 @@
-<div id="form">
-  <h2>Login</h2>
-  <br />
+<section class="page-section">
+  <div id="form">
+    <h2>Login</h2>
+    <br />
 
-<div>
-  <form action="/login" method="POST">
-    <label for="email">E-mail:</label><br />
-    <input type="text" id="email" name="email" /><br /><br />
+  <div>
+    <form action="/login" method="POST">
+      <label for="email">E-mail:</label><br />
+      <input type="text" id="email" name="email" /><br /><br />
 
-    <label for="password">Password:</label><br />
-    <input type="password" id="password" name="password" /><br /><br />
+      <label for="password">Password:</label><br />
+      <input type="password" id="password" name="password" /><br /><br />
 
-      <button type="submit" class="regular-btn">Login</button>
-    <br/>
-  </form>
-  <br>
-  <a href="/sign-up"><h3>Or create an account</h3></a>
-</div>
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-    {{/if}}
-  </form>
-</div>
+        <button type="submit" class="regular-btn">Login</button>
+      <br/>
+    </form>
+    <br>
+    <a href="/sign-up"><h3>Or create an account</h3></a>
+  </div>
+      {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+      {{/if}}
+    </form>
+  </div>
+</section>

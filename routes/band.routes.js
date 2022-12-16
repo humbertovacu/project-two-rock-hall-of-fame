@@ -17,8 +17,18 @@ router.get("/new-band", userLoggedIn, (req, res) => {
 // Route band details
 router.get("/:bandID", async (req, res) => {
   const { bandID } = req.params;
+  let idToSearch = mongoose.Types.ObjectId(bandID)
   let userRating;
   let userFavorite;
+  let averageRating;
+  let avgRatingCalc = await Rating.aggregate([{$match: { objectID: idToSearch }},
+    {$group: {_id: null, avgAmount: {$avg: "$rating"}}}
+  ])
+  if(avgRatingCalc.length === 0){
+    averageRating = "";
+  } else {
+    averageRating = avgRatingCalc[0].avgAmount.toFixed(1);
+  }
   if (req.session.currentUser) {
     const userID = req.session.currentUser._id;
     userRating = await Rating.findOne({ userID: userID }).find({
@@ -29,7 +39,6 @@ router.get("/:bandID", async (req, res) => {
         if(favorites.includes(bandID)){
           userFavorite = true;
         } else userFavorite = false;
-        console.log(userFavorite)
       })
   } else {
     userRating = "";
@@ -38,7 +47,7 @@ router.get("/:bandID", async (req, res) => {
   Band.findById(bandID)
     .populate("members")
     .then((bandFound) => {
-      res.render("band-details.hbs", { singleBand: bandFound, userRating, userFavorite});
+      res.render("band-details.hbs", { singleBand: bandFound, userRating, userFavorite, averageRating});
     })
     .catch((err) => console.log(err));
 });

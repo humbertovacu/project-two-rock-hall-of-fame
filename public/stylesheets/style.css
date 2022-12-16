@@ -32,7 +32,7 @@ header {
 }
 
 body {
-  padding: 50px;
+  
 }
 
 a {
@@ -128,4 +128,32 @@ h6 {
   width:  150px;
   height: 150px;
   object-fit: cover;
+}
+
+img{
+  margin-bottom: 30px;
+}
+
+.profile-picture:hover, .s-profile-picture:hover{
+  opacity: 0.5;
+}
+
+.fav-artists-container{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 30px;
+}
+
+#home-header {
+  margin-left: 0;
+  background-size: 100vw;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  background-image: url(https://res.cloudinary.com/djwmauhbh/image/upload/v1671231996/rock-page-images/Home_rkrwcu.webp);
+  object-fit: cover;
+}
+
+.page-section {
+  
 }

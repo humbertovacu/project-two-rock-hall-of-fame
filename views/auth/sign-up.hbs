@@ -1,21 +1,23 @@
-<h2>Sign-up</h2>
-<br />
-<div>
-  <form action="/sign-up" method="POST">
-    <label for="username">Username:</label><br />
-    <input type="text" id="username" name="username" /><br /><br />
+<section class="page-section">
+  <h2>Sign-up</h2>
+  <br />
+  <div>
+    <form action="/sign-up" method="POST">
+      <label for="username">Username:</label><br />
+      <input type="text" id="username" name="username" /><br /><br />
 
-    <label for="email">E-mail:</label><br />
-    <input type="text" id="email" name="email" /><br /><br />
+      <label for="email">E-mail:</label><br />
+      <input type="text" id="email" name="email" /><br /><br />
 
-    <label for="password">Password:</label><br />
-    <input type="password" id="password" name="password" /><br /><br />
+      <label for="password">Password:</label><br />
+      <input type="password" id="password" name="password" /><br /><br />
 
-    <button type="submit" class="regular-btn">Signup</button>
-    <br />
-  </form>
+      <button type="submit" class="regular-btn">Signup</button>
+      <br />
+    </form>
 
-  {{#if errorMessage}}
-    <p class="error">{{errorMessage}}</p>
-  {{/if}}
-</div>
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+  </div>
+</section>
