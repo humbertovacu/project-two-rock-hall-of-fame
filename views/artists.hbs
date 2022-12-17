@@ -9,17 +9,14 @@
   </form>
   <br>
 
-  {{! Create an Artist }}
   <div>
     <a href="artists/new-artist"><button class="regular-btn">Create an Artist!</button></a>
   </div>
   <br />
 
-
-  {{!-- Display all artists --}}
   <div class="list-of-artists">
     {{#each artists}}
-    <div>
+    <div class="artist-results">
       <a href="/artists/{{_id}}"><h2>{{name}}</h2></a>
       <a href="/artists/{{_id}}"><img src={{imageUrl}} class="profile-picture" alt="{{name}}-picture" width=300px height="auto"></a>
       

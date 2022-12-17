@@ -1,28 +1,30 @@
-<h1>Results:</h1>
-<br>
+<section class="page-section">
+  <h1>Results:</h1>
+  <br>
 
-{{!-- Display all artists --}}
-<div class="list-of-bands">
-  {{#each artists}}
-  <div>
-    <a href="/artists/{{_id}}"><h2>{{name}}</h2></a>
-    <br>
-    <a href="/artists/{{_id}}"><img src={{imageUrl}} class="profile-picture" alt="{{name}}-picture" width=300px height="auto"></a>
-    <br>
+  {{!-- Display all artists --}}
+  <div class="list-of-bands">
+    {{#each artists}}
+    <div>
+      <a href="/artists/{{_id}}"><h2>{{name}}</h2></a>
+      <br>
+      <a href="/artists/{{_id}}"><img src={{imageUrl}} class="profile-picture" alt="{{name}}-picture" width=300px height="auto"></a>
+      <br>
+    </div>
+    {{/each}}
   </div>
-  {{/each}}
-</div>
 
-{{#unless artists}}
-{{!-- Create an artist --}}
-<div>
-<h2> Your artist is not registered yet at Rock Rock Rock, but you can create it! </h2>
-<br>
-<a href="/artists/new-artist"><button class="regular-btn">Create an artist!</button></a>
-</div>
-{{/unless}}
-<br>
+  {{#unless artists}}
+  {{!-- Create an artist --}}
+  <div>
+  <h2> Your artist is not registered yet at Rock Rock Rock, but you can create it! </h2>
+  <br>
+  <a href="/artists/new-artist"><button class="regular-btn">Create an artist!</button></a>
+  </div>
+  {{/unless}}
+  <br>
 
-<div>
-<a href="/artists"><button class="regular-btn">Go back</button></a>
-</div>
+  <div>
+  <a href="/artists"><button class="regular-btn">Go back</button></a>
+  </div>
+</section>

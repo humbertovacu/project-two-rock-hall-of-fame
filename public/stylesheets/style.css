@@ -31,9 +31,7 @@ header {
   padding: 30px 10px;
 }
 
-body {
-  
-}
+
 
 a {
   color: #00b7ff;
@@ -92,6 +90,7 @@ h6 {
 
 .list-of-bands,
 .list-of-artists {
+  margin-top: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
@@ -156,4 +155,8 @@ img{
 
 .page-section {
   margin-left: 80px;
+}
+
+.artist-results{
+  margin-top: 20px;
 }

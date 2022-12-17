@@ -14,6 +14,24 @@ router.get("/new-band", userLoggedIn, (req, res) => {
   );
 });
 
+//Route search a band
+router.get("/search", (req, res) => {
+  const { bandName } = req.query;
+
+  /*regex is the pattern. RegExp() is a constructor reserved to J that
+  searchs for a string pattern, that pattern is represented as the first
+  argument. The second argument "i" is also called a flag,
+  there are different flags to be used. In this case the "i" flag is used to  */
+  const regex = new RegExp(bandName, "i");
+
+  /*$regex is a method from Mongo DB to look for matches */
+  Band.find({ name: { $regex: regex } })
+    .then((allTheBandsFromDB) => {
+      res.render("band-results.hbs", { bands: allTheBandsFromDB })
+    })
+    .catch((err) => console.log(err));
+});
+
 // Route band details
 router.get("/:bandID", async (req, res) => {
   const { bandID } = req.params;
@@ -48,24 +66,6 @@ router.get("/:bandID", async (req, res) => {
     .populate("members")
     .then((bandFound) => {
       res.render("band-details.hbs", { singleBand: bandFound, userRating, userFavorite, averageRating});
-    })
-    .catch((err) => console.log(err));
-});
-
-//Route search a band
-router.get("/search", (req, res) => {
-  const { bandName } = req.query;
-
-  /*regex is the pattern. RegExp() is a constructor reserved to J that
-  searchs for a string pattern, that pattern is represented as the first
-  argument. The second argument "i" is also called a flag,
-  there are different flags to be used. In this case the "i" flag is used to  */
-  const regex = new RegExp(bandName, "i");
-
-  /*$regex is a method from Mongo DB to look for matches */
-  Band.find({ name: { $regex: regex } })
-    .then((allTheBandsFromDB) => {
-      res.render("band-results.hbs", { bands: allTheBandsFromDB });
     })
     .catch((err) => console.log(err));
 });
