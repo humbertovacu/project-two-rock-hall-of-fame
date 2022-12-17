@@ -1,38 +1,45 @@
 <section class="page-section">
     <h1>New Band</h1>
+    <br>
     <form action="/bands/new-band" method="post" id="newBandForm" enctype="multipart/form-data">
         <label for="new-band-name">Band Name:
             <input type="text" name="name" id="new-band-name">
+            <br>
         </label> 
         <br>
 
         <label for="new-band-picture"> Band Picture:
             <input type="file" name="band-profile-picture" id="new-band-picture">
+            <br>
         </label>
         <br>
 
         <label for="new-band-origin"> Band origin:
             <input type="text" name="origin" id="new-band-origin">
+            <br>
         </label>
         <br>
 
         <label for="new-band-year"> Year:
             <input type="type" name="year" id="new-band-year">
+            <br>
         </label>
         <br>
         
         <label for="new-band-members" id="add-member-label"> Band Members:
             <p id="added-members"></p>
             <input type="text" name="members" class="new-band-members" list="artists-list" id="members">
+            <br>
             <datalist id="artists-list">
                 {{#each artists}}
                     <option class="artist-option" value ="{{name}}" data-value="{{_id}}"></option>
                 {{/each}}
             </datalist>
+            <br>
         </label>
             <button type="button" class="regular-btn" onclick="return false" id="add-new-member-btn">Add New Memeber</button>
             <a href="/artists/new-artist" target="_blank"><button type="button" class="regular-btn">Create new Artist</button></a>
-        
+        <br>
         <input type="hidden" value="" id="members-array" name="membersArray[]"> 
             {{#if noMembers}}
                 <p>{{noMembers}}</p>
@@ -78,6 +85,7 @@
                 <option value="Surf Rock">Surf Rock</option>
                 <option value="Synthpop">Synthpop</option>
             </select>
+            <br>
         </label>
         <br>
 

@@ -74,7 +74,9 @@
     <p>{{artist.instrument}}</p>
     <br>
     <h3>Musical Genres:</h3>
-    <p>{{artist.genre}}<p>
+    {{#each artist}}
+    <p>{{genre}}<p>
+    {{/each}}
     <br>
     <h3>Occupation:</h3>
     <p>{{artist.occupation}}</p>

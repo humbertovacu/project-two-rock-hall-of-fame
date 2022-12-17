@@ -1,8 +1,10 @@
 <section class="page-section">
     <h1>Edit Artist</h1>
+    <br>
     <form action="/artists/{{artist._id}}" method="post" id="editArtistForm" enctype="multipart/form-data">
         <label for="edit-artist-name">Name:
             <input type="text" name="name" id="edit-artist-name" value="{{artist.name}}">
+            <br>
         </label> 
         <br>
         <img src="{{artist.imageUrl}}" alt="{{artist.name}}-image" width="400" height="auto">
@@ -10,22 +12,28 @@
         <input type="hidden" name="originalPicture" value="{{artist.imageUrl}}">
         <label for="edit-band-picture"> Change Artist Picture:
             <input type="file" name="artist-profile-picture" id="edit-artist-picture">
+            <br>
         </label>
         <br>
         <label for="edit-artist-origin"> Band origin:
             <input type="text" name="origin" id="edit-artist-origin" value="{{artist.origin}}">
+            <br>
         </label>
         <br>
         <label for="edit-artist-birthday"> Birthday:
             <input type="date" name="birthday" id="edit-artist-birthday" value="{{artist.birthday}}">
+            <br>
         </label>
         <br>
         <label for="edit-artist-deathdate"> Date of Death:
             <input type="date" name="deathDate" id="edit-artist-deathdate" value="{{artist.deathdate}}">
+            <br>
         </label>
         <br>
         <input type="hidden" name="bandGenres" value="{{artist.genre}}">
-        <p>Hold Cmd or Ctrl to add a new genre. Deselect to remove genre:</p>
+        <p>Hold Cmd or Ctrl to add a new genre. <br>
+            Deselect to remove genre:</p>
+        <br>
     
         <label for="edit-band-genre"> Genres:
             <select form="editArtistForm" name="genre" id="edit-band-genre" multiple>
@@ -63,6 +71,7 @@
                 <option class="genre-option" value="Surf Rock">Surf Rock</option>
                 <option class="genre-option" value="Synthpop">Synthpop</option>
             </select>
+            <br>
         </label>
         <br>
         </label>
