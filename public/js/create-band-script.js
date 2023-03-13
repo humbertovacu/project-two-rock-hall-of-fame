@@ -20,9 +20,6 @@ if (typeof window !== 'undefined'){
       }
 
       form.members.value = "";
-      console.log(bandMembersID)
-      console.log(bandMembersName)
-      // event.preventDefault();
 
   })
 
