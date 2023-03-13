@@ -20,8 +20,8 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Password is required."],
     },
-    favoriteArtists: [{type: Schema.Types.ObjectId, ref: 'Artist', unique: true}],
-    favoriteBands: [{type: Schema.Types.ObjectId, ref: 'Band', unique: true}],
+    favoriteArtists: [{type: Schema.Types.ObjectId, ref: 'Artist'}],
+    favoriteBands: [{type: Schema.Types.ObjectId, ref: 'Band'}],
   },
   {
     timestamps: true,
